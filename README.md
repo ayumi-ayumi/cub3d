@@ -1,4 +1,4 @@
-*TODO*
+*This project has been created as part of the 42 curriculum by asato, chagen.*
 
 # cub3D
 
@@ -26,15 +26,14 @@ It parses a `.cub` file, validates the map, and renders a real-time first-person
 
 ## 🏗️ Architecture
 
-The project follows a modular, layered architecture with clear separation of concerns.
-Each file includes only the headers it directly depends on to keep dependencies explicit.
-Modules manage their own resources via dedicated init/cleanup functions, ensuring clear memory ownership.
-Core logic is decoupled from MiniLibX to enable unit testing.
-Cleanup is handled locally: allocating functions return errors, and callers free partial state.
+**Architecture:** The project follows a modular, layered architecture with clear separation of concerns.
+**Unit Testing:** Core logic is decoupled from MiniLibX to enable unit testing.
+**Includes:** Each file includes only the headers it directly depends on to keep dependencies explicit.
+**Ownership:** Modules manage their own resources via dedicated init/cleanup functions, ensuring clear memory ownership. **Cleanup is handled locally:** allocating functions return errors, and callers free partial state.
 
 ---
 
-## 🛠️ Build & Run
+## 🛠️ Instructions 
 
 ```bash
 make
@@ -51,4 +50,8 @@ make
 
 ---
 
-TODO!!!
+## 📚 Resources
+Ai was used to help writing this readme file.
+
+
+
