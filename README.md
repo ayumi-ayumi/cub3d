@@ -52,7 +52,7 @@ make
 
 ## 📚 Resources
 - Ai was used to help writing this readme file.
-- Ressource about LeakSanatizer [MaskRay][https://maskray.me/blog/2023-02-12-all-about-leak-sanitizer].
+- chagen: Ressource about LeakSanatizer [MaskRay][https://maskray.me/blog/2023-02-12-all-about-leak-sanitizer].
 
 
 
