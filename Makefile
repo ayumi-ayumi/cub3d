@@ -29,6 +29,7 @@ SRC			=	main.c
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 OBJ			=	$(SRC:.c=.o)
 OBSJ		=	$(addprefix $(OBJ_DIR)/, $(OBJ))
+MAKEFLAGS += --no-print-directory
 
 all:	$(NAME)
 
