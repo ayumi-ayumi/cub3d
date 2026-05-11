@@ -6,18 +6,17 @@
 #    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/05/11 16:22:46 by asato            ###   ########.fr        #
+#    Updated: 2026/05/11 17:24:27 by asato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	cub3d
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -fsanatizer=leak
+CFLAGS		=	-Wall -Wextra -Werror -fsanitize=leak
 SRC_DIR		=	src
 OBJ_DIR		=	obj
 INC_DIR		=	includes
 LIBFT_DIR	=	libft
-MLX_DIR		=	minilibx-linux
 LIBFT_A		=	$(LIBFT_DIR)/libft.a
 # Linker directives lmlx is the lmx library on the school compputer
 LDLIBS		=	$(LIBFT_A) -lmlx -lX11 -lXext -lm
@@ -30,9 +29,11 @@ SRC			=	main.c
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 OBJ			=	$(SRC:.c=.o)
-OBSJ		=	$(addprefix $(OBJ_DIR)/, $(OBJ))
+OBJS		=	$(addprefix $(OBJ_DIR)/, $(OBJ))
 GNL_OBJS = $(GNL_SRCS:./get_next_line/%.c=$(OBJDIR)/get_next_line/%.o)
 
+
+#suppress the "Entering directory" and "Leaving directory" messages
 MAKEFLAGS += --no-print-directory
 
 all:	$(NAME)

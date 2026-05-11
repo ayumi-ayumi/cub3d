@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    docs.md                                            :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: chagen <chagen@student.42berlin.de>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/05/05 15:11:51 by chagen            #+#    #+#              #
-#    Updated: 2026/05/06 15:01:46 by chagen           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 *this file contains organizational information for the cub3d project*
 
 # Git Cheatsheet

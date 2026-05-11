@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/05/11 15:07:59 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/11 17:25:01 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,3 +119,10 @@ void	free_map(t_cub *map);
 void	free_mlx_img(t_vars *game, void **target);
 void	free_mlx(t_vars *game);
 void	cleanup_and_exit(t_vars *game);
+
+# define TRUE 1
+# define FALSE 0
+# define SUCCESS 0
+# define FAIL 1
+
+#endif
