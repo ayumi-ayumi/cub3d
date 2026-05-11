@@ -53,6 +53,7 @@ make
 ## 📚 Resources
 - Ai was used to help writing this readme file.
 - chagen: Ressource about LeakSanitizer [MaskRay][https://maskray.me/blog/2023-02-12-all-about-leak-sanitizer].
+- chagen: Ressource on Raycasting: [Gitbook][https://lodev.org/cgtutor/raycasting.html].
 
 
 
