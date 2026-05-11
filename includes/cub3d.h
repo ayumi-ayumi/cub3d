@@ -12,4 +12,10 @@
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# define TRUE 1
+# define FALSE 0
+# define SUCCESS 0
+# define FAIL 1
+
 #endif
