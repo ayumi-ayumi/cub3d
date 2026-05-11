@@ -12,7 +12,7 @@
 
 NAME		=	cub3d
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -fsanatizer=leak
+CFLAGS		=	-Wall -Wextra -Werror -fsanitize=leak
 SRC_DIR		=	src
 OBJ_DIR		=	obj
 INC_DIR		=	includes
