@@ -17,7 +17,6 @@ SRC_DIR		=	src
 OBJ_DIR		=	obj
 INC_DIR		=	includes
 LIBFT_DIR	=	libft
-MLX_DIR		=	minilibx-linux
 LIBFT_A		=	$(LIBFT_DIR)/libft.a
 # Linker directives lmlx is the lmx library on the school compputer
 LDLIBS		=	$(LIBFT_A) -lmlx -lX11 -lXext -lm
