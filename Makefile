@@ -29,6 +29,8 @@ SRC			=	main.c
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 OBJ			=	$(SRC:.c=.o)
 OBJS		=	$(addprefix $(OBJ_DIR)/, $(OBJ))
+
+#suppress the "Entering directory" and "Leaving directory" messages
 MAKEFLAGS += --no-print-directory
 
 all:	$(NAME)
