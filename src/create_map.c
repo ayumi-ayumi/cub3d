@@ -6,13 +6,13 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:28:40 by asato             #+#    #+#             */
-/*   Updated: 2025/11/22 18:41:19 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/13 19:41:37 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/cub3d.h"
 
-int	create_grid(t_so_long *map)
+int	create_grid(t_cub *map)
 {
 	int		fd;
 
@@ -30,7 +30,7 @@ int	create_grid(t_so_long *map)
 	return (get_next_line(-1), close(fd), 1);
 }
 
-int	read_map_from_file(int fd, t_so_long *map)
+int	read_map_from_file(int fd, t_cub *map)
 {
 	char	*line_buf;
 	char	**new_grid;

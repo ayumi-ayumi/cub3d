@@ -6,16 +6,16 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 21:45:54 by asato             #+#    #+#             */
-/*   Updated: 2025/11/21 21:04:46 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/14 18:45:21 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/cub3d.h"
 
 int	init_map(t_vars *game)
 {
-	t_so_long	*map;
-	t_so_long	*copy;
+	t_cub	*map;
+	t_cub	*copy;
 
 	map = game->map;
 	copy = game->copy;
@@ -23,7 +23,7 @@ int	init_map(t_vars *game)
 		return (0);
 	if (!create_grid(map) || !validate_map(map))
 		return (0);
-	count_map_objects(map);
+	// count_map_objects(map);
 	map->size = map->height * map->width;
 	*copy = copy_map(map);
 	copy->start_pos = find_pos(copy, 'P');
@@ -38,28 +38,28 @@ int	init_map(t_vars *game)
 	return (1);
 }
 
-int	validate_map(t_so_long *map)
+int	validate_map(t_cub *map)
 {
 	if (!map || !map->grid)
 		return (error("No map found.\n"), 0);
-	if (!is_rectangular(map))
-		return (error("Map is not rectangular.\n"), 0);
-	if (!is_enclosed_by_walls(map))
-		return (error("Map is not surrounded by walls🧱.\n"), 0);
+	// if (!is_rectangular(map))
+	// 	return (error("Map is not rectangular.\n"), 0);
 	if (!validate_map_char_counts(map))
 	{
-		error("The map must have only one exit and player, and collectives.\n");
+		error("The map must have only one start position.\n");
 		return (0);
 	}
+	if (!is_enclosed_by_walls(map))
+		return (error("Map is not surrounded by walls🧱.\n"), 0);
 	return (1);
 }
 
-void	count_map_objects(t_so_long *map)
-{
-	map->counts.collectibles = count_char_in_map(map, 'C');
-	map->counts.exit = count_char_in_map(map, 'E');
-	map->counts.player = count_char_in_map(map, 'P');
-}
+// void	count_map_objects(t_cub *map)
+// {
+// 	map->counts.collectibles = count_char_in_map(map, 'C');
+// 	map->counts.exit = count_char_in_map(map, 'E');
+// 	map->counts.player = count_char_in_map(map, 'P');
+// }
 
 int	check_collectibles_reachability(t_vars *game)
 {

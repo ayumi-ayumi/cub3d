@@ -6,18 +6,11 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 16:40:38 by asato             #+#    #+#             */
-/*   Updated: 2026/05/11 15:05:15 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/13 19:50:05 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	error_and_exit(char *error)
-{
-	printf("Error\n");
-	printf("%s", error);
-	exit(0);
-}
 
 int	is_extension_correct(char *file_name)
 {
@@ -53,7 +46,7 @@ int	main(int ac, char **av)
 		return (cleanup_and_exit(&game), 1);
 	if (!init_map(&game))
 		return (cleanup_and_exit(&game), 1);
-	if (!init_mlx(&game))
-		return (cleanup_and_exit(&game), 1);
+	// if (!init_mlx(&game))
+	// 	return (cleanup_and_exit(&game), 1);
 	return (0);
 }

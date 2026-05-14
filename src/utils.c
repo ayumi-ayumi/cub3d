@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/13 15:38:48 by asato             #+#    #+#             */
-/*   Updated: 2025/11/21 20:00:29 by asato            ###   ########.fr       */
+/*   Created: 2026/05/13 19:41:54 by asato             #+#    #+#             */
+/*   Updated: 2026/05/14 18:42:11 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
 
-int	get_row_length(t_so_long *map, int row_idx)
+#include "../includes/cub3d.h"
+
+int	get_row_length(t_cub *map, int row_idx)
 {
 	int	len;
 
@@ -25,7 +26,7 @@ int	get_row_length(t_so_long *map, int row_idx)
 	return (len);
 }
 
-int	count_char_in_map(t_so_long *map, char c)
+int	count_char_in_map(t_cub *map, char c)
 {
 	int	row_idx;
 	int	col_idx;
@@ -39,7 +40,7 @@ int	count_char_in_map(t_so_long *map, char c)
 	while (row_idx < map->height)
 	{
 		col_idx = 0;
-		while (col_idx < map->width)
+		while (map->grid[row_idx][col_idx] != '\0')
 		{
 			if (map->grid[row_idx][col_idx] == c)
 				count++;
@@ -50,7 +51,7 @@ int	count_char_in_map(t_so_long *map, char c)
 	return (count);
 }
 
-t_pos	find_pos(t_so_long *map, char target)
+t_pos	find_pos(t_cub *map, char target)
 {
 	int		row_idx;
 	int		col_idx;
@@ -75,13 +76,13 @@ t_pos	find_pos(t_so_long *map, char target)
 	return (target_pos);
 }
 
-t_so_long	copy_map(t_so_long *map)
+t_cub	copy_map(t_cub *map)
 {
-	t_so_long	copy;
+	t_cub	copy;
 
 	if (!map || map->height <= 0)
-		return ((t_so_long){0});
-	copy = (t_so_long){0};
+		return ((t_cub){0});
+	copy = (t_cub){0};
 	copy.grid = malloc(sizeof(char *) * (map->height + 1));
 	if (!copy.grid)
 		return (copy);
@@ -96,7 +97,7 @@ t_so_long	copy_map(t_so_long *map)
 	return (copy);
 }
 
-t_so_long	dup_grid(t_so_long *map, t_so_long *copy)
+t_cub	dup_grid(t_cub *map, t_cub *copy)
 {
 	int	i;
 
