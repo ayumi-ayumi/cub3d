@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/05/13 19:56:10 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/16 13:37:00 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,11 +125,13 @@ int	count_char_in_map(t_cub *map, char c);
 t_pos	find_pos(t_cub *map, char target);
 t_cub	copy_map(t_cub *map);
 t_cub	dup_grid(t_cub *map, t_cub *copy);
-int	is_rectangular(t_cub *map);
+// int	is_rectangular(t_cub *map);
 int	has_top_bottom_walls(t_cub *map);
 int	has_sides_walls(t_cub *map);
 int	is_enclosed_by_walls(t_cub *map);
-int	validate_map_char_counts(t_cub *map);
+// int	validate_map_char_counts(t_cub *map);
+int	validate_start_position(t_cub *map);
+int	validate_map_charset(t_cub *map);
 
 void	error_and_exit(char *error);
 void	error(char *error);

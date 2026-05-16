@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:13:46 by asato             #+#    #+#             */
-/*   Updated: 2025/11/10 20:57:00 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/16 14:11:18 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_stash(int fd, char *stash)
 	char	*temp;
 	char	*joined;
 
-	if (!stash) // added on 28.10 this line is super important
+	if (!stash)
 		stash = ft_strdup("");
 	temp = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!temp)
@@ -33,7 +33,7 @@ char	*get_stash(int fd, char *stash)
 			break ;
 		temp[bytes_read] = '\0';
 		joined = ft_strjoin(stash, temp);
-		free(stash);           /* free previous stash to avoid leak */
+		free(stash);
 		stash = joined;
 	}
 	free(temp);

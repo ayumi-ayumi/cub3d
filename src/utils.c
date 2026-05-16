@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 19:41:54 by asato             #+#    #+#             */
-/*   Updated: 2026/05/14 18:42:11 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/16 13:28:39 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	count_char_in_map(t_cub *map, char c)
 	int	col_idx;
 	int	count;
 
-	if (!map || !map->grid)
-		return (0);
+	// if (!map || !map->grid)
+	// 	return (0);
 	row_idx = 0;
 	col_idx = 0;
 	count = 0;

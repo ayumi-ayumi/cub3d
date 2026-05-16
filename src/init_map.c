@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 21:45:54 by asato             #+#    #+#             */
-/*   Updated: 2026/05/14 18:45:21 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/16 14:34:36 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,12 @@ int	validate_map(t_cub *map)
 		return (error("No map found.\n"), 0);
 	// if (!is_rectangular(map))
 	// 	return (error("Map is not rectangular.\n"), 0);
-	if (!validate_map_char_counts(map))
+	if (!validate_map_charset(map))
+	{
+		error("The map contains invalid characters.\n");
+		return (0);
+	}
+	if (!validate_start_position(map))
 	{
 		error("The map must have only one start position.\n");
 		return (0);

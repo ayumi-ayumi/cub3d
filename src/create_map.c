@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:28:40 by asato             #+#    #+#             */
-/*   Updated: 2026/05/13 19:41:37 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/16 17:44:38 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,23 @@ int	create_grid(t_cub *map)
 	if (!map->grid)
 		return (0);
 	return (get_next_line(-1), close(fd), 1);
+}
+
+int	get_max_width(t_cub *map)
+{
+	int	i;
+	int	line_len;
+	int	temp_len;
+
+	i = 0;
+	while (i < map->height)
+	{
+		temp_len = ft_strlen(map->grid[i]);
+		if (temp_len > line_len)
+			line_len = temp_len;
+		i++;
+	}
+	return (line_len - 1); // minus '\n'
 }
 
 int	read_map_from_file(int fd, t_cub *map)
@@ -52,6 +69,7 @@ int	read_map_from_file(int fd, t_cub *map)
 		map->height++;
 		line_buf = get_next_line(fd);
 	}
+	map->width = get_max_width(map);
 	return (1);
 }
 
