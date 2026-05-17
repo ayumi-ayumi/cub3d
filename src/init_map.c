@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 21:45:54 by asato             #+#    #+#             */
-/*   Updated: 2026/05/16 14:34:36 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/17 19:28:24 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ int	init_map(t_vars *game)
 		return (0);
 	if (!create_grid(map) || !validate_map(map))
 		return (0);
-	// count_map_objects(map);
 	map->size = map->height * map->width;
 	*copy = copy_map(map);
 	copy->start_pos = find_pos(copy, 'P');
-	copy->exit_pos = find_pos(copy, 'E');
+	// copy->exit_pos = find_pos(copy, 'E');
 	if (copy->start_pos.row == -1 || copy->start_pos.col == -1
 		|| copy->exit_pos.row == -1 || copy->exit_pos.col == -1)
 		return (0);
@@ -42,8 +41,6 @@ int	validate_map(t_cub *map)
 {
 	if (!map || !map->grid)
 		return (error("No map found.\n"), 0);
-	// if (!is_rectangular(map))
-	// 	return (error("Map is not rectangular.\n"), 0);
 	if (!validate_map_charset(map))
 	{
 		error("The map contains invalid characters.\n");
@@ -58,13 +55,6 @@ int	validate_map(t_cub *map)
 		return (error("Map is not surrounded by walls🧱.\n"), 0);
 	return (1);
 }
-
-// void	count_map_objects(t_cub *map)
-// {
-// 	map->counts.collectibles = count_char_in_map(map, 'C');
-// 	map->counts.exit = count_char_in_map(map, 'E');
-// 	map->counts.player = count_char_in_map(map, 'P');
-// }
 
 int	check_collectibles_reachability(t_vars *game)
 {

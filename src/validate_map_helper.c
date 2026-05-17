@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/05/16 19:24:50 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/17 19:31:39 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,36 +41,6 @@ int	is_allowed_char(char c)
 	return (c == '1' || c == '0' || c == ' ' || c == 'N'
 		|| c == 'S' || c == 'E' || c == 'W');
 }
-
-// int	has_top_bottom_walls(t_cub *map)
-// {
-// 	int	col_idx;
-
-// 	col_idx = 0;
-// 	while (col_idx < map->width)
-// 	{
-// 		if (map->grid[0][col_idx] != '1'
-// 			|| map->grid[map->height - 1][col_idx] != '1')
-// 			return (0);
-// 		col_idx++;
-// 	}
-// 	return (1);
-// }
-
-// int	has_sides_walls(t_cub *map)
-// {
-// 	int	row_idx;
-
-// 	row_idx = 0;
-// 	while (row_idx < map->height)
-// 	{
-// 		if (map->grid[row_idx][0] != '1'
-// 			|| map->grid[row_idx][map->width - 1] != '1')
-// 			return (0);
-// 		row_idx++;
-// 	}
-// 	return (1);
-// }
 
 int	has_left_side_wall(t_cub *map)
 {
@@ -108,22 +78,20 @@ int	has_right_side_wall(t_cub *map)
 	return (1);
 }
 
-// int	has_top_wall(t_cub *map)
-// {
-// 	int	row_idx;
-// 	int	col_idx;
+int	has_this_row_wall(t_cub *map, int row_idx)
+{
+	int	col_idx;
 
-// 	row_idx = 0;
-// 	col_idx = 0;
-// 	while (col_idx < map->width)
-// 	{
-// 		+
-// 		if (map->grid[row_idx][0] != '1')
-// 			return (0);
-// 		row_idx++;
-// 	}
-// 	return (1);
-// }
+	col_idx = 0;
+	while (map->grid[row_idx][col_idx] != '\n')
+	{
+		if (map->grid[row_idx][col_idx] != '1')
+			return (0);
+		col_idx++;
+	}
+	return (1);
+}
+
 int	friend_with_0(char c)
 {
 	return (c == '1' || c == '0' || c == 'N'
@@ -144,9 +112,9 @@ int	check_around_0(t_cub *map)
 			{
 				if (!friend_with_0(map->grid[row_idx - 1][col_idx]) //UP
 				|| !friend_with_0(map->grid[row_idx][col_idx + 1]) // RIGHT
-				|| !friend_with_0(map->grid[row_idx - 1][col_idx]) // DOWN
+				|| !friend_with_0(map->grid[row_idx + 1][col_idx]) // DOWN
 				|| !friend_with_0(map->grid[row_idx][col_idx - 1])) //LEFT
-				return (0);
+					return (0);
 			}
 			col_idx++;
 		}
@@ -157,13 +125,15 @@ int	check_around_0(t_cub *map)
 
 int	is_enclosed_by_walls(t_cub *map)
 {
+	if (!has_this_row_wall(map, 0) || !has_this_row_wall(map, map->height - 1))
+		return (0);
 	if (!has_left_side_wall(map) || !has_right_side_wall(map))
 		return (0);
 	if (!check_around_0(map))
 		return (0);
 	return (1);
 }
-// Check if a map has only 1, 0, N, S, E, W or SPACE
+// Check if a map has only either of N, S, E, W
 int	validate_start_position(t_cub *map)
 {
 	char	*dirs;
@@ -176,8 +146,8 @@ int	validate_start_position(t_cub *map)
 	i = 0;
 	while (i < 4)
 	{
-		result = 0;
-		if ((result = count_char_in_map(map, dirs[i])) > 1)
+		result = count_char_in_map(map, dirs[i]);
+		if (result > 1)
 			return (0);
 		if (result == 1)
 			flag++;
@@ -187,7 +157,7 @@ int	validate_start_position(t_cub *map)
 		return (0);
 	return (1);
 }
-
+// Check if a map has only 1, 0, N, S, E, W or SPACE
 int	validate_map_charset(t_cub *map)
 {
 	int	row_idx;
