@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
+#include "libft.h"
+#include "get_next_line.h"
+#include <unistd.h>
+#include <stdlib.h>
 
 int	create_grid(t_cub *map)
 {

@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 
 void	error_and_exit(char *error)
 {

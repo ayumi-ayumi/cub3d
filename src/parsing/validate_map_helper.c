@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
+#include <unistd.h>
 
 // int	is_rectangular(t_cub *map)
 // {

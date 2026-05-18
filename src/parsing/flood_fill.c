@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
+#include "libft.h"
+#include <unistd.h>
 
 int	flood_fill(t_vars *game, int *collectible, int *exit)
 {
