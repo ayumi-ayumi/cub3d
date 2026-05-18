@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include <unistd.h>
+#include <fcntl.h>
 
 // char	*ft_strchr(char *s, char c)
 // {
