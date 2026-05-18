@@ -14,13 +14,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <mlx.h>
 # include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "../libft/libft.h"
-# include "../get_next_line/get_next_line.h"
-
 
 /* MACROS */
 # define IMG_PLAYER_UP		"./textures/player_up.xpm"
