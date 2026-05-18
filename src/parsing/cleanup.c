@@ -1,5 +1,5 @@
-#include "cub3d.h"
-#include "libft.h"
+//#include "cub3d.h"
+#include "parser.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <mlx.h>
