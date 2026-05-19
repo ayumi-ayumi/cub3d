@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chagen <chagen@student.42berlin.de>        +#+  +:+       +#+         #
+#    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/05/06 15:06:47 by chagen           ###   ########.fr        #
+#    Updated: 2026/05/13 20:00:41 by asato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,19 @@ LIBFT_A		=	$(LIBFT_DIR)/libft.a
 LDLIBS		=	$(LIBFT_A) -lmlx -lX11 -lXext -lm
 
 INC			=	-I$(INC_DIR) -I$(LIBFT_DIR)
-
-SRC			=	main.c
+SRC			=	main.c \
+				parsing/get_next_line.c \
+				parsing/cleanup.c \
+				parsing/create_map.c \
+				parsing/init_map.c \
+				parsing/validate_map_helper.c \
+				parsing/utils.c \
+				parsing/error.c \
+				parsing/flood_fill.c \
+				parsing/flood_fill_helper.c
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
+
 OBJ			=	$(SRC:.c=.o)
 OBJS		=	$(addprefix $(OBJ_DIR)/, $(OBJ))
 
@@ -57,4 +66,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-

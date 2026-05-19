@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/05/16 13:37:00 by asato            ###   ########.fr       */
+/*   Created: 2025/11/20 15:21:56 by asato             #+#    #+#             */
+/*   Updated: 2026/05/13 19:52:33 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include "cub3d.h"
+#include "parser.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-#ifndef CUB3D_H
-# define CUB3D_H
 
-# define TRUE 1
-# define FALSE 0
-# define SUCCESS 0
-# define FAIL 1
+void	error_and_exit(char *error)
+{
+	printf("Error\n");
+	printf("%s", error);
+	exit(0);
+}
 
-#endif
+void	error(char *error)
+{
+	printf("Error\n");
+	printf("%s", error);
+}

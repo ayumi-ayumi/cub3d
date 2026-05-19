@@ -1,7 +1,10 @@
 # custom
+*.json
+.gitignore
 tags
 cub3d
 obj/*
+.clangd
 # Prerequisites
 *.d
 
