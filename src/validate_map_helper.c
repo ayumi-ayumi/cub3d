@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/05/17 19:31:39 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/19 17:33:36 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int	has_this_row_wall(t_cub *map, int row_idx)
 	col_idx = 0;
 	while (map->grid[row_idx][col_idx] != '\n')
 	{
+		while (map->grid[row_idx][col_idx] == ' ')
+			col_idx++;
 		if (map->grid[row_idx][col_idx] != '1')
 			return (0);
 		col_idx++;
