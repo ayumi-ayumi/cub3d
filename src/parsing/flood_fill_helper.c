@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+//#include "cub3d.h"
+#include "parser.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 void	init_stack(t_stack *dfs_stack, t_cub *map)
 {

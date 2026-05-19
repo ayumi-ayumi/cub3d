@@ -1,4 +1,8 @@
-#include "../includes/cub3d.h"
+//#include "cub3d.h"
+#include "parser.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <mlx.h>
 
 void	free_map(t_cub *map)
 {
