@@ -11,7 +11,11 @@
 /* ************************************************************************** */
 
 
-#include "../includes/cub3d.h"
+//#include "cub3d.h"
+#include "parser.h"
+#include "libft.h"
+#include <unistd.h>
+#include <stdlib.h>
 
 int	get_row_length(t_cub *map, int row_idx)
 {

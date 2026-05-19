@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+//#include "cub3d.h"
+#include "parser.h"
+#include "libft.h"
+#include <unistd.h>
 
 int	is_extension_correct(char *file_name)
 {
