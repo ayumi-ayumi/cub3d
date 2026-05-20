@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 18:26:46 by asato             #+#    #+#             */
-/*   Updated: 2026/05/13 19:55:59 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/20 18:03:52 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "parser.h"
 #include <unistd.h>
 
-int	flood_fill(t_vars *game, int *collectible, int *exit)
+int	flood_fill(t_game *game, int *collectible, int *exit)
 {
-	t_cub	*copy;
+	t_map	*copy;
 	t_pos		*next;
 	int			row;
 	int			col;

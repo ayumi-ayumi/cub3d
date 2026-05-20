@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 18:26:46 by asato             #+#    #+#             */
-/*   Updated: 2026/05/13 19:54:27 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/20 18:03:52 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	init_stack(t_stack *dfs_stack, t_cub *map)
+void	init_stack(t_stack *dfs_stack, t_map *map)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ void	init_stack(t_stack *dfs_stack, t_cub *map)
 	}
 }
 
-void	push_stack(t_pos input_pos, t_cub *copy, t_stack *dfs_stack)
+void	push_stack(t_pos input_pos, t_map *copy, t_stack *dfs_stack)
 {
 	t_pos	pos;
 
@@ -55,7 +55,7 @@ t_pos	*pop_stack(t_stack *dfs_stack)
 	return (pop_pos);
 }
 
-int	is_explorable(int row, int col, t_cub *map)
+int	is_explorable(int row, int col, t_map *map)
 {
 	if (row < 0 || row >= map->height || col < 0 || col >= map->width)
 		return (0);
@@ -66,7 +66,7 @@ int	is_explorable(int row, int col, t_cub *map)
 	return (1);
 }
 
-void	is_explorable_all_dir(int row, int col, t_cub *copy, t_vars *game)
+void	is_explorable_all_dir(int row, int col, t_map *copy, t_game *game)
 {
 	if (is_explorable(row - 1, col, copy))
 		push_stack((t_pos){row - 1, col}, copy, game->dfs_stack);
