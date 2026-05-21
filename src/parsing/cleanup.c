@@ -22,43 +22,12 @@ void	free_map(t_cub *map)
 	map->height = 0;
 }
 
-void	free_mlx_img(t_vars *game, void **target)
-{
-	if (!game || !game->mlx || !target || !*target)
-		return ;
-	mlx_destroy_image(game->mlx, *target);
-	*target = NULL;
-}
-
-void	free_mlx(t_vars *game)
-{
-	if (game->mlx)
-	{
-		free_mlx_img(game, (void **)&game->img.player_up);
-		free_mlx_img(game, (void **)&game->img.player_right);
-		free_mlx_img(game, (void **)&game->img.player_down);
-		free_mlx_img(game, (void **)&game->img.player_left);
-		free_mlx_img(game, (void **)&game->img.floor);
-		free_mlx_img(game, (void **)&game->img.exit);
-		free_mlx_img(game, (void **)&game->img.exit_open);
-		free_mlx_img(game, (void **)&game->img.wall);
-		free_mlx_img(game, (void **)&game->img.collectible);
-		if (game->win)
-		{
-			mlx_destroy_window(game->mlx, game->win);
-			game->win = NULL;
-		}
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
-		game->mlx = NULL;
-	}
-}
 
 void	cleanup_and_exit(t_vars *game)
 {
 	if (!game)
 		return ;
-	free_mlx(game);
+//	free_mlx(game);//mlx gets initialized and freed in execution
 	if (game->map)
 	{
 		free_map(game->map);
