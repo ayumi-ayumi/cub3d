@@ -12,6 +12,8 @@
 # define IMG_FLOOR			"./textures/floor.xpm"
 # define IMG_WALL			"./textures/wall.xpm"
 
+# include "cub3d.h"
+
 /* ENUMS */
 typedef enum s_direction
 {
@@ -81,6 +83,7 @@ typedef struct s_stack
 	t_pos	*data;
 }				t_stack;
 
+
 typedef struct s_vars
 {
 	void		*mlx;
@@ -92,40 +95,38 @@ typedef struct s_vars
 	t_stack		*dfs_stack;
 }				t_vars;
 
-int	create_grid(t_cub *map);
-int	read_map_from_file(int fd, t_cub *map);
+int		create_grid(t_cub *map);
+int		read_map_from_file(int fd, t_cub *map);
 char	**append_row_to_grid(char **grid, char *new_line, int current_size);
-int	init_map(t_vars *game);
-int	validate_map(t_cub *map);
+int		init_map(t_vars *game);
+int		validate_map(t_cub *map);
 void	count_map_objects(t_cub *map);
-int	check_collectibles_reachability(t_vars *game);
-int	get_row_length(t_cub *map, int row_idx);
-int	count_char_in_map(t_cub *map, char c);
+int		check_collectibles_reachability(t_vars *game);
+int		get_row_length(t_cub *map, int row_idx);
+int		count_char_in_map(t_cub *map, char c);
 t_pos	find_pos(t_cub *map, char target);
 t_cub	copy_map(t_cub *map);
 t_cub	dup_grid(t_cub *map, t_cub *copy);
 // int	is_rectangular(t_cub *map);
-int	has_top_bottom_walls(t_cub *map);
-int	has_sides_walls(t_cub *map);
-int	is_enclosed_by_walls(t_cub *map);
+int		has_top_bottom_walls(t_cub *map);
+int		has_sides_walls(t_cub *map);
+int		is_enclosed_by_walls(t_cub *map);
 // int	validate_map_char_counts(t_cub *map);
-int	validate_start_position(t_cub *map);
-int	validate_map_charset(t_cub *map);
+int		validate_start_position(t_cub *map);
+int		validate_map_charset(t_cub *map);
 
 void	error_and_exit(char *error);
 void	error(char *error);
 
-int	flood_fill(t_vars *game, int *collectible, int *exit);
+int		flood_fill(t_vars *game, int *collectible, int *exit);
 
 void	init_stack(t_stack *dfs_stack, t_cub *map);
 void	push_stack(t_pos input_pos, t_cub *copy, t_stack *dfs_stack);
 t_pos	*pop_stack(t_stack *dfs_stack);
-int	is_explorable(int row, int col, t_cub *map);
+int		is_explorable(int row, int col, t_cub *map);
 void	is_explorable_all_dir(int row, int col, t_cub *copy, t_vars *game);
 
 void	free_map(t_cub *map);
-void	free_mlx_img(t_vars *game, void **target);
-void	free_mlx(t_vars *game);
 void	cleanup_and_exit(t_vars *game);
 
 #endif
