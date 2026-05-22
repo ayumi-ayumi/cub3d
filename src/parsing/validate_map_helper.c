@@ -6,15 +6,16 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/05/17 19:31:39 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/20 18:53:50 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "cub3d.h"
 #include "parser.h"
 #include <unistd.h>
+#include <stdio.h>
 
-// int	is_rectangular(t_cub *map)
+// int	is_rectangular(t_map *map)
 // {
 // 	int	first_row;
 // 	int	row_idx;
@@ -44,7 +45,7 @@ int	is_allowed_char(char c)
 		|| c == 'S' || c == 'E' || c == 'W');
 }
 
-int	has_left_side_wall(t_cub *map)
+int	has_left_side_wall(t_map *map)
 {
 	int	row_idx;
 	int	col_idx;
@@ -62,7 +63,7 @@ int	has_left_side_wall(t_cub *map)
 	}
 	return (1);
 }
-int	has_right_side_wall(t_cub *map)
+int	has_right_side_wall(t_map *map)
 {
 	int	row_idx;
 	int	col_idx;
@@ -71,22 +72,24 @@ int	has_right_side_wall(t_cub *map)
 	while (row_idx < map->height)
 	{
 		col_idx = 0;
-		while (map->grid[row_idx][col_idx] != '\n')
+		while (map->grid[row_idx][col_idx + 1] != '\n')
 			col_idx++;
-		if (map->grid[row_idx][col_idx - 1] != '1')
+		if (map->grid[row_idx][col_idx] != '1')
 			return (0);
 		row_idx++;
 	}
 	return (1);
 }
 
-int	has_this_row_wall(t_cub *map, int row_idx)
+int	has_this_row_wall(t_map *map, int row_idx)
 {
 	int	col_idx;
 
 	col_idx = 0;
 	while (map->grid[row_idx][col_idx] != '\n')
 	{
+		while (map->grid[row_idx][col_idx] == ' ')
+			col_idx++;
 		if (map->grid[row_idx][col_idx] != '1')
 			return (0);
 		col_idx++;
@@ -99,7 +102,7 @@ int	friend_with_0(char c)
 	return (c == '1' || c == '0' || c == 'N'
 		|| c == 'S' || c == 'E' || c == 'W');
 }
-int	check_around_0(t_cub *map)
+int	check_around_0(t_map *map)
 {
 	int	row_idx;
 	int	col_idx;
@@ -125,18 +128,18 @@ int	check_around_0(t_cub *map)
 	return (1);
 }
 
-int	is_enclosed_by_walls(t_cub *map)
+int	is_enclosed_by_walls(t_map *map)
 {
 	if (!has_this_row_wall(map, 0) || !has_this_row_wall(map, map->height - 1))
-		return (0);
+		return (printf("1\n"), 0);
 	if (!has_left_side_wall(map) || !has_right_side_wall(map))
-		return (0);
+		return (printf("2\n"), 0);
 	if (!check_around_0(map))
-		return (0);
+		return (printf("3\n"), 0);
 	return (1);
 }
 // Check if a map has only either of N, S, E, W
-int	validate_start_position(t_cub *map)
+int	validate_start_position(t_map *map)
 {
 	char	*dirs;
 	int		flag;
@@ -160,7 +163,7 @@ int	validate_start_position(t_cub *map)
 	return (1);
 }
 // Check if a map has only 1, 0, N, S, E, W or SPACE
-int	validate_map_charset(t_cub *map)
+int	validate_map_charset(t_map *map)
 {
 	int	row_idx;
 	int	col_idx;

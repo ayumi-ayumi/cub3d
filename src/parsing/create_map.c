@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:28:40 by asato             #+#    #+#             */
-/*   Updated: 2026/05/16 17:44:38 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/20 18:57:03 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,35 @@
 #include "get_next_line.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-int	create_grid(t_cub *map)
+int	read_file(t_game *game)
 {
-	int		fd;
+	int	fd;
 
-	fd = open(map->map_path, O_RDONLY);
+	fd = open(game->file_path, O_RDONLY);
 	if (fd == -1)
 	{
 		error("Failed opening a file or a file doesn't exit.\n");
 		close(fd);
 		return (0);
 	}
-	if (!read_map_from_file(fd, map))
+	if (!read_map_from_file(fd, game))
 		return (0);
-	if (!map->grid)
+	if (!game->map->grid)
 		return (0);
 	return (get_next_line(-1), close(fd), 1);
 }
 
-int	get_max_width(t_cub *map)
+int	get_max_width(t_map *map)
 {
 	int	i;
 	int	line_len;
 	int	temp_len;
 
 	i = 0;
-	while (i < map->height)
+	line_len = 0;
+	while (map->grid[i])
 	{
 		temp_len = ft_strlen(map->grid[i]);
 		if (temp_len > line_len)
@@ -52,7 +54,7 @@ int	get_max_width(t_cub *map)
 	return (line_len - 1); // minus '\n'
 }
 
-int	read_map_from_file(int fd, t_cub *map)
+int	read_map_from_file(int fd, t_game *game)
 {
 	char	*line_buf;
 	char	**new_grid;
@@ -60,21 +62,22 @@ int	read_map_from_file(int fd, t_cub *map)
 	line_buf = get_next_line(fd);
 	while (line_buf != NULL)
 	{
-		new_grid = append_row_to_grid(map->grid, line_buf, map->height);
+		printf("%s\n", line_buf);
+		new_grid = append_row_to_grid(game->map->grid, line_buf, game->map->height);
 		if (!new_grid)
 		{
 			if (line_buf)
 				free(line_buf);
 			get_next_line(-1);
 			close(fd);
-			free_map(map);
+			free_map(game->map);
 			return (0);
 		}
-		map->grid = new_grid;
-		map->height++;
+		game->map->grid = new_grid;
+		game->map->height++;
 		line_buf = get_next_line(fd);
 	}
-	map->width = get_max_width(map);
+	game->map->width = get_max_width(game->map);
 	return (1);
 }
 

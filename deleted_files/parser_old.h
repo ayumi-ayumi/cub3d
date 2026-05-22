@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/20 18:02:52 by asato             #+#    #+#             */
-/*   Updated: 2026/05/20 18:27:39 by asato            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PARSER_H
 # define PARSER_H
 
@@ -23,8 +11,6 @@
 # define IMG_COLLECTIVE		"./textures/collectible.xpm"
 # define IMG_FLOOR			"./textures/floor.xpm"
 # define IMG_WALL			"./textures/wall.xpm"
-
-# include "cub3d.h"
 
 /* ENUMS */
 typedef enum s_direction
@@ -62,6 +48,18 @@ typedef struct s_position
 // 	int	player;
 // }				t_obj_counts;
 
+typedef struct s_cub
+{
+	char			*file_path;
+	char			**grid;
+	int				height;
+	int				width;
+	int				size;
+	// t_obj_counts	counts;
+	// t_pos			exit_pos;
+	t_pos			start_pos;
+}				t_map;
+
 typedef struct s_img
 {
 	void	*player_up;
@@ -83,44 +81,19 @@ typedef struct s_stack
 	t_pos	*data;
 }				t_stack;
 
-typedef struct s_elements
-{
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	int		*floor;
-	int		*ceiling;
-}				t_elements;
-
-typedef struct s_map
-{
-	// char			*file_path;
-	char			**grid;
-	int				height;
-	int				width;
-	int				size;
-	// t_obj_counts	counts;
-	// t_pos			exit_pos;
-	t_pos			start_pos;
-}				t_map;
-
-typedef struct s_game
+typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
-	char		*file_path;
-	char		**file;
-	t_elements	*elements;
 	t_map		*map;
 	t_map		*copy;
-	// int			moves;
+	int			moves;
 	t_img		img;
-	// t_stack		*dfs_stack;
+	t_stack		*dfs_stack;
 }				t_game;
 
-int	read_file(t_game *game);
-int	read_map_from_file(int fd, t_game *game);
+int	read_file(t_map *map);
+int	read_map_from_file(int fd, t_map *map);
 char	**append_row_to_grid(char **grid, char *new_line, int current_size);
 int	init_map(t_game *game);
 int	validate_map(t_map *map);
@@ -144,7 +117,7 @@ int	validate_map_charset(t_map *map);
 void	error_and_exit(char *error);
 void	error(char *error);
 
-// int	flood_fill(t_game *game, int *collectible, int *exit);
+int	flood_fill(t_game *game, int *collectible, int *exit);
 
 void	init_stack(t_stack *dfs_stack, t_map *map);
 void	push_stack(t_pos input_pos, t_map *copy, t_stack *dfs_stack);
@@ -153,6 +126,8 @@ int	is_explorable(int row, int col, t_map *map);
 void	is_explorable_all_dir(int row, int col, t_map *copy, t_game *game);
 
 void	free_map(t_map *map);
+void	free_mlx_img(t_game *game, void **target);
+void	free_mlx(t_game *game);
 void	cleanup_and_exit(t_game *game);
 
 #endif

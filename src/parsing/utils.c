@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 19:41:54 by asato             #+#    #+#             */
-/*   Updated: 2026/05/16 13:28:39 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/20 18:27:14 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int	get_row_length(t_cub *map, int row_idx)
+int	get_row_length(t_map *map, int row_idx)
 {
 	int	len;
 
@@ -30,7 +30,7 @@ int	get_row_length(t_cub *map, int row_idx)
 	return (len);
 }
 
-int	count_char_in_map(t_cub *map, char c)
+int	count_char_in_map(t_map *map, char c)
 {
 	int	row_idx;
 	int	col_idx;
@@ -55,7 +55,7 @@ int	count_char_in_map(t_cub *map, char c)
 	return (count);
 }
 
-t_pos	find_pos(t_cub *map, char target)
+t_pos	find_start_pos(t_map *map)
 {
 	int		row_idx;
 	int		col_idx;
@@ -66,9 +66,12 @@ t_pos	find_pos(t_cub *map, char target)
 	while (row_idx < map->height)
 	{
 		col_idx = 0;
-		while (col_idx < map->width)
+		while (map->grid[row_idx][col_idx] != '\n')
+		// while (col_idx < map->width)
 		{
-			if (map->grid[row_idx][col_idx] == target)
+			if (map->grid[row_idx][col_idx] != '0'
+				|| map->grid[row_idx][col_idx] != '1'
+				|| map->grid[row_idx][col_idx] != ' ')
 			{
 				target_pos.row = row_idx;
 				target_pos.col = col_idx;
@@ -80,13 +83,13 @@ t_pos	find_pos(t_cub *map, char target)
 	return (target_pos);
 }
 
-t_cub	copy_map(t_cub *map)
+t_map	copy_map(t_map *map)
 {
-	t_cub	copy;
+	t_map	copy;
 
 	if (!map || map->height <= 0)
-		return ((t_cub){0});
-	copy = (t_cub){0};
+		return ((t_map){0});
+	copy = (t_map){0};
 	copy.grid = malloc(sizeof(char *) * (map->height + 1));
 	if (!copy.grid)
 		return (copy);
@@ -95,13 +98,13 @@ t_cub	copy_map(t_cub *map)
 	copy.width = map->width;
 	copy.height = map->height;
 	copy.size = map->width * map->height;
-	copy.counts = map->counts;
-	copy.exit_pos = map->exit_pos;
+	// copy.counts = map->counts;
+	// copy.exit_pos = map->exit_pos;
 	copy.start_pos = map->start_pos;
 	return (copy);
 }
 
-t_cub	dup_grid(t_cub *map, t_cub *copy)
+t_map	dup_grid(t_map *map, t_map *copy)
 {
 	int	i;
 

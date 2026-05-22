@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <mlx.h>
 
-void	free_map(t_cub *map)
+void	free_map(t_map *map)
 {
 	int	i;
 
@@ -22,8 +22,7 @@ void	free_map(t_cub *map)
 	map->height = 0;
 }
 
-
-void	cleanup_and_exit(t_vars *game)
+void	cleanup_and_exit(t_game *game)
 {
 	if (!game)
 		return ;
@@ -31,21 +30,21 @@ void	cleanup_and_exit(t_vars *game)
 	if (game->map)
 	{
 		free_map(game->map);
-		if (game->map->map_path)
-			free(game->map->map_path);
+		// if (game->file_path)
+		// 	free(game->file_path);
 		game->map = NULL;
 	}
 	if (game->copy)
 	{
 		free_map(game->copy);
-		if (game->copy->map_path)
-			free(game->copy->map_path);
+		// if (game->file_path)
+		// 	free(game->file_path);
 		game->copy = NULL;
 	}
-	if (game->dfs_stack && game->dfs_stack->data)
-	{
-		free(game->dfs_stack->data);
-		game->dfs_stack->data = NULL;
-	}
+	// if (game->dfs_stack && game->dfs_stack->data)
+	// {
+	// 	free(game->dfs_stack->data);
+	// 	game->dfs_stack->data = NULL;
+	// }
 	exit (0);
 }
