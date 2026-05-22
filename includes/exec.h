@@ -22,6 +22,21 @@ typedef struct s_exec
 	t_img	img;
 }	t_exec;
 
+typedef	struct s_vec
+{
+	double	x;
+	double	y;
+}	t_vec;
+
+typedef struct s_raycast
+{
+	t_vec	pos;
+	t_vec	dir;
+	t_vec	plane;
+	double	time;
+	double	old_time;
+}	t_raycast;
+
 int		execution(t_game *game);
 
 /* mlx */
