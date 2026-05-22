@@ -62,28 +62,13 @@ typedef struct s_position
 // 	int	player;
 // }				t_obj_counts;
 
-typedef struct s_img
-{
-	void	*player_up;
-	void	*player_right;
-	void	*player_down;
-	void	*player_left;
-	void	*wall;
-	void	*floor;
-	// void	*collectible;
-	// void	*exit;
-	// void	*exit_open;
-	int		width;
-	int		height;
-}				t_img;
-
 typedef struct s_stack
 {
 	int		top;
 	t_pos	*data;
 }				t_stack;
 
-typedef struct s_elements
+typedef struct s_config//clara@ayumi: what is the differece between t_config and t_img?
 {
 	char	*no;
 	char	*so;
@@ -91,7 +76,7 @@ typedef struct s_elements
 	char	*ea;
 	int		*floor;
 	int		*ceiling;
-}				t_elements;
+}				t_config;
 
 typedef struct s_map
 {
@@ -107,15 +92,12 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
 	char		*file_path;
 	char		**file;
-	t_elements	*elements;
+	t_config	*config;
 	t_map		*map;
 	t_map		*copy;
 	// int			moves;
-	t_img		img;
 	// t_stack		*dfs_stack;
 }				t_game;
 
@@ -124,7 +106,7 @@ int	read_map_from_file(int fd, t_game *game);
 char	**append_row_to_grid(char **grid, char *new_line, int current_size);
 int	init_map(t_game *game);
 int	validate_map(t_map *map);
-int	validate_elements(t_map *map);
+int	validate_config(t_map *map);
 
 void	count_map_objects(t_map *map);
 int	check_collectibles_reachability(t_game *game);
