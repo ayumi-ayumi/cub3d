@@ -32,6 +32,9 @@ SRC			=	main.c \
 				parsing/error.c \
 # 				parsing/flood_fill.c \
 # 				parsing/flood_fill_helper.c
+				20exec/200exec.c \
+				21mlx/210init_mlx.c \
+				21mlx/211mlx_cleanup.c
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 
