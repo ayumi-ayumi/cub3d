@@ -26,7 +26,7 @@ int		execution(t_game *game);
 
 /* mlx */
 int			init_mlx(t_game *game, t_exec *exec);
-void		free_mlx(t_exec *exec)
+void		free_mlx(t_exec *exec);
 
 
 #endif
