@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/05/20 18:53:50 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/24 18:12:50 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@
 
 int	is_allowed_char(char c)
 {
+	printf("%c\n", c);
 	return (c == '1' || c == '0' || c == ' ' || c == 'N'
-		|| c == 'S' || c == 'E' || c == 'W');
+		|| c == 'S' || c == 'E' || c == 'W' || c == '\n');
 }
 
 int	has_left_side_wall(t_map *map)
@@ -169,6 +170,8 @@ int	validate_map_charset(t_map *map)
 	int	col_idx;
 
 	row_idx = 0;
+	printf("143height: %i\n", map->height);
+
 	while (row_idx < map->height)
 	{
 		col_idx = 0;

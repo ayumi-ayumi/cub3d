@@ -61,20 +61,20 @@ void	cleanup_and_exit(t_game *game)
 	free_mlx(game);
 	free(game->file_path);
 
-	if (game->map)
-	{
-		free_map(game->map);
-		// if (game->file_path)
-		// 	free(game->file_path);
-		game->map = NULL;
-	}
-	if (game->copy)
-	{
-		free_map(game->copy);
-		// if (game->file_path)
-		// 	free(game->file_path);
-		game->copy = NULL;
-	}
+	// if (&game->map)
+	// {
+	// 	free_map(&game->map);
+		// if (&game->file_path)
+		// 	free(&game->file_path);
+		// &game->map = NULL;
+	// }
+	// if (&game->copy)
+	// {
+	// 	free_map(&game->copy);
+		// if (&game->file_path)
+		// 	free(&game->file_path);
+		// &game->copy = NULL;
+	// }
 	// if (game->dfs_stack && game->dfs_stack->data)
 	// {
 	// 	free(game->dfs_stack->data);

@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 21:45:54 by asato             #+#    #+#             */
-/*   Updated: 2026/05/20 18:28:17 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/24 17:57:12 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,38 @@
 int	init_map(t_game *game)
 {
 	t_map	*map;
-	t_map	*copy;
+	// t_map	*copy;
 
-	map = game->map;
-	copy = game->copy;
-	if (!map || !copy)
+	map = &game->map;
+	// copy = &game->copy;
+	if (!map)
 		return (0);
-	if (!read_file(game) || !validate_map(map))
-	// if (!read_file(game) || !validate_map(map) || !validate_elements(map))
+	if (!open_file(game) || !validate_map(map))
+	// if (!open_file(game) || !validate_map(map) || !validate_elements(map))
 		return (0);
 	map->size = map->height * map->width;
-	*copy = copy_map(map);
-	copy->start_pos = find_start_pos(copy);
-	printf("row: %i, col: %i\n", copy->start_pos.row, copy->start_pos.col);
-	if (copy->start_pos.row == -1 || copy->start_pos.col == -1)
+	// *copy = copy_map(map);
+	map->start_pos = find_start_pos(map);
+	if (map->start_pos.row == -1 || map->start_pos.col == -1)
 		return (0);
-	map->start_pos = copy->start_pos;
-	// if (!check_collectibles_reachability(game))
-	// 	return (0);
 	return (1);
+}
+
+void	print_map(char **map)
+{
+	int i = 0;
+	while (map[i])
+	{
+		printf("line %i: %s\n", i, map[i]);
+		i++;
+	}
 }
 
 int	validate_map(t_map *map)
 {
 	if (!map || !map->grid)
 		return (error("No map found.\n"), 0);
+	print_map(map->grid);
 	if (!validate_map_charset(map))
 	{
 		error("The map contains invalid characters.\n");
@@ -57,6 +64,7 @@ int	validate_map(t_map *map)
 		return (error("Map is not surrounded by walls🧱.\n"), 0);
 	return (1);
 }
+
 // int	validate_elements(t_map *map)
 // {
 

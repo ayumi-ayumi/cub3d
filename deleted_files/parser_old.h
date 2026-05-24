@@ -92,7 +92,7 @@ typedef struct s_vars
 	t_stack		*dfs_stack;
 }				t_game;
 
-int	read_file(t_map *map);
+int	open_file(t_map *map);
 int	read_map_from_file(int fd, t_map *map);
 char	**append_row_to_grid(char **grid, char *new_line, int current_size);
 int	init_map(t_game *game);
