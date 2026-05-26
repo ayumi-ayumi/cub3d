@@ -37,7 +37,6 @@ typedef struct s_raycast
 	double	old_time;
 }	t_raycast;
 
-int		execution(t_game *game);
 
 /* mlx */
 int			init_mlx(t_game *game, t_exec *exec);

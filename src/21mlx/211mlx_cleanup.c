@@ -1,13 +1,14 @@
 #include "mlx.h"
+#include "exec.h"
 //#include "cub3d.h"
-#include "parser.h"/*for t_game*/
+#include <stddef.h>
 
 static void	free_mlx_img(t_exec *exec, void **target)
 {
-	if (!exe || !exec->mlx || !target || !*target)
+	if (!exec || !exec->mlx || !target || !*target)
 		return ;
 	mlx_destroy_image(exec->mlx, *target);
-	**target = NULL;
+	*target = NULL;
 	return ;
 }
 

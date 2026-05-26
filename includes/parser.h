@@ -24,7 +24,7 @@
 # define IMG_FLOOR			"./textures/floor.xpm"
 # define IMG_WALL			"./textures/wall.xpm"
 
-# include "cub3d.h"
+//# include "cub3d.h"
 
 /* ENUMS */
 typedef enum s_direction

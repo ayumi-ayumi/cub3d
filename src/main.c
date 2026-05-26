@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
+#include "cub3d.h"
 #include "parser.h"
 #include "libft.h"
 #include <unistd.h>
@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 		return (cleanup_and_exit(&game), 1);
 	if (!init_map(&game))
 		return (cleanup_and_exit(&game), 1);
-	// if (!init_mlx(&game))
+	if (!execution(&game))
 	// 	return (cleanup_and_exit(&game), 1);
 	return (0);
 }

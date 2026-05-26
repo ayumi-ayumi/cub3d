@@ -18,4 +18,7 @@
 # define FALSE 0
 # define SUCCESS 0
 # define FAIL 1
+# include "parser.h"
+
+int		execution(t_game *game);
 #endif
