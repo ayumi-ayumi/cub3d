@@ -7,6 +7,15 @@
 
 # include "cub3d.h"
 
+/*mlx img for walls*/
+typedef struct s_mlx
+{
+	void	*no;
+ 	void	*so;
+ 	void	*we;
+ 	void	*ea;
+}			t_mlx;
+
 typedef	struct s_vec
 {
 	double	x;

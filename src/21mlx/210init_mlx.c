@@ -9,39 +9,39 @@ static void	nulling_init(t_exec *exec)
 {
 	exec->mlx = NULL;
 	exec->win = NULL;
-	exec->img.no = NULL;
-	exec->img.so = NULL;
-	exec->img.we = NULL;
-	exec->img.ea = NULL;
-	exec->img.width = 32;/*probably needs to be bigger*/
-	exec->img.height = 32;
+	exec->texture.no = NULL;
+	exec->texture.so = NULL;
+	exec->texture.we = NULL;
+	exec->texture.ea = NULL;
+	exec->texture.width = 32;/*probably needs to be bigger*/
+	exec->texture.height = 32;
 }
 
 /*if mlx fails NULL will be returned ... guard is in calling function*/
 static void	*load_texture(t_exec *exec, char *path)
 {
-	t_img	*img;
+	t_texture	*img;
 	void	*texture;
 
-	img = &exec->img;
-	texture = mlx_xpm_file_to_image(exec->mlx, path, &img->width, &img->height);
+	texture = &exec->img;
+	texture = mlx_xpm_file_to_image(exec->mlx, path, &texture->width, &img->height);
 	return (texture);
 }
 
 /*loading paths to mlx pictures*/
-static int	init_mlx_img(t_game *game, t_exec *exec)
+static int	init_mlx_texture(t_game *game, t_exec *exec)
 {
-	exec->img.no = load_texture(exec, game->config->no);
-	if (!(exec->img.no))
+	exec->texture.no = load_texture(exec, game->config->no);
+	if (!(exec->texture.no))
 		return (FAIL);
-	exec->img.so = load_texture(exec, game->config->so);
-	if (!(exec->img.so))
+	exec->texture.so = load_texture(exec, game->config->so);
+	if (!(exec->texture.so))
 		return (FAIL);
-	exec->img.we = load_texture(exec, game->config->we);
-	if (!(exec->img.we))
+	exec->texture.we = load_texture(exec, game->config->we);
+	if (!(exec->texture.we))
 		return (FAIL);
-	exec->img.ea = load_texture(exec, game->config->ea);
-	if (!(exec->img.ea))
+	exec->texture.ea = load_texture(exec, game->config->ea);
+	if (!(exec->texture.ea))
 		return (FAIL);
 	return (SUCCESS);
 }

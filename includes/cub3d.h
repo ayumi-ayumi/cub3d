@@ -22,22 +22,11 @@
 /* STRUCTS */
 typedef struct s_position
 {
-	int	row;
-	int	col;
-}				t_pos;
+	int		row;
+	int		col;
+}			t_pos;
 
-typedef struct s_texture
-{
-	void	*player_up;
-	void	*player_right;
-	void	*player_down;
-	void	*player_left;
-	void	*wall;
-	void	*floor;
-	int		width;
-	int		height;
-}				t_texture;
-
+/*paths to wall image files*/
 typedef struct s_config
 {
 	char	*no;
@@ -46,14 +35,14 @@ typedef struct s_config
 	char	*ea;
 	int		floor[3];
 	int		ceiling[3];
-}				t_config;
+}			t_config;
 
 typedef struct s_map
 {
-	char			**grid;
-	int				height;
-	int				width;
-	t_pos			start_pos;
+	char		**grid;
+	int			height;
+	int			width;
+	t_pos		start_pos;
 }				t_map;
 
 typedef struct s_game
@@ -65,7 +54,6 @@ typedef struct s_game
 	t_config	config;
 	t_map		map;
 	t_map		copy;
-	t_texture	texture;
 }				t_game;
 
 int		execution(t_game *game);
