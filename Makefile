@@ -6,7 +6,7 @@
 #    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/05/25 13:23:59 by lbueno-m         ###   ########.fr        #
+#    Updated: 2026/05/25 17:42:30 by asato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,18 +23,19 @@ LDLIBS		=	$(LIBFT_A) -lmlx -lX11 -lXext -lm
 
 INC			=	-I$(INC_DIR) -I$(LIBFT_DIR)
 SRC			=	main.c \
-				parsing/get_next_line.c \
+				parsing/1_load_map_and_config.c \
+				parsing/2_parse_file.c \
+				parsing/3_extract_elements.c \
+				parsing/4_extract_map.c \
+				parsing/5_validate_map.c \
+				parsing/6_check_walls.c \
 				parsing/cleanup.c \
-				parsing/create_map.c \
-				parsing/init_map.c \
-				parsing/validate_map_helper.c \
-				parsing/utils.c \
 				parsing/error.c \
 				20exec/200exec.c \
 				21mlx/210init_mlx.c \
 				21mlx/211mlx_cleanup.c
-# 				parsing/flood_fill.c \
-# 				parsing/flood_fill_helper.c \
+				parsing/get_next_line.c \
+				parsing/utils.c \
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 

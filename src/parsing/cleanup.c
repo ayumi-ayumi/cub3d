@@ -1,8 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/25 17:43:33 by asato             #+#    #+#             */
+/*   Updated: 2026/05/25 17:43:34 by asato            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 //#include "cub3d.h"
 #include "parser.h"
+#include "libft.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <mlx.h>
+
+void	free_string_array(char **arr)
+{
+	int	i;
+
+	i = 0;
+	if (arr)
+	{
+		while (arr[i])
+			ft_free((void **)&arr[i++]);
+		ft_free((void **)&arr);
+	}
+}
 
 void	free_map(t_map *map)
 {
@@ -13,38 +39,20 @@ void	free_map(t_map *map)
 	i = 0;
 	while (i < map->height && map->grid[i])
 	{
-		free(map->grid[i]);
-		map->grid[i] = NULL;
+		ft_free((void **)&map->grid[i]);
 		i++;
 	}
-	free(map->grid);
-	map->grid = NULL;
-	map->height = 0;
+	ft_free((void **)&map->grid);
 }
+
 
 void	cleanup_and_exit(t_game *game)
 {
 	if (!game)
 		return ;
-//	free_mlx(game);//mlx gets initialized and freed in execution
-	if (game->map)
-	{
-		free_map(game->map);
-		// if (game->file_path)
-		// 	free(game->file_path);
-		game->map = NULL;
-	}
-	if (game->copy)
-	{
-		free_map(game->copy);
-		// if (game->file_path)
-		// 	free(game->file_path);
-		game->copy = NULL;
-	}
-	// if (game->dfs_stack && game->dfs_stack->data)
-	// {
-	// 	free(game->dfs_stack->data);
-	// 	game->dfs_stack->data = NULL;
-	// }
+	if (game->map.grid)
+		free_map(&game->map);
+	// free_mlx(game);
+
 	exit (0);
 }

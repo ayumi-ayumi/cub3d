@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 18:02:52 by asato             #+#    #+#             */
-/*   Updated: 2026/05/20 18:27:39 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/25 17:52:56 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,85 +55,68 @@ typedef struct s_position
 	int	col;
 }				t_pos;
 
-// typedef struct s_obj_counts
-// {
-// 	int	collectibles;
-// 	int	exit;
-// 	int	player;
-// }				t_obj_counts;
-
-typedef struct s_stack
+typedef struct s_texture
 {
-	int		top;
-	t_pos	*data;
-}				t_stack;
+	void	*player_up;
+	void	*player_right;
+	void	*player_down;
+	void	*player_left;
+	void	*wall;
+	void	*floor;
+	int		width;
+	int		height;
+}				t_texture;
 
-typedef struct s_config//clara@ayumi: what is the differece between t_config and t_img?
+typedef struct s_config
 {
 	char	*no;
 	char	*so;
 	char	*we;
 	char	*ea;
-	int		*floor;
-	int		*ceiling;
+	int		floor[3];
+	int		ceiling[3];
 }				t_config;
 
 typedef struct s_map
 {
-	// char			*file_path;
 	char			**grid;
 	int				height;
 	int				width;
-	int				size;
-	// t_obj_counts	counts;
-	// t_pos			exit_pos;
 	t_pos			start_pos;
 }				t_map;
 
 typedef struct s_game
 {
 	char		*file_path;
-	char		**file;
-	t_config	*config;
-	t_map		*map;
-	t_map		*copy;
-	// int			moves;
-	// t_stack		*dfs_stack;
+	char		**file_contents;
+	t_config	config;
+	t_map		map;
+	t_map		copy;
+	t_texture	texture;
 }				t_game;
 
-int	read_file(t_game *game);
-int	read_map_from_file(int fd, t_game *game);
-char	**append_row_to_grid(char **grid, char *new_line, int current_size);
-int	init_map(t_game *game);
+/* Load map and config */
+int	load_map_and_config(t_game *game);
+int	parse_file(t_game *game);
+
+/* Extract elements */
+int	exract_elements(t_game *game);
+int	extract_map(t_game *game, int *i);
+
+/* validate a map*/
 int	validate_map(t_map *map);
-int	validate_config(t_map *map);
-
-void	count_map_objects(t_map *map);
-int	check_collectibles_reachability(t_game *game);
-int	get_row_length(t_map *map, int row_idx);
-int	count_char_in_map(t_map *map, char c);
-t_pos	find_start_pos(t_map *map);
-t_map	copy_map(t_map *map);
-t_map	dup_grid(t_map *map, t_map *copy);
-// int	is_rectangular(t_map *map);
-int	has_top_bottom_walls(t_map *map);
-int	has_sides_walls(t_map *map);
 int	is_enclosed_by_walls(t_map *map);
-// int	validate_map_char_counts(t_map *map);
-int	validate_start_position(t_map *map);
-int	validate_map_charset(t_map *map);
 
+/* Utils */
+int	get_row_length(t_map *map, int row_idx);
+int	get_max_width(t_map *map);
+
+/* Error Handling */
 void	error_and_exit(char *error);
-void	error(char *error);
+void	print_error(char *error);
 
-// int	flood_fill(t_game *game, int *collectible, int *exit);
-
-void	init_stack(t_stack *dfs_stack, t_map *map);
-void	push_stack(t_pos input_pos, t_map *copy, t_stack *dfs_stack);
-t_pos	*pop_stack(t_stack *dfs_stack);
-int	is_explorable(int row, int col, t_map *map);
-void	is_explorable_all_dir(int row, int col, t_map *copy, t_game *game);
-
+/* Clean Up */
+void	free_string_array(char **arr);
 void	free_map(t_map *map);
 void	cleanup_and_exit(t_game *game);
 
