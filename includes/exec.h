@@ -2,25 +2,10 @@
 # define EXEC_H
 # define SCREEN_HEIGHT 640
 # define SCREEN_WIDTH 480
-# include "parser.h" /*for t_game*/
+# define IMG_WIDTH 32
+# define IMG_HEIGHT 32
 
-
-typedef struct s_img
-{
-	void	*no;
-	void	*so;
-	void	*we;
-	void	*ea;
-	int		width;
-	int		height;
-}			t_img;
-
-typedef struct s_exec
-{
-	void	*mlx;
-	void	*win;
-	t_img	img;
-}	t_exec;
+# include "cub3d.h"
 
 typedef	struct s_vec
 {
