@@ -3,30 +3,30 @@
 //#include "cub3d.h"
 #include <stddef.h>
 
-static void	free_mlx_img(t_exec *exec, void **target)
+static void	free_mlx_img(void *mlx, void **target)
 {
-	if (!exec || !exec->mlx || !target || !*target)
+	if (mlx || !target || !*target)
 		return ;
-	mlx_destroy_image(exec->mlx, *target);
+	mlx_destroy_image(mlx, *target);
 	*target = NULL;
 	return ;
 }
 
-void	free_mlx(t_exec *exec)
+void	free_mlx(t_game *game, t_exec *exec)
 {
-	if (!exec || !exec->mlx)
+	if (!exec || !game->mlx)
 		return ;
-	free_mlx_img(exec, (void **)&exec->img.no);
-	free_mlx_img(exec, (void **)&exec->img.so);
-	free_mlx_img(exec, (void **)&exec->img.we);
-	free_mlx_img(exec, (void **)&exec->img.ea);
-	if (exec->win)
+	free_mlx_img(game->mlx, (void **)&exec->no);
+	free_mlx_img(game->mlx, (void **)&exec->so);
+	free_mlx_img(game->mlx, (void **)&exec->we);
+	free_mlx_img(game->mlx, (void **)&exec->ea);
+	if (game->win)
 	{
-		mlx_destroy_window(exec->mlx, exec->win);
-		exec->win = NULL;
+		mlx_destroy_window(game->mlx, game->win);
+		game->win = NULL;
 	}
-	mlx_destroy_display(exec->mlx);
-	exec->mlx = NULL;
+	mlx_destroy_display(game->mlx);
+	game->mlx = NULL;
 	return ;
 }
 

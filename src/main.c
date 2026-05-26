@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 	if (!load_map_and_config(&game))
 		return (cleanup_and_exit(&game), 1);
 	if (!execution(&game))
-	// 	return (cleanup_and_exit(&game), 1);
+	 	return (cleanup_and_exit(&game), 1);
 	cleanup_and_exit(&game);
 	return (0);
 }

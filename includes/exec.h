@@ -8,13 +8,13 @@
 # include "cub3d.h"
 
 /*mlx img for walls*/
-typedef struct s_mlx
+typedef struct s_exec
 {
 	void	*no;
  	void	*so;
  	void	*we;
  	void	*ea;
-}			t_mlx;
+}			t_exec;
 
 typedef	struct s_vec
 {
@@ -34,7 +34,7 @@ typedef struct s_raycast
 
 /* mlx */
 int			init_mlx(t_game *game, t_exec *exec);
-void		free_mlx(t_exec *exec);
+void		free_mlx(t_game *game, t_exec *exec);
 
 
 #endif
