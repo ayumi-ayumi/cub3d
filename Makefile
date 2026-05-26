@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chagen <chagen@student.42berlin.de>        +#+  +:+       +#+         #
+#    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/05/06 15:06:47 by chagen           ###   ########.fr        #
+#    Updated: 2026/05/25 17:42:30 by asato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,20 @@ LIBFT_A		=	$(LIBFT_DIR)/libft.a
 LDLIBS		=	$(LIBFT_A) -lmlx -lX11 -lXext -lm
 
 INC			=	-I$(INC_DIR) -I$(LIBFT_DIR)
-
-SRC			=	main.c
+SRC			=	main.c \
+				parsing/1_load_map_and_config.c \
+				parsing/2_parse_file.c \
+				parsing/3_extract_elements.c \
+				parsing/4_extract_map.c \
+				parsing/5_validate_map.c \
+				parsing/6_check_walls.c \
+				parsing/cleanup.c \
+				parsing/error.c \
+				parsing/get_next_line.c \
+				parsing/utils.c \
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
+
 OBJ			=	$(SRC:.c=.o)
 OBJS		=	$(addprefix $(OBJ_DIR)/, $(OBJ))
 
@@ -57,4 +67,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
