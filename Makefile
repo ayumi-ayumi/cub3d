@@ -6,7 +6,7 @@
 #    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/05/25 18:22:30 by asato            ###   ########.fr        #
+#    Updated: 2026/05/27 20:45:30 by asato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,11 @@ SRC			=	main.c \
 				parsing/3_extract_elements.c \
 				parsing/4_extract_map.c \
 				parsing/5_validate_map.c \
-				parsing/6_check_walls.c \
+				parsing/6_validate_start_pos.c \
+				parsing/7_check_walls.c \
 				parsing/cleanup.c \
 				parsing/error.c \
 				parsing/get_next_line.c \
-				parsing/utils.c \
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 

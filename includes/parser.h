@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 18:02:52 by asato             #+#    #+#             */
-/*   Updated: 2026/05/27 18:38:58 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/27 20:45:35 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,8 @@ int	extract_map(t_game *game, int *i);
 
 /* validate a map*/
 int	validate_map(t_map *map);
+int	validate_start_position(t_map *map);
 int	is_enclosed_by_walls(t_map *map);
-
-/* Utils */
-int	get_row_length(t_map *map, int row_idx);
-int	get_max_width(t_map *map);
 
 /* Error Handling */
 void	error_and_exit(char *error);
