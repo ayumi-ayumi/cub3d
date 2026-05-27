@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 18:02:52 by asato             #+#    #+#             */
-/*   Updated: 2026/05/25 17:52:56 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/27 18:38:58 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct s_map
 	char			**grid;
 	int				height;
 	int				width;
+	char			start_orientaion;
 	t_pos			start_pos;
 }				t_map;
 
