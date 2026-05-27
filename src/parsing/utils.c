@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 19:41:54 by asato             #+#    #+#             */
-/*   Updated: 2026/05/25 17:55:36 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/27 20:12:46 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,5 @@ int	get_max_width(t_map *map)
 			line_len = temp_len;
 		i++;
 	}
-	printf("%i\n", line_len);
 	return (line_len); // minus '\n'
 }
