@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/05/27 20:25:50 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/27 20:42:55 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ static int	validate_config(t_game *game, int *i)
 			flag++;
 		(*i)++;
 	}
-	printf("%i\n", flag);
 	if (flag != 6)
 		return (print_error("Imcopmete config data\n"), 0);
 	return (1);

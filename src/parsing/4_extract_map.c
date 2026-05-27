@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:28:05 by asato             #+#    #+#             */
-/*   Updated: 2026/05/25 17:54:32 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/27 20:36:43 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	store_map_grid(t_game *game, char *line, int i)
 
 int	extract_map(t_game *game, int *i)
 {
-	int line_num;
+	int	line_num;
 
 	line_num = 0;
 	if (game->file_contents[*i][0] == '1' || game->file_contents[*i][0] == ' ')
