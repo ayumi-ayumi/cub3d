@@ -6,11 +6,11 @@
 #    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/05/25 17:42:30 by asato            ###   ########.fr        #
+#    Updated: 2026/05/25 18:22:30 by asato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	cub3d
+NAME		=	cub3D
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror -fsanitize=leak
 SRC_DIR		=	src
