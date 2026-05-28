@@ -14,6 +14,7 @@ typedef struct s_exec
  	void	*so;
  	void	*we;
  	void	*ea;
+	t_play	play;
 }			t_exec;
 
 typedef	struct s_vec
@@ -22,14 +23,14 @@ typedef	struct s_vec
 	double	y;
 }	t_vec;
 
-typedef struct s_raycast
+typedef struct s_play
 {
 	t_vec	pos;
 	t_vec	dir;
 	t_vec	plane;
 	double	time;
 	double	old_time;
-}	t_raycast;
+}	t_play;
 
 
 /* mlx */
