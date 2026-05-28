@@ -43,6 +43,7 @@ typedef struct s_map
 	int			height;
 	int			width;
 	t_pos		start_pos;
+	char		start_orientation;
 }				t_map;
 
 typedef struct s_game
