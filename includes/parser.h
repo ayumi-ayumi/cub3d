@@ -24,6 +24,8 @@
 # define IMG_FLOOR			"./textures/floor.xpm"
 # define IMG_WALL			"./textures/wall.xpm"
 
+# include "cub3d.h"
+
 /* ENUMS */
 typedef enum s_direction
 {
@@ -46,54 +48,6 @@ typedef enum s_keycode
 	KEY_ESC = 65307
 }			t_keycode;
 
-/* STRUCTS */
-typedef struct s_position
-{
-	int	row;
-	int	col;
-}				t_pos;
-
-typedef struct s_texture
-{
-	void	*player_up;
-	void	*player_right;
-	void	*player_down;
-	void	*player_left;
-	void	*wall;
-	void	*floor;
-	int		width;
-	int		height;
-}				t_texture;
-
-typedef struct s_config
-{
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	int		floor[3];
-	int		ceiling[3];
-}				t_config;
-
-typedef struct s_map
-{
-	char			**grid;
-	int				height;
-	int				width;
-	t_pos			start_pos;
-}				t_map;
-
-typedef struct s_game
-{
-	void		*mlx;
-	void		*win;
-	char		*file_path;
-	char		**file_contents;
-	t_config	config;
-	t_map		map;
-	t_map		copy;
-	t_texture	texture;
-}				t_game;
 
 /* Load map and config */
 int	load_map_and_config(t_game *game);
@@ -118,8 +72,6 @@ void	print_error(char *error);
 /* Clean Up */
 void	free_string_array(char **arr);
 void	free_map(t_map *map);
-void	free_mlx_img(t_game *game, void **target);
-void	free_mlx(t_game *game);
 void	cleanup_and_exit(t_game *game);
 
 #endif

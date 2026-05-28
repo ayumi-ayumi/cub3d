@@ -19,4 +19,42 @@
 # define SUCCESS 0
 # define FAIL 1
 
+/* STRUCTS */
+typedef struct s_position
+{
+	int		row;
+	int		col;
+}			t_pos;
+
+/*paths to wall image files*/
+typedef struct s_config
+{
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	int		floor[3];
+	int		ceiling[3];
+}			t_config;
+
+typedef struct s_map
+{
+	char		**grid;
+	int			height;
+	int			width;
+	t_pos		start_pos;
+}				t_map;
+
+typedef struct s_game
+{
+	void		*mlx;
+	void		*win;
+	char		*file_path;
+	char		**file_contents;
+	t_config	config;
+	t_map		map;
+	t_map		copy;
+}				t_game;
+
+int		execution(t_game *game);
 #endif

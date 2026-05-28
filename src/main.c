@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
+#include "cub3d.h"
 #include "parser.h"
 #include "libft.h"
 #include <unistd.h>
@@ -38,8 +38,8 @@ int	main(int ac, char **av)
 		error_and_exit("File extension must be \".cub\".\n");
 	if (!load_map_and_config(&game))
 		return (cleanup_and_exit(&game), 1);
-	// if (!init_mlx(&game))
-	// 	return (cleanup_and_exit(&game), 1);
+	if (!execution(&game))
+	 	return (cleanup_and_exit(&game), 1);
 	cleanup_and_exit(&game);
 	return (0);
 }
