@@ -6,7 +6,7 @@
 #    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/05/27 20:45:30 by asato            ###   ########.fr        #
+#    Updated: 2026/05/28 15:49:19 by asato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,10 +36,6 @@ SRC			=	main.c \
 				21mlx/210init_mlx.c \
 				21mlx/211mlx_cleanup.c \
 				parsing/get_next_line.c \
-<<<<<<< HEAD
-=======
-				parsing/utils.c
->>>>>>> upstream/main
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 
