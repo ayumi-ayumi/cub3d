@@ -7,16 +7,6 @@
 
 # include "cub3d.h"
 
-/*mlx img for walls*/
-typedef struct s_exec
-{
-	void	*no;
- 	void	*so;
- 	void	*we;
- 	void	*ea;
-	t_play	play;
-}			t_exec;
-
 typedef	struct s_vec
 {
 	double	x;
@@ -31,6 +21,16 @@ typedef struct s_play
 	double	time;
 	double	old_time;
 }	t_play;
+
+/*mlx img for walls*/
+typedef struct s_exec
+{
+	void	*no;
+ 	void	*so;
+ 	void	*we;
+ 	void	*ea;
+	t_play	play;
+}			t_exec;
 
 
 /* mlx */
