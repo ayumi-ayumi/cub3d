@@ -28,7 +28,7 @@ It parses a `.cub` file, validates the map, and renders a real-time first-person
 
 **Architecture:** The project follows a modular, layered architecture with clear separation of concerns.
 **Unit Testing:** Core logic is decoupled from MiniLibX to enable unit testing.
-**Includes:** Each file includes only the headers it directly depends on to keep dependencies explicit.
+**Includes:** Each file includes only the headers it direct ely depends on to keep dependencies explicit.
 **Ownership:** Modules manage their own resources via dedicated init/cleanup functions, ensuring clear memory ownership. **Cleanup is handled locally:** allocating functions return errors, and callers free partial state.
 
 ---
@@ -53,6 +53,5 @@ make
 ## 📚 Resources
 - Ai was used to help writing this readme file.
 - chagen: Ressource about LeakSanitizer [MaskRay][https://maskray.me/blog/2023-02-12-all-about-leak-sanitizer].
-
-
+- chagen: Ressource on Raycasting: [Gitbook][https://lodev.org/cgtutor/raycasting.html].
 
