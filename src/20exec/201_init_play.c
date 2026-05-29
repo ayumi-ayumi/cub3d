@@ -16,6 +16,8 @@ static t_vec	turn_vec(t_vec vec, double angle)
 	return (turned);
 }
 
+// static double	calc_pos(t_game *game, int whole, int pos)/*TODO*/
+
 /*populates the game struct with initial data, val 0 can be -0*/
 int	init_play_data(t_game *game, t_exec *exec)
 {
