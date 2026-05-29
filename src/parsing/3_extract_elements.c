@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/05/27 20:42:55 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/29 19:20:05 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "parser.h"
 #include "libft.h"
 #include <unistd.h>
+#include <stdio.h>
 
 static int	extract_rgb(int rgb[3], char *str)
 {
@@ -43,7 +44,7 @@ static int	extract_rgb(int rgb[3], char *str)
 	return (1);
 }
 
-static char	*extract_path(char *str, int *flag)
+static char	*extract_path(t_game *game, char *str, t_direction dir, int *flag)
 {
 	int	i;
 
@@ -51,7 +52,31 @@ static char	*extract_path(char *str, int *flag)
 	while (str[i] == ' ')
 		i++;
 	(*flag)++;
-	return (&str[i]);
+	if (dir == DIR_NO)
+	{
+		game->config.no = ft_strdup(&str[i]);
+		if (!game->config.no)
+			return (NULL);
+	}
+	if (dir == DIR_SO)
+	{
+		game->config.so = ft_strdup(&str[i]);
+		if (!game->config.so)
+			return (NULL);
+	}
+	if (dir == DIR_WE)
+	{
+		game->config.we = ft_strdup(&str[i]);
+		if (!game->config.we)
+			return (NULL);
+	}
+	if (dir == DIR_EA)
+	{
+		game->config.ea = ft_strdup(&str[i]);
+		if (!game->config.ea)
+			return (NULL);
+	}
+	return (NULL);
 }
 
 static int	validate_config(t_game *game, int *i)
@@ -59,16 +84,17 @@ static int	validate_config(t_game *game, int *i)
 	int	flag;
 
 	flag = 0;
+
 	while (*i < 6)
 	{
 		if (ft_strncmp(game->file_contents[*i], "NO", 2) == 0)
-			game->config.no = extract_path(game->file_contents[*i], &flag);
+			extract_path(game, game->file_contents[*i], DIR_NO, &flag);
 		if (ft_strncmp(game->file_contents[*i], "SO", 2) == 0)
-			game->config.so = extract_path(game->file_contents[*i], &flag);
+			extract_path(game, game->file_contents[*i], DIR_SO, &flag);
 		if (ft_strncmp(game->file_contents[*i], "WE", 2) == 0)
-			game->config.we = extract_path(game->file_contents[*i], &flag);
+			extract_path(game, game->file_contents[*i], DIR_WE, &flag);
 		if (ft_strncmp(game->file_contents[*i], "EA", 2) == 0)
-			game->config.ea = extract_path(game->file_contents[*i], &flag);
+			extract_path(game, game->file_contents[*i], DIR_EA, &flag);
 		if (ft_strncmp(game->file_contents[*i], "F", 1) == 0
 			&& extract_rgb(game->config.floor, game->file_contents[*i]))
 			flag++;
