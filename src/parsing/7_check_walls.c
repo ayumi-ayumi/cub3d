@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   6_check_walls.c                                    :+:      :+:    :+:   */
+/*   7_check_walls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:20:15 by asato             #+#    #+#             */
-/*   Updated: 2026/05/25 17:51:25 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/27 20:49:55 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static int	has_left_side_wall(t_map *map)
 	}
 	return (1);
 }
+
 static int	has_right_side_wall(t_map *map)
 {
 	int	row_idx;
@@ -100,9 +101,11 @@ static int	has_this_row_wall(t_map *map, int row_idx)
 
 int	is_enclosed_by_walls(t_map *map)
 {
-	if (!has_this_row_wall(map, 0) || !has_this_row_wall(map, map->height - 1)) // check if first and last row with walls
+	if (!has_this_row_wall(map, 0)
+		|| !has_this_row_wall(map, map->height - 1)) // check if first and last row with walls
 		return (0);
-	if (!has_left_side_wall(map) || !has_right_side_wall(map)) // check if sides with walls
+	if (!has_left_side_wall(map)
+		|| !has_right_side_wall(map)) // check if sides with walls
 		return (0);
 	if (!check_around_0(map))
 		return (0);

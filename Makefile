@@ -6,11 +6,11 @@
 #    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/05/25 17:42:30 by asato            ###   ########.fr        #
+#    Updated: 2026/05/28 15:49:19 by asato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	cub3d
+NAME		=	cub3D
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror -fsanitize=leak
 SRC_DIR		=	src
@@ -28,14 +28,14 @@ SRC			=	main.c \
 				parsing/3_extract_elements.c \
 				parsing/4_extract_map.c \
 				parsing/5_validate_map.c \
-				parsing/6_check_walls.c \
+				parsing/6_validate_start_pos.c \
+				parsing/7_check_walls.c \
 				parsing/cleanup.c \
 				parsing/error.c \
 				20exec/200exec.c \
 				21mlx/210init_mlx.c \
 				21mlx/211mlx_cleanup.c \
 				parsing/get_next_line.c \
-				parsing/utils.c
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 

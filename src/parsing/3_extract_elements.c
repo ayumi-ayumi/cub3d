@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/05/25 17:48:50 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/27 20:42:55 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,24 @@
 static int	extract_rgb(int rgb[3], char *str)
 {
 	int		i;
-	char	*temp;
 	char	**rgb_str;
 	int		num;
 
 	i = 2;
 	while (str[i] == ' ')
 		i++;
-	temp = &str[i];
-	rgb_str = ft_split(temp, ',');
+	rgb_str = ft_split(&str[i], ',');
 	if (!rgb_str)
 		return (0);
 	i = 0; // validate the number is within the range 0-255
 	while (rgb_str[i])
 	{
 		if (i >= 3)
-			return (0);
+			return (free_string_array(rgb_str), 0);
 		num = 0;
 		num = ft_atoi(rgb_str[i]);
 		if (num < 0 || num > 255)
-			return (0);
+			return (free_string_array(rgb_str), 0);
 		rgb[i] = num;
 		i++;
 	}
@@ -83,6 +81,7 @@ static int	validate_config(t_game *game, int *i)
 		return (print_error("Imcopmete config data\n"), 0);
 	return (1);
 }
+
 int	exract_elements(t_game *game)
 {
 	int	i;
