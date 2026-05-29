@@ -8,6 +8,11 @@ static void	cleanup_exec(t_game *game, t_exec *exec)
 		free_mlx(game, exec);
 }
 
+static int	done(void)/*TODO*/
+{
+	return (TRUE);
+}
+
 /*setup of screen and start game loop*/
 int	execution(t_game *game)
 {
@@ -16,10 +21,11 @@ int	execution(t_game *game)
 	if (init_mlx(game, &exec) == FAIL || game->mlx == NULL
 			|| init_play_data(game, &exec) == FAIL)
 		return (cleanup_exec(game, &exec), FAIL);
-	init_play_data(game, &exec);
-	raycast(game, exec);
+	while (!done())
+	{
+		raycast(game, exec);
+	}
 	return (cleanup_exec(game, &exec), SUCCESS);
-	return (SUCCESS);
 }
 
 

@@ -32,9 +32,11 @@ SRC			=	main.c \
 				parsing/7_check_walls.c \
 				parsing/cleanup.c \
 				parsing/error.c \
-				20exec/200exec.c \
+				2_exec/1_exec.c \
+				2_exec/2_init_play.c \
 				21mlx/210init_mlx.c \
 				21mlx/211mlx_cleanup.c \
+				4_raycast/1_raycast.c \
 				parsing/get_next_line.c \
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
