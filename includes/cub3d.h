@@ -18,6 +18,7 @@
 # define FALSE 0
 # define SUCCESS 0
 # define FAIL 1
+# include <stddef.h>/*for NULL*/
 
 /* STRUCTS */
 typedef struct s_position
