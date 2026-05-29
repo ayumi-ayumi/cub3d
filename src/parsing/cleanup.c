@@ -6,11 +6,11 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:43:33 by asato             #+#    #+#             */
-/*   Updated: 2026/05/25 17:43:34 by asato            ###   ########.fr       */
+/*   Updated: 2026/05/29 18:28:40 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
+#include "cub3d.h"
 #include "parser.h"
 #include "libft.h"
 #include <unistd.h>
@@ -52,7 +52,6 @@ void	cleanup_and_exit(t_game *game)
 		return ;
 	if (game->map.grid)
 		free_map(&game->map);
-	// free_mlx(game);
-
+	free_entire_mlx(game);
 	exit (0);
 }
