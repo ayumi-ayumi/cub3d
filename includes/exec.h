@@ -38,4 +38,5 @@ int			init_mlx(t_game *game, t_exec *exec);
 void		free_mlx(t_game *game, t_exec *exec);
 
 
+int			init_play_data(t_game *game, t_exec *exec);
 #endif
