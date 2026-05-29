@@ -18,6 +18,9 @@ typedef struct s_play
 	t_vec	pos;
 	t_vec	dir;
 	t_vec	plane;
+	t_vec	ray;
+	t_pos	map;
+	t_vec	delta_dist;
 	double	time;
 	double	old_time;
 }	t_play;
