@@ -26,7 +26,7 @@ int	init_play_data(t_game *game, t_exec *exec)
 	if (game->map.start_orientation == 'N')
 		exec->play.dir = (t_vec){0, 1};
 	else if (game->map.start_orientation == 'S')
-		exec->play.dir = (t_vec){ 0, -1};
+		exec->play.dir = (t_vec){0, -1};
 	else if (game->map.start_orientation == 'W')
 		exec->play.dir = (t_vec){-1, 0};
 	else if (game->map.start_orientation == 'E')
