@@ -23,7 +23,7 @@ int	execution(t_game *game)
 		return (cleanup_exec(game, &exec), FAIL);
 	while (!done())
 	{
-		raycast(game, exec);
+		raycast(game, &exec);
 	}
 	return (cleanup_exec(game, &exec), SUCCESS);
 }

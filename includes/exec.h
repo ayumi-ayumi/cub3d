@@ -42,4 +42,5 @@ void		free_mlx(t_game *game, t_exec *exec);
 
 
 int			init_play_data(t_game *game, t_exec *exec);
+int			raycast(t_game *game, t_exec *exec);
 #endif

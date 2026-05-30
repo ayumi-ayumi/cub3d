@@ -1,5 +1,7 @@
 #include "cub3d.h"
 #include "exec.h"
+#include <math.h>
+
 static void	raypos(t_play *play)
 {
 	int		x;
@@ -13,11 +15,20 @@ static void	raypos(t_play *play)
 		play->ray.y = play->dir.y + play->plane.y * cam_x;
 		play->map.col = (int)(play->pos.x);
 		play->map.row = (int)(play->pos.y);
+		if (play->ray.x == 0)
+			play->delta_dist.x = 1e30;
+		else
+			play->delta_dist.x = fabs(1 / play->ray.x);
+		if (play->ray.y == 0)
+			play->delta_dist.y = 1e30;
+		else
+			play->delta_dist.y = fabs(1 / play->ray.y);
 		x++;
 	}
 }
 
 int	raycast(t_game *game, t_exec *exec)
 {
-	raypos()
+	raypos(&exec->play);
+	return (SUCCESS);
 }
