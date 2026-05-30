@@ -21,6 +21,10 @@ typedef struct s_play
 	t_vec	ray;
 	t_pos	map;
 	t_vec	delta_dist;
+	t_vec	side_dist;//maybe not needed
+	t_pos	step;//what dir to step
+	int		hit;//maybe not needed
+	int		side;//maybe not needed
 	double	time;
 	double	old_time;
 }	t_play;
