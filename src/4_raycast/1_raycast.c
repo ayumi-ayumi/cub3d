@@ -5,7 +5,7 @@
 static void	calc_delta_dist(t_play *play)
 {
 	if (play->ray.x == 0)
-	play->delta_dist.x = 1e30;
+		play->delta_dist.x = 1e30;
 	else
 		play->delta_dist.x = fabs(1 / play->ray.x);
 	if (play->ray.y == 0)
@@ -24,7 +24,8 @@ static void	calc_side_dist(t_play *play)
 	else
 	{
 		play->step.col = 1;
-		play->side_dist.x = (1 + play->map.col - play->pos.x) * play->delta_dist.x;
+		play->side_dist.x = (1 + play->map.col - play->pos.x) \
+		* play->delta_dist.x;
 	}
 	if (play->ray.y < 0)
 	{
@@ -34,7 +35,8 @@ static void	calc_side_dist(t_play *play)
 	else
 	{
 		play->step.row = 1;
-		play->side_dist.y = (1 + play->map.row - play->pos.y) * play->delta_dist.y;
+		play->side_dist.y = (1 + play->map.row - play->pos.y) * \
+		play->delta_dist.y;
 	}
 }
 
@@ -57,7 +59,7 @@ int	raycast(t_game *game, t_exec *exec)
 	x = 0;
 	while (x < SCREEN_WIDTH)
 	{
-		cam_x = 2 * (double)x / (double)SCREEN_WIDTH  - 1;
+		cam_x = 2 * (double)x / (double)SCREEN_WIDTH - 1;
 		raypos(&exec->play, cam_x);
 		x++;
 	}

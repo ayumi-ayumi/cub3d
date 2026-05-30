@@ -19,7 +19,7 @@ int	execution(t_game *game)
 	t_exec	exec;
 
 	if (init_mlx(game, &exec) == FAIL || game->mlx == NULL
-			|| init_play_data(game, &exec) == FAIL)
+		|| init_play_data(game, &exec) == FAIL)
 		return (cleanup_exec(game, &exec), FAIL);
 	while (!done())
 	{
