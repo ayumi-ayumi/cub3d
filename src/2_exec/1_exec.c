@@ -39,6 +39,7 @@ static int	convert_grid_to_coords(t_map map)
 	return (ft_free_arr(&temp), SUCCESS);
 }
 
+
 /*setup of screen and start game loop*/
 int	execution(t_game *game)
 {
@@ -48,7 +49,6 @@ int	execution(t_game *game)
 		|| init_play_data(game, &exec) == FAIL
 		|| convert_grid_to_coords(game->map))
 		return (cleanup_exec(game, &exec), FAIL);
-
 	while (!done())
 	{
 		raycast(game, &exec);

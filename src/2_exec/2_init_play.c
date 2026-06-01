@@ -16,13 +16,11 @@ static t_vec	turn_vec(t_vec vec, double angle)
 	return (turned);
 }
 
-// static double	calc_pos(t_game *game, int whole, int pos)/*TODO*/
-
 /*populates the game struct with initial data, val 0 can be -0*/
 int	init_play_data(t_game *game, t_exec *exec)
 {
-	// exec.play.pos[0] = calc_pos(game, game.map.:uwidth, game.map.start_pos.col);
-	// exec.play.pos[1] = calc_pos(game, game.map.height, game.map.start_pos.row);
+	exec->play.pos.x = (double)game->map.start_pos.col + 0.5;
+	exec->play.pos.y = (double)game->map.height - (double)game->map.start_pos.col - 0.5;
 	if (game->map.start_orientation == 'N')
 		exec->play.dir = (t_vec){0, 1};
 	else if (game->map.start_orientation == 'S')
