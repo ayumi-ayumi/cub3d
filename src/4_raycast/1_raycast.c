@@ -40,7 +40,8 @@ static void	calc_side_dist(t_play *play)
 	}
 }
 
-static void	raypos(t_play *play, double cam_x)
+/*calculate initial vectors and positions for dda*/
+static void	raypos(t_play *play, double cam_x, char ***coord)
 {
 	play->ray.x = play->dir.x + play->plane.x * cam_x;
 	play->ray.y = play->dir.y + play->plane.y * cam_x;
@@ -60,7 +61,7 @@ int	raycast(t_game *game, t_exec *exec)
 	while (x < SCREEN_WIDTH)
 	{
 		cam_x = 2 * (double)x / (double)SCREEN_WIDTH - 1;
-		raypos(&exec->play, cam_x);
+		raypos(&exec->play, cam_x, coord);
 		x++;
 	}
 	return (SUCCESS);
