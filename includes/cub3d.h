@@ -59,4 +59,5 @@ typedef struct s_game
 }				t_game;
 
 int		execution(t_game *game);
+void	cleanup_exec(t_game *game, t_exec *exec);
 #endif
