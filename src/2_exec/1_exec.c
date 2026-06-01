@@ -3,11 +3,6 @@
 #include "libft.h"/*for ft_bzero*/
 #include <mlx.h>
 
-static void	cleanup_exec(t_game *game, t_exec *exec)
-{
-	if (game->mlx)
-		free_mlx(game, exec);
-}
 
 static int	done(void)/*TODO*/
 {
