@@ -45,8 +45,8 @@ typedef struct s_play
 	t_vec	delta_dist;
 	t_vec	side_dist;//maybe not needed
 	t_idx	step;//what dir to step
-	int		hit;//maybe not needed
-	int		side;//which wall side jmaybe not needed
+	char	hit;//maybe not needed
+	char	side;//which wall side
 	double	perp_wall_dist;
 	double	time;
 	double	old_time;
