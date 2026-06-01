@@ -38,6 +38,7 @@ SRC			=	main.c \
 				21mlx/210init_mlx.c \
 				21mlx/211mlx_cleanup.c \
 				4_raycast/1_raycast.c \
+				4_raycast/2_start_values.c \ 
 				parsing/get_next_line.c \
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
