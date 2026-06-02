@@ -4,10 +4,10 @@
 1001
 1111
 
-EA ./path_to_the_east_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-NO ./path_to_the_north_texture
+NO ./textures/no.xpm
+SO ./textures/so.xpm
+EA ./textures/ea.xpm
+WE ./textures/we.xpm
 
 F 20,100,10
 C 255,30,0
