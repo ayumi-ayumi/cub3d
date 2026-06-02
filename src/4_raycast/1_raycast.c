@@ -26,11 +26,11 @@ static void	dda(char **grid, t_play *play)
 		play->perp_wall_dist = play->side_dist.y - play->delta_dist.y;
 }
 
-static void	calc_height(t_exec *exec, t_play *play)
+static void	calc_height(t_exec *exec, int perp_wall_dist)
 {
 	int	line_height;
 
-	line_height = (int) SCREEN_HEIGHT / play->perp_wall_dist;
+	line_height = (int)SCREEN_HEIGHT / perp_wall_dist;
 	exec->draw_start = (-line_height / 2) +  (SCREEN_HEIGHT / 2);
 	if (exec->draw_start < 0)
 		exec->draw_start = 0;
@@ -52,8 +52,9 @@ int	raycast(t_game *game, t_exec *exec)
 	{
 		cam_x = 2 * (double)x / (double)SCREEN_WIDTH - 1;
 		calc_start_values(&exec->play, cam_x);
-		dda(game->map.grid, &exec->play);
+		dda(game->map.grid, exec->play.perp_wall_dist);
 		calc_height(&exec, &exec->play);
+		draw_line(game);
 		x++;
 	}
 	return (SUCCESS);

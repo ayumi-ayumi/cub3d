@@ -1,6 +1,5 @@
 #include "cub3d.h"
 #include "exec.h"
-#include "libft.h"/*for ft_bzero*/
 #include <mlx.h>
 
 static int	done(void)/*TODO*/

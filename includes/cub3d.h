@@ -50,6 +50,15 @@ typedef struct s_play
 	double	old_time;
 }	t_play;
 
+typedef struct s_data
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_data;
+
 /*mlx img for walls*/
 typedef struct s_exec
 {
@@ -57,6 +66,7 @@ typedef struct s_exec
  	void	*so;
  	void	*we;
  	void	*ea;
+	t_data	img;
 	int		draw_start;
 	int		draw_end;
 	t_play	play;

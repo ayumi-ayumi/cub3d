@@ -1,5 +1,6 @@
 #include "cub3d.h"
 #include "exec.h"
+#include "libft.h"
 #include <mlx.h>
 #include <stddef.h>/*for NULL*/
 
@@ -12,6 +13,7 @@ static void	nulling_init(t_game *game, t_exec *exec)
 	exec->so = NULL;
 	exec->we = NULL;
 	exec->ea = NULL;
+	ft_bzero(&exec->img, sizeof(t_data));
 }
 
 /*if mlx fails NULL will be returned ... guard is in calling function*/
@@ -41,6 +43,9 @@ static int	init_mlx_img(t_game *game, t_exec *exec)
 		return (FAIL);
 	exec->ea = load_texture(game, game->config.ea);
 	if (!(exec->ea))
+		return (FAIL);
+	exec->img.img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (!exec->img.img)
 		return (FAIL);
 	return (SUCCESS);
 }
