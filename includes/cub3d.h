@@ -59,6 +59,8 @@ typedef struct s_exec
  	void	*so;
  	void	*we;
  	void	*ea;
+	int		draw_start;
+	int		draw_end;
 	t_play	play;
 }			t_exec;
 typedef struct s_position
