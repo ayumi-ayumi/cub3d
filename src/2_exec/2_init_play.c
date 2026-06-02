@@ -2,15 +2,15 @@
 #include "exec.h"/*for t_exec*/
 #include <math.h> /*for sin and cos*/
 
-/*turning matrice turns counterclockwise*/
+/*turning matrice turns counterclockwise even though in mirrored grid*/
 static t_vec	turn_vec(t_vec vec, double angle)
 {
 	double	cosi;
 	double	sinu;
 	t_vec	turned;
 
-	cosi = cos(angle);
-	sinu = sin(angle);
+	cosi = cos(2 * M_PI - angle);
+	sinu = sin(2 * M_PI - angle);
 	turned.x = vec.x * cosi - vec.y * sinu;
 	turned.y = vec.x * sinu + vec.y * cosi;
 	return (turned);
@@ -20,11 +20,11 @@ static t_vec	turn_vec(t_vec vec, double angle)
 int	init_play_data(t_game *game, t_exec *exec)
 {
 	exec->play.pos.x = (double)game->map.start_pos.col + 0.5;
-	exec->play.pos.y = (double)game->map.height - (double)game->map.start_pos.col - 0.5;
+	exec->play.pos.y = (double)game->map.height - (double)game->map.start_pos.row + 0.5;
 	if (game->map.start_orientation == 'N')
-		exec->play.dir = (t_vec){0, 1};
-	else if (game->map.start_orientation == 'S')
 		exec->play.dir = (t_vec){0, -1};
+	else if (game->map.start_orientation == 'S')
+		exec->play.dir = (t_vec){0, 1};
 	else if (game->map.start_orientation == 'W')
 		exec->play.dir = (t_vec){-1, 0};
 	else if (game->map.start_orientation == 'E')

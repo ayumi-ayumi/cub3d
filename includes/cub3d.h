@@ -21,6 +21,11 @@
 # include <stddef.h>/*for NULL*/
 
 /* STRUCTS */
+typedef struct s_position
+{
+	int		row;
+	int		col;
+}			t_pos;
 
 typedef	struct s_vec
 {
@@ -28,23 +33,16 @@ typedef	struct s_vec
 	double	y;
 }	t_vec;
 
-/* for coloumn wise stored game.map*/
-typedef	struct s_idx
-{
-	char	i;
-	char	j;
-}			t_idx;
-
 typedef struct s_play
 {
 	t_vec	pos;
 	t_vec	dir;
 	t_vec	plane;
 	t_vec	ray;
-	t_idx	map;
+	t_pos	map;
 	t_vec	delta_dist;
 	t_vec	side_dist;//maybe not needed
-	t_idx	step;//what dir to step
+	t_pos	step;//what dir to step
 	char	hit;//maybe not needed
 	char	side;//which wall side
 	double	perp_wall_dist;
@@ -63,11 +61,6 @@ typedef struct s_exec
 	int		draw_end;
 	t_play	play;
 }			t_exec;
-typedef struct s_position
-{
-	int		row;
-	int		col;
-}			t_pos;
 
 /*paths to wall image files*/
 typedef struct s_config

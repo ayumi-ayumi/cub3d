@@ -4,9 +4,10 @@
 # define SCREEN_WIDTH 480
 # define IMG_WIDTH 32
 # define IMG_HEIGHT 32
+# define NORTH_SOUTH 1
+# define WEST_EAST 0
 
 # include "cub3d.h"
-
 
 /* mlx */
 int			init_mlx(t_game *game, t_exec *exec);

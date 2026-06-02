@@ -3,13 +3,13 @@
 #include "libft.h"/*for ft_bzero*/
 #include <mlx.h>
 
-
 static int	done(void)/*TODO*/
 {
 	return (TRUE);
 }
 
 /*converts grid to coords (values stored in cols)*/
+/*
 static int	convert_grid_to_coords(t_map map)
 {
 	int	x_i;
@@ -38,7 +38,7 @@ static int	convert_grid_to_coords(t_map map)
 	}
 	return (ft_free_arr(&temp), SUCCESS);
 }
-
+*/
 
 /*setup of screen and start game loop*/
 int	execution(t_game *game)
@@ -46,8 +46,7 @@ int	execution(t_game *game)
 	t_exec	exec;
 	
 	if (init_mlx(game, &exec) == FAIL || game->mlx == NULL
-		|| init_play_data(game, &exec) == FAIL
-		|| convert_grid_to_coords(game->map))
+		|| init_play_data(game, &exec) == FAIL)
 		return (cleanup_exec(game, &exec), FAIL);
 	while (!done())
 	{

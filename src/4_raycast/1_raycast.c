@@ -8,16 +8,16 @@ static void	dda(char **grid, t_play *play)
 		if (play->side_dist.x < play->side_dist.y)
 		{
 			play->side_dist.x += play->delta_dist.x;//why are we not incrementing the distance in the next step
-			play->map.i += play->step.i;
-			play->side = 0;
+			play->map.col += play->step.col;
+			play->side = WEST_EAST;
 		}
 		else
 		{
 			play->side_dist.y += play->delta_dist.y;
-			play->map.j += play->step.j;
-			play->side = 1;
+			play->map.row += play->step.row;
+			play->side = NORTH_SOUTH;
 		}
-		if (grid[(int)play->map.i][(int)play->map.j] > 0)
+		if (grid[(int)play->map.row][(int)play->map.col] > 0)
 			play->hit = TRUE;
 	}
 	if (play->side == 0)
