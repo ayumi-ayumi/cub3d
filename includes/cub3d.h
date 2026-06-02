@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/05/29 19:05:35 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/02 17:36:17 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 typedef enum s_direction
 {
-	DIR_NO = 1,
+	DIR_NO = 0,
 	DIR_SO,
 	DIR_WE,
 	DIR_EA
@@ -51,10 +51,11 @@ typedef struct s_position
 /*paths to wall image files*/
 typedef struct s_config
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
+	char	**dir_path;
+	// char	*no;
+	// char	*so;
+	// char	*we;
+	// char	*ea;
 	int		floor[3];
 	int		ceiling[3];
 }			t_config;
@@ -70,10 +71,11 @@ typedef struct s_map
 
 typedef struct s_exec
 {
-	void	*no;
-	void	*so;
-	void	*we;
-	void	*ea;
+	void	**dir_texture;
+	// void	*no;
+	// void	*so;
+	// void	*we;
+	// void	*ea;
 }			t_exec;
 
 typedef struct s_game

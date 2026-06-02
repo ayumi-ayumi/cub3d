@@ -6,13 +6,14 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 18:02:52 by asato             #+#    #+#             */
-/*   Updated: 2026/05/29 18:38:34 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/02 18:17:45 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 # include "cub3d.h"
+#include <stdio.h>
 
 
 
@@ -25,7 +26,7 @@ int	parse_file(t_game *game);
 
 /* Extract elements */
 int	exract_elements(t_game *game);
-int	extract_map(t_game *game, int *i);
+int	extract_map(t_game *game);
 
 /* validate a map*/
 int	validate_map(t_map *map);

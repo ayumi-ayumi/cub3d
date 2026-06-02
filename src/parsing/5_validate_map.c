@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/05/27 20:44:52 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/02 19:52:03 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ int	validate_map(t_map *map)
 		return (0);
 	}
 	if (!is_enclosed_by_walls(map))
-		return (print_error("Map is not surrounded by walls🧱.\n"), 0);
+		return (print_error("Map is not surrounded by walls🧱 or invalid map\n"), 0);
 	return (1);
 }
