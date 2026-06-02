@@ -1,18 +1,15 @@
 #include "cub3d.h"
 #include "exec.h"
+#include "libft.h"
 #include <mlx.h>
 #include <stddef.h>/*for NULL*/
-#include <stdio.h>
 
 /*initiate whatever possible to 0 or NULL*/
 static void	nulling_init(t_game *game)
 {
 	game->mlx = NULL;
 	game->win = NULL;
-	game->exec.no = NULL;
-	game->exec.so = NULL;
-	game->exec.we = NULL;
-	game->exec.ea = NULL;
+	game->exec.dir_texture = NULL;
 }
 
 /*if mlx fails NULL will be returned ... guard is in calling function*/
@@ -25,28 +22,86 @@ static void	*load_texture(t_game *game, char *path)
 	width = TEXTURE_WIDTH;
 	height = TEXTURE_HEIGHT;
 	texture = mlx_xpm_file_to_image(game->mlx, path, &width, &height);
+	if (!texture)
+		return (NULL);
 	return (texture);
 }
 
 /*loading paths to mlx pictures*/
 static int	init_mlx_texture(t_game *game)
 {
-	game->exec.no = load_texture(game, game->config.no);
-	if (!(game->exec.no))
+	int	i;
+	int	j;
+
+	i = 0;
+	game->exec.dir_texture = ft_calloc(5, sizeof(void *));
+	if (!game->exec.dir_texture)
 		return (FAIL);
-	game->exec.so = load_texture(game, game->config.so);
-	if (!(game->exec.so))
-		return (free_mlx_texture(game->mlx, (void **)&game->exec.no), FAIL);
-	game->exec.we = load_texture(game, game->config.we);
-	if (!(game->exec.we))
-		return (free_mlx_texture(game->mlx, (void **)&game->exec.no),
-			free_mlx_texture(game->mlx, (void **)&game->exec.so), FAIL);
-	game->exec.ea = load_texture(game, game->config.ea);
-	if (!(game->exec.ea))
-		return (free_mlx_texture(game->mlx, (void **)&game->exec.no),
-			free_mlx_texture(game->mlx, (void **)&game->exec.so),
-			free_mlx_texture(game->mlx, (void **)&game->exec.ea), FAIL);
+	while (i < 4)
+	{
+		game->exec.dir_texture[i] = load_texture(game, game->config.dir_path[i]);
+		// ft_free((void **)&game->config.dir_path[i]);
+		if (!(game->exec.dir_texture[i]))
+		{
+			j = i;
+			while (j > 0)
+			{
+				free_mlx_texture(game->mlx, (void **)&game->exec.dir_texture[j]);
+				ft_free((void **)&game->exec.dir_texture[j]);
+				j--;
+			}
+			return (FAIL);
+		}
+		i++;
+	}
 	return (SUCCESS);
+}
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned	int*)dst = color;
+}
+#define GREEN_PIXEL 0xFF00
+#define RED_PIXEL 0xFF0000
+
+typedef struct s_rect
+{
+    int	x;
+    int	y;
+    int width;
+    int height;
+    int color;
+}	t_rect;
+
+/* The x and y coordinates of the rect corresponds to its upper left corner. */
+
+int	render_rect(t_game *game, t_rect rect)
+{
+	int	i;
+	int	j;
+
+	if (game->win == NULL)
+		return (1);
+	i = rect.y;
+	while (i < rect.y + rect.height)
+	{
+		j = rect.x;
+		while (j < rect.x + rect.width)
+			mlx_pixel_put(game->mlx, game->win, j++, i, rect.color);
+		++i;
+	}
+	return (0);
 }
 
 int	init_mlx(t_game *game)
@@ -56,9 +111,11 @@ int	init_mlx(t_game *game)
 	if (!game->mlx)
 		return (FAIL);
 	game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3d");
-	if (!(game->win))
+	if (!game->win)
 		return (free_mlx(game), FAIL);
+	// render_rect(game, (t_rect){0, 0, SCREEN_WIDTH, SCREEN_HEIGHT / 2, RED_PIXEL});
+	// render_rect(game, (t_rect){0, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2, GREEN_PIXEL});
 	if (init_mlx_texture(game) == FAIL)
-		return (free_mlx(game), free_win(game), FAIL);
+		return (free_win(game), free_mlx(game), FAIL);
 	return (SUCCESS);
 }

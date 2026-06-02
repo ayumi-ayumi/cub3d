@@ -1,7 +1,6 @@
 // #include "cub3d.h"
 #include "exec.h"
 #include <mlx.h>
-#include <stdio.h>
 // static void	cleanup_exec(t_game *game)
 // {
 // 	if (game->mlx)
@@ -31,13 +30,12 @@ int	key_hook(int keycode, void *param)
 	return (0);
 }
 
-
-
 int	close_window(void *param)
 {
 	t_game	*game;
 
 	game = (t_game *)param;
+	free_entire_mlx(game);
 	cleanup_and_exit(game);
 	return (1);
 }
@@ -45,22 +43,22 @@ int	close_window(void *param)
 int	start_graphics(t_game *game)
 {
 	if (!game || !game->mlx || !game->win)
-		return (0);
-	if (!game->exec.no || !game->exec.so || !game->exec.so || !game->exec.ea)
-		return (0);
+		return (FAIL);
+	if (!game->exec.dir_texture)
+		return (FAIL);
 	// render_map(game);
 	mlx_hook(game->win, 2, 1L << 0, key_hook, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_loop(game->mlx);
-	return (1);
+	return (SUCCESS);
 }
 
 int	execution(t_game *game)
 {
-	// t_exec	exec;
 	if (init_mlx(game) == FAIL || !game->mlx)
 		return (FAIL);
-	start_graphics(game);
+	if (start_graphics(game) == FAIL)
+		return (FAIL);
 	// cleanup_exec(game, &exec);
 	return (SUCCESS);
 }
