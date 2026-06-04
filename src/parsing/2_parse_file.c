@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:25:09 by asato             #+#    #+#             */
-/*   Updated: 2026/05/25 17:48:17 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/04 13:07:02 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int	parse_file(t_game *game)
 		return (0);
 	if (!exract_elements(game)) // Extract config fron game->file_contents
 		return (close(fd), free_string_array(game->file_contents), 0);
-	 free_string_array(game->file_contents);	// Destroy file_contents
+	free_string_array(game->file_contents);	// Destroy file_contents
 	return (close(fd), 1);
 }

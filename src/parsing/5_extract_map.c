@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   4_extract_map.c                                    :+:      :+:    :+:   */
+/*   5_extract_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:28:05 by asato             #+#    #+#             */
-/*   Updated: 2026/06/02 19:50:45 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/04 16:12:42 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "parser.h"
 #include "libft.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 static int	store_map_grid(t_game *game, char *line, int i)
 {
