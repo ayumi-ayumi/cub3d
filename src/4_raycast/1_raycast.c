@@ -52,8 +52,8 @@ int	raycast(t_game *game, t_exec *exec)
 	{
 		cam_x = 2 * (double)x / (double)SCREEN_WIDTH - 1;
 		calc_start_values(&exec->play, cam_x);
-		dda(game->map.grid, exec->play.perp_wall_dist);
-		calc_height(&exec, &exec->play);
+		dda(game->map.grid, &exec->play);
+		calc_height(exec, exec->play.perp_wall_dist);
 		draw_line(game);
 		x++;
 	}

@@ -29,7 +29,7 @@ static void	*load_texture(t_game *game, char *path)
 	return (texture);
 }
 
-/*loading paths to mlx pictures*/
+/*loading paths to mlx pictures, creating screen img*/
 static int	init_mlx_img(t_game *game, t_exec *exec)
 {
 	exec->no = load_texture(game, game->config.no);
