@@ -69,7 +69,7 @@ typedef struct s_exec
 	t_data	img;
 	int		draw_start;
 	int		draw_end;
-	int		ceiling;//TODO write r,g,b to rgb functions
+	int		ceiling;
 	int		floor;
 	t_play	play;
 }			t_exec;

@@ -16,6 +16,23 @@ static t_vec	turn_vec(t_vec vec, double angle)
 	return (turned);
 }
 
+/*converts int[3] to int by shifting bits to their position*/
+static int	convert_rgb(int array[3])
+{
+	int	rgb;
+	int	r;
+	int	g;
+	int	b;
+	
+	r = array[0];
+	g = array[1];
+	b = array[2];
+	if (r < 0 || g < 0 || b < 0)
+		return (-1);
+	rgb = r << 16 | g << 8 | b;
+	return (rgb);
+}
+
 /*populates the game struct with initial data, val 0 can be -0*/
 int	init_play_data(t_game *game, t_exec *exec)
 {
@@ -31,6 +48,8 @@ int	init_play_data(t_game *game, t_exec *exec)
 		exec->play.dir = (t_vec){1, 0};
 	else
 		return (FAIL);
+	exec->ceiling = convert_rgb(game->config.ceiling);
+	exec->floor = convert_rgb(game->config.floor);
 	exec->play.time = 0;
 	exec->play.old_time = 0;
 	exec->play.plane = turn_vec(exec->play.dir, -1 * M_PI_2);
