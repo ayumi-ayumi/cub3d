@@ -66,7 +66,7 @@ typedef struct s_exec
  	void	*so;
  	void	*we;
  	void	*ea;
-	t_data	img;
+	t_data	screen;
 	int		draw_start;
 	int		draw_end;
 	int		ceiling;
