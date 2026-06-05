@@ -17,4 +17,5 @@ void		free_mlx(t_game *game, t_exec *exec);
 int			init_play_data(t_game *game, t_exec *exec);
 int			raycast(t_game *game, t_exec *exec);
 void		calc_start_values(t_play *play, double cam_x);
+void		draw_line(t_exec *exec, int cam_x);
 #endif
