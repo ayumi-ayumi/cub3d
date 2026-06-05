@@ -31,6 +31,38 @@ It parses a `.cub` file, validates the map, and renders a real-time first-person
 **Includes:** Each file includes only the headers it direct ely depends on to keep dependencies explicit.
 **Ownership:** Modules manage their own resources via dedicated init/cleanup functions, ensuring clear memory ownership. **Cleanup is handled locally:** allocating functions return errors, and callers free partial state.
 
+### Structs
+```txt
+t_game
+├── mlx: void* (display handle)
+├── win: void* (window handle)
+├── file_path: char* (input file)
+├── file_contents: char** (raw file lines)
+├── config: t_config
+│   ├── no, so, we, ea: char* (texture paths)
+│   ├── floor: int (RGB)
+│   └── ceiling: int (RGB)
+├── map: t_map
+│   ├── grid: char** (2D map)
+│   ├── height, width: int
+│   ├── start_pos: t_pos
+│   └── start_orientation: char
+└── copy: t_map (duplicate of map for safety)
+
+t_exec
+├── no, so, we, ea: void* (loaded textures)
+├── img: t_data
+│   ├── img: void* (image buffer)
+│   ├── addr: char* (pixel address)
+│   ├── bits_per_pixel, line_length, endian: int
+├── draw_start, draw_end: int
+└── play: t_play
+    ├── pos, dir, plane, ray, delta_dist, side_dist: t_vec
+    ├── map: t_pos
+    ├── step: t_pos
+    ├── hit, side: char
+    ├── perp_wall_dist, time, old_time: double
+```
 ---
 
 ## 🛠️ Instructions 
