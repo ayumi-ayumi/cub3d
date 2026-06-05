@@ -13,9 +13,14 @@
 int			init_mlx(t_game *game, t_exec *exec);
 void		free_mlx(t_game *game, t_exec *exec);
 
-
+/*execution*/
 int			init_play_data(t_game *game, t_exec *exec);
+
+/*raycast*/
 int			raycast(t_game *game, t_exec *exec);
 void		calc_start_values(t_play *play, double cam_x);
+
+/*rendering*/
 void		draw_line(t_exec *exec, int cam_x);
+void		put_pixel(t_data *img, int x, int y, int colour);
 #endif

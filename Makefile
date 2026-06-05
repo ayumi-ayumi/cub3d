@@ -40,6 +40,8 @@ SRC			=	main.c \
 				4_raycast/1_raycast.c \
 				4_raycast/2_start_values.c \
 				5_render/1_draw.c\
+				5_render/2_put_pixel.c\
+				5_render/3_put_wall.c \
 				parsing/get_next_line.c \
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
