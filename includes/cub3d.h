@@ -43,11 +43,13 @@ typedef struct s_play
 	t_vec	delta_dist;
 	t_vec	side_dist;//maybe not needed
 	t_pos	step;//what dir to step
-	char	hit;//maybe not needed
+	char	hit;
 	char	side;//which wall side
 	double	perp_wall_dist;
 	double	time;
 	double	old_time;
+	int		cam_x;
+	int		texture_col;
 }	t_play;
 
 typedef struct s_data
