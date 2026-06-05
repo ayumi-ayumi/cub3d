@@ -20,6 +20,7 @@ void	free_mlx(t_game *game, t_exec *exec)
 	free_mlx_img(game->mlx, (void **)&exec->so);
 	free_mlx_img(game->mlx, (void **)&exec->we);
 	free_mlx_img(game->mlx, (void **)&exec->ea);
+	free_mlx_img(game->mlx, (void **)&exec->screen.img);/*TODO check if i need an other function here*/
 	if (game->win)
 	{
 		mlx_destroy_window(game->mlx, game->win);
