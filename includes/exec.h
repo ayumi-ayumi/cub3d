@@ -38,5 +38,9 @@ void		free_win(t_game *game);
 void		free_mlx_texture(void *mlx, void **target);
 // void		free_entire_mlx(t_game *game, t_exec *exec);
 
+/* mlx Loop */
+int	start_graphics(t_game *game);
+
+
 
 #endif

@@ -6,7 +6,7 @@
 #    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/06/04 16:12:09 by asato            ###   ########.fr        #
+#    Updated: 2026/06/07 15:17:05 by asato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC			=	main.c \
 				parsing/cleanup.c \
 				parsing/error.c \
 				20exec/200exec.c \
+				20exec/201start_graphics.c \
 				21mlx/210init_mlx.c \
 				21mlx/211mlx_cleanup.c \
 				parsing/get_next_line.c \
