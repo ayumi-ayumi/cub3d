@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/05/16 13:37:00 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/08 15:58:52 by chagen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ typedef	struct s_vec
 	double	y;
 }	t_vec;
 
+typedef	struct s_move
+{
+	double	time;//time in milliseconds
+	double	old_time;
+	double	frame_time;
+}	t_move;
+
 typedef struct s_play
 {
 	t_vec	pos;
@@ -46,8 +53,7 @@ typedef struct s_play
 	char	wall_hit;
 	char	side;//which wall side
 	double	perp_wall_dist;
-	double	time;
-	double	old_time;
+	t_move	move;
 	int		cam_x;
 	int		texture_col;
 }	t_play;

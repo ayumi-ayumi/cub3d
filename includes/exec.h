@@ -19,6 +19,7 @@ int			init_play_data(t_game *game, t_exec *exec);
 /*raycast*/
 int			raycast(t_game *game, t_exec *exec);
 void		calc_start_values(t_play *play);
+int			timing(t_play *play);
 
 /*rendering*/
 void		draw_line(t_exec *exec);
