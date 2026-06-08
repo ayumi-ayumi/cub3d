@@ -3,11 +3,11 @@
 
 static void	dda(char **grid, t_play *play)
 {
-	while(play->hit == FALSE)
+	while(play->wall_hit == FALSE)
 	{
 		if (play->side_dist.x < play->side_dist.y)
 		{
-			play->side_dist.x += play->delta_dist.x;//why are we not incrementing the distance in the next step
+			play->side_dist.x += play->delta_dist.x;
 			play->map.col += play->step.col;
 			play->side = WEST_EAST;
 		}
@@ -18,7 +18,7 @@ static void	dda(char **grid, t_play *play)
 			play->side = NORTH_SOUTH;
 		}
 		if (grid[(int)play->map.row][(int)play->map.col] > 0)
-			play->hit = TRUE;
+			play->wall_hit = TRUE;
 	}
 	if (play->side == 0)
 		play->perp_wall_dist = play->side_dist.x - play->delta_dist.x;

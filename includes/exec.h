@@ -2,8 +2,8 @@
 # define EXEC_H
 # define SCREEN_HEIGHT 640
 # define SCREEN_WIDTH 480
-# define IMG_WIDTH 32
-# define IMG_HEIGHT 32
+# define IMG_WIDTH 64
+# define IMG_HEIGHT 64
 # define NORTH_SOUTH 1
 # define WEST_EAST 0
 
@@ -23,5 +23,5 @@ void		calc_start_values(t_play *play);
 /*rendering*/
 void		draw_line(t_exec *exec);
 void		put_pixel(t_data *img, int x, int y, int colour);
-void		put_wall(t_exec *exec, int *i);
+void		put_wall(t_exec *exec, int *i, int tex_x);
 #endif

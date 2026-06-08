@@ -43,7 +43,7 @@ typedef struct s_play
 	t_vec	delta_dist;
 	t_vec	side_dist;//maybe not needed
 	t_pos	step;//what dir to step
-	char	hit;
+	char	wall_hit;
 	char	side;//which wall side
 	double	perp_wall_dist;
 	double	time;

@@ -47,7 +47,7 @@ void	calc_start_values(t_play *play)
 	play->ray.y = play->dir.y + play->plane.y * play->cam_x;
 	play->map.col = (int)(play->pos.x);
 	play->map.row = (int)(play->pos.y);
-	play->hit = 0;
+	play->wall_hit = 0;
 	calc_delta_dist(play);
 	calc_side_dist(play);
 }

@@ -3,11 +3,14 @@
 #include <stdint.h>
 
 /*dummy function because i do not handle textures jet*/
-void	put_wall(t_exec *exec, int *i)
+void	put_wall(t_exec *exec, int *i, int tex_x)
 {
+	int	colour;
+
+	colour = 392830291 * tex_x;
 	while (*i < exec->draw_end)
 	{
-		put_pixel(&exec->screen, exec->play.cam_x, *i, 555444333);
+		put_pixel(&exec->screen, exec->play.cam_x, *i, colour);
 		*i += 1;
 	}
 	return ;
