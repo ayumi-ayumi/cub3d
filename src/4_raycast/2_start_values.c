@@ -1,4 +1,5 @@
 #include "cub3d.h"
+#include "exec.h"/*for Makros*/
 #include <math.h>
 
 static void	calc_delta_dist(t_play *play)
