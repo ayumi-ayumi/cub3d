@@ -5,14 +5,14 @@
 /*dummy function because i do not handle textures jet*/
 void	put_wall(t_exec *exec, int *i, int tex_x)
 {
-	int	colour;
+	int	color;
 
-	colour =  16776960 * (tex_x / IMG_WIDTH + 1);
+	color =  16776960 * (tex_x / IMG_WIDTH + 1);
 	if (exec->play.side == 1)
-		colour = colour / 4;
+		color = color / 4;
 	while (*i < exec->draw_end)
 	{
-		put_pixel(&exec->screen, exec->play.cam_x, *i, colour);
+		put_pixel(&exec->screen, exec->play.cam_x, *i, color);
 		*i += 1;
 	}
 	return ;

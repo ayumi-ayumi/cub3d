@@ -1,9 +1,9 @@
 #include "cub3d.h"
 
-void	put_pixel(t_data *img, int x, int y, int colour)
+void	put_pixel(t_data *img, int x, int y, int color)
 {
 	int	pixel;
 
 	pixel = y * (img->line_length / 4) + x;
-	img->addr[pixel] = colour;
+	img->addr[pixel] = color;
 }
