@@ -7,7 +7,9 @@ void	put_wall(t_exec *exec, int *i, int tex_x)
 {
 	int	colour;
 
-	colour = 392830291 * tex_x;
+	colour =  16776960 * (tex_x / IMG_WIDTH + 1);
+	if (exec->play.side == 1)
+		colour = colour / 4;
 	while (*i < exec->draw_end)
 	{
 		put_pixel(&exec->screen, exec->play.cam_x, *i, colour);
