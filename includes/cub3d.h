@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/06/08 15:58:52 by chagen           ###   ########.fr       */
+/*   Updated: 2026/06/02 17:36:17 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,28 @@
 # define SUCCESS 0
 # define FAIL 1
 # include <stddef.h>/*for NULL*/
+//# include "exec.h"
+
+typedef enum s_direction
+{
+	DIR_NO = 0,
+	DIR_SO,
+	DIR_WE,
+	DIR_EA
+}			t_direction;
+
+typedef enum s_keycode
+{
+	ARROW_UP = 65362,
+	ARROW_RIGHT = 65363,
+	ARROW_DOWN = 65364,
+	ARROW_LEFT = 65361,
+	KEY_W = 119,
+	KEY_D = 100,
+	KEY_S = 115,
+	KEY_A = 97,
+	KEY_ESC = 65307
+}			t_keycode;
 
 /* STRUCTS */
 typedef struct s_position
@@ -70,10 +92,7 @@ typedef struct s_data
 /*mlx img for walls*/
 typedef struct s_exec
 {
-	void	*no;
- 	void	*so;
- 	void	*we;
- 	void	*ea;
+	void	**dir_texture;
 	t_data	screen;
 	int		draw_start;
 	int		draw_end;
@@ -85,10 +104,11 @@ typedef struct s_exec
 /*paths to wall image files*/
 typedef struct s_config
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
+	char	**dir_path;
+	// char	*no;
+	// char	*so;
+	// char	*we;
+	// char	*ea;
 	int		floor[3];
 	int		ceiling[3];
 }			t_config;
@@ -98,9 +118,10 @@ typedef struct s_map
 	char		**grid;
 	int			height;
 	int			width;
-	t_pos		start_pos;
 	char		start_orientation;
+	t_pos		start_pos;
 }				t_map;
+
 
 typedef struct s_game
 {
@@ -110,9 +131,14 @@ typedef struct s_game
 	char		**file_contents;
 	t_config	config;
 	t_map		map;
-	t_map		copy;
+	t_exec		exec;
 }				t_game;
 
 int		execution(t_game *game);
-void	cleanup_exec(t_game *game, t_exec *exec);
+// void	cleanup_exec(t_game *game, t_exec *exec);
+
+/* Clean Up */
+void	free_map(t_map *map);
+void	free_entire_mlx(t_game *game);
+void	cleanup_and_exit(t_game *game);
 #endif

@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 16:40:38 by asato             #+#    #+#             */
-/*   Updated: 2026/05/25 17:17:30 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/07 15:12:12 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,16 @@ int	main(int ac, char **av)
 {
 	t_game	game;
 
+	ft_bzero(&game, sizeof(t_game));
 	if (ac != 2)
 		error_and_exit("No map file passed. Choose a map you want to play🎮.\n");
 	if (!is_extension_correct(&game, av[1]))
 		error_and_exit("File extension must be \".cub\".\n");
 	if (!load_map_and_config(&game))
 		return (cleanup_and_exit(&game), 1);
-	if (!execution(&game))
-	 	return (cleanup_and_exit(&game), 1);
+	if (execution(&game) == FAIL)
+		return (free_entire_mlx(&game), cleanup_and_exit(&game), FAIL);
+	free_entire_mlx(&game);
 	cleanup_and_exit(&game);
 	return (0);
 }

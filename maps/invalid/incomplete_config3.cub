@@ -3,11 +3,12 @@ EA ./textures/ea.xpm
 SO ./textures/so.xpm
 WE ./textures/we.xpm
 
-F 20,100,10
-C 211,30,0
+
+FF 20,100,0
+C 225,30,0
 
 1111
 10N1
-10E1
+1001
 1001
 1111
