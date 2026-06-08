@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void	put_pixel(t_data *img, int x, int y, int color)
+void	put_pixel(t_data *img, int x, int y, unsigned int color)
 {
 	int	pixel;
 

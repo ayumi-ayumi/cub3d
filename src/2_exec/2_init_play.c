@@ -17,17 +17,17 @@ static t_vec	turn_vec(t_vec vec, double angle)
 }
 
 /*converts int[3] to int by shifting bits to their position*/
-static int	convert_rgb(int array[3])
+static unsigned int	convert_rgb(int array[3])
 {
-	int	rgb;
-	int	r;
-	int	g;
-	int	b;
+	unsigned int	rgb;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
 	
-	r = array[0];
-	g = array[1];
-	b = array[2];
-	if (r < 0 || g < 0 || b < 0)
+	r = (unsigned int)array[0];
+	g = (unsigned int)array[1];
+	b = (unsigned int)array[2];
+	if (array[0] < 0 || array[1] < 0 || array[2] < 0)
 		return (-1);
 	rgb = r << 16 | g << 8 | b;
 	return (rgb);
