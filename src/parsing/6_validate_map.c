@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   5_validate_map.c                                   :+:      :+:    :+:   */
+/*   6_validate_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/05/27 20:44:52 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/07 14:51:38 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@ static int	validate_map_charset(t_map *map)
 	return (1);
 }
 
+static void	replace_start_pos_char_0(t_map *map)
+{
+	int	row;
+	int	col;
+
+	row = map->start_pos.row;
+	col = map->start_pos.col;
+	map->grid[map->start_pos.row][map->start_pos.col] = '0';
+}
+
+
+
 int	validate_map(t_map *map)
 {
 	if (!map || !map->grid)
@@ -55,6 +67,7 @@ int	validate_map(t_map *map)
 		return (0);
 	}
 	if (!is_enclosed_by_walls(map))
-		return (print_error("Map is not surrounded by walls🧱.\n"), 0);
+		return (print_error("Map is not surrounded by walls🧱 or invalid\n"), 0);
+	replace_start_pos_char_0(map);
 	return (1);
 }

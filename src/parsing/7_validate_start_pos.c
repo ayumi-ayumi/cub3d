@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   6_validate_start_pos.c                             :+:      :+:    :+:   */
+/*   7_validate_start_pos.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/05/27 20:43:26 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/04 16:33:45 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	store_start_orientation(t_map *map)
 	{
 		if (map->grid[map->start_pos.row][map->start_pos.col] == dirs[i])
 		{
-			map->start_orientaion = dirs[i];
+			map->start_orientation = dirs[i];
 			break ;
 		}
 		i++;
