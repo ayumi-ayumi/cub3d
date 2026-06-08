@@ -39,19 +39,12 @@ static int	convert_grid_to_coords(t_map map)
 }
 */
 
-int	execution(t_game *game)
-{
-	if (init_mlx(game) == FAIL || !game->mlx)
-		return (FAIL);
-	// cleanup_exec(game, &exec);
-	return (SUCCESS);
-}
 /*setup of screen and start game loop*/
 int	execution(t_game *game)
 {
 	t_exec	exec;
 	
-	if (init_mlx(game, &exec) == FAIL || game->mlx == NULL
+	if (init_mlx(game) == FAIL || game->mlx == NULL
 		|| init_play_data(game, &exec) == FAIL)
 		return (FAIL);
 	if (start_graphics(game) == FAIL)
@@ -60,7 +53,7 @@ int	execution(t_game *game)
 	{
 		raycast(game, &exec);
 	}
-	return (cleanup_exec(game, &exec), SUCCESS);
+	return (SUCCESS);
 }
 
 

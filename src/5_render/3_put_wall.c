@@ -7,7 +7,7 @@ void	put_wall(t_exec *exec, int *i, int tex_x)
 {
 	int	color;
 
-	color =  16776960 * (tex_x / IMG_WIDTH + 1);
+	color =  16776960 * (tex_x / TEXTURE_WIDTH + 1);
 	if (exec->play.side == 1)
 		color = color / 4;
 	while (*i < exec->draw_end)

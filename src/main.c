@@ -39,9 +39,9 @@ int	main(int ac, char **av)
 		error_and_exit("File extension must be \".cub\".\n");
 	if (!load_map_and_config(&game))
 		return (cleanup_and_exit(&game), 1);
-	if (execution(&game) == FAIL)
-		return (free_entire_mlx(&game), cleanup_and_exit(&game), FAIL);
-	free_entire_mlx(&game);
+//	if (execution(&game) == FAIL)
+//		return (free_entire_mlx(&game), cleanup_and_exit(&game), FAIL);
+//	free_entire_mlx(&game);
 	cleanup_and_exit(&game);
 	return (0);
 }

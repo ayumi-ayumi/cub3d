@@ -50,8 +50,8 @@ int	init_play_data(t_game *game, t_exec *exec)
 		return (FAIL);
 	exec->ceiling = convert_rgb(game->config.ceiling);
 	exec->floor = convert_rgb(game->config.floor);
-	exec->play.time = 0;
-	exec->play.old_time = 0;
+	exec->play.move.time = 0;
+	exec->play.move.old_time = 0;
 	exec->play.plane = turn_vec(exec->play.dir, -1 * M_PI_2);
 	exec->play.plane.x = exec->play.plane.x * 0.66;
 	exec->play.plane.y = exec->play.plane.y * 0.66;

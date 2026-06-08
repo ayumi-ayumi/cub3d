@@ -9,7 +9,7 @@ static int	get_texture_x(t_play *play)
 
 	tex_x = 0;
 	percent = play->side_dist.x - (int)play->side_dist.x;
-	tex_x = (int)(percent *  IMG_WIDTH);
+	tex_x = (int)(percent *  TEXTURE_WIDTH);
 	return (tex_x);
 }
 
