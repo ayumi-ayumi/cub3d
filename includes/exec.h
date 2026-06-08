@@ -18,9 +18,10 @@ int			init_play_data(t_game *game, t_exec *exec);
 
 /*raycast*/
 int			raycast(t_game *game, t_exec *exec);
-void		calc_start_values(t_play *play, double cam_x);
+void		calc_start_values(t_play *play);
 
 /*rendering*/
-void		draw_line(t_exec *exec, int cam_x);
+void		draw_line(t_exec *exec);
 void		put_pixel(t_data *img, int x, int y, int colour);
+void		put_wall(t_exec *exec, int *i);
 #endif
