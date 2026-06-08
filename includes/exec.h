@@ -1,9 +1,12 @@
 #ifndef EXEC_H
 # define EXEC_H
+
 # define SCREEN_HEIGHT 480
 # define SCREEN_WIDTH 640
 # define TEXTURE_WIDTH 32
 # define TEXTURE_HEIGHT 32
+# define NORTH_SOUTH 1
+# define WEST_EAST 0
 
 # include "cub3d.h"
 
@@ -16,21 +19,6 @@
 //  	void	*ea;
 // }			t_exec;
 
-typedef	struct s_vec
-{
-	double	x;
-	double	y;
-}	t_vec;
-
-typedef struct s_raycast
-{
-	t_vec	pos;
-	t_vec	dir;
-	t_vec	plane;
-	double	time;
-	double	old_time;
-}	t_raycast;
-
 /* mlx */
 int			init_mlx(t_game *game);
 void		free_mlx(t_game *game);
@@ -42,5 +30,16 @@ void		free_mlx_texture(void *mlx, void **target);
 int	start_graphics(t_game *game);
 
 
+/*execution*/
+int			init_play_data(t_game *game, t_exec *exec);
 
+/*raycast*/
+int			raycast(t_game *game, t_exec *exec);
+void		calc_start_values(t_play *play);
+int			timing(t_play *play);
+
+/*rendering*/
+void		draw_line(t_exec *exec);
+void		put_pixel(t_data *img, int x, int y, int colour);
+void		put_wall(t_exec *exec, int *i, int tex_x);
 #endif

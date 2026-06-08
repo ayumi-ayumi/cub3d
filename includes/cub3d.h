@@ -18,6 +18,7 @@
 # define FALSE 0
 # define SUCCESS 0
 # define FAIL 1
+# include <stddef.h>/*for NULL*/
 //# include "exec.h"
 
 typedef enum s_direction
@@ -48,6 +49,58 @@ typedef struct s_position
 	int		col;
 }			t_pos;
 
+typedef	struct s_vec
+{
+	double	x;
+	double	y;
+}	t_vec;
+
+typedef	struct s_move
+{
+	double	time;//time in milliseconds
+	double	old_time;
+	double	frame_time;
+}	t_move;
+
+typedef struct s_play
+{
+	t_vec	pos;
+	t_vec	dir;
+	t_vec	plane;
+	t_vec	ray;
+	t_pos	map;
+	t_vec	delta_dist;
+	t_vec	side_dist;//maybe not needed
+	t_pos	step;//what dir to step
+	char	wall_hit;
+	char	side;//which wall side
+	double	perp_wall_dist;
+	t_move	move;
+	int		cam_x;
+	int		texture_col;
+}	t_play;
+
+typedef struct s_data
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_data;
+
+/*mlx img for walls*/
+typedef struct s_exec
+{
+	void	**dir_texture;
+	t_data	screen;
+	int		draw_start;
+	int		draw_end;
+	int		ceiling;
+	int		floor;
+	t_play	play;
+}			t_exec;
+
 /*paths to wall image files*/
 typedef struct s_config
 {
@@ -69,14 +122,6 @@ typedef struct s_map
 	t_pos		start_pos;
 }				t_map;
 
-typedef struct s_exec
-{
-	void	**dir_texture;
-	// void	*no;
-	// void	*so;
-	// void	*we;
-	// void	*ea;
-}			t_exec;
 
 typedef struct s_game
 {
@@ -90,6 +135,7 @@ typedef struct s_game
 }				t_game;
 
 int		execution(t_game *game);
+// void	cleanup_exec(t_game *game, t_exec *exec);
 
 /* Clean Up */
 void	free_map(t_map *map);

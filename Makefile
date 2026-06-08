@@ -23,21 +23,28 @@ LDLIBS		=	$(LIBFT_A) -lmlx -lX11 -lXext -lm
 
 INC			=	-I$(INC_DIR) -I$(LIBFT_DIR)
 SRC			=	main.c \
-				parsing/1_load_map_and_config.c \
-				parsing/2_parse_file.c \
-				parsing/3_validate_elements.c \
-				parsing/4_extract_elements.c \
-				parsing/5_extract_map.c \
-				parsing/6_validate_map.c \
-				parsing/7_validate_start_pos.c \
-				parsing/8_check_walls.c \
-				parsing/cleanup.c \
-				parsing/error.c \
-				20exec/200exec.c \
-				20exec/201start_graphics.c \
-				21mlx/210init_mlx.c \
-				21mlx/211mlx_cleanup.c \
-				parsing/get_next_line.c \
+				1_parsing/1_load_map_and_config.c \
+				1_parsing/2_parse_file.c \
+				1_parsing/3_validate_elements.c \
+				1_parsing/4_extract_elements.c \
+				1_parsing/5_extract_map.c \
+				1_parsing/6_validate_map.c \
+				1_parsing/7_validate_start_pos.c \
+				1_parsing/8_check_walls.c \
+				1_parsing/cleanup.c \
+				1_parsing/error.c \
+				1_parsing/get_next_line.c \
+				2_exec/1_exec.c \
+				2_exec/2_init_play.c \
+				2_exec/3_start_graphics.c \
+				3_mlx/1_init_mlx.c \
+				3_mlx/2_mlx_cleanup.c \
+				4_raycast/1_raycast.c \
+				4_raycast/2_start_values.c \
+				4_raycast/3_time.c \
+				5_render/1_draw.c\
+				5_render/2_put_pixel.c\
+				5_render/3_put_wall.c \
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 
