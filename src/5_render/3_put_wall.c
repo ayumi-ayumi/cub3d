@@ -5,7 +5,7 @@
 /*dummy function because i do not handle textures jet*/
 void	put_wall(t_exec *exec, int *i, int tex_x)
 {
-	int	color;
+	unsigned int	color;
 
 	color =  16776960 * (tex_x / TEXTURE_WIDTH + 1);
 	if (exec->play.side == 1)
