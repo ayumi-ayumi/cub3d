@@ -60,6 +60,8 @@ typedef	struct s_move
 	double	time;//time in milliseconds
 	double	old_time;
 	double	frame_time;
+	double	move_speed;
+	double	rot_speed;
 }	t_move;
 
 typedef struct s_play

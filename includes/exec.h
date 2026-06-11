@@ -37,7 +37,7 @@ t_vec		turn_vec(t_vec vec, double angle);
 /*raycast*/
 int			raycast(t_game *game, t_exec *exec);
 void		calc_start_values(t_play *play);
-int			timing(t_play *play);
+int			timing(t_move *move);
 
 /*rendering*/
 void		draw_line(t_exec *exec);

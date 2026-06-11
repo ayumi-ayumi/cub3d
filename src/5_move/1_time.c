@@ -1,4 +1,5 @@
 #include "cub3d.h"
+#include <mlx.h>
 #include <sys/time.h>
 
 static int	get_time(t_move *move)
@@ -19,5 +20,7 @@ int	timing(t_move *move)
 	if (get_time(move) != SUCCESS)
 		return (FAIL);
 	move->frame_time = (move->time - move->old_time) / 1000.0;
+	move->move_speed = (move->frame_time) * 5.0;
+	move->rot_speed = (move->frame_time) * 3.0;
 	return (SUCCESS);
 }
