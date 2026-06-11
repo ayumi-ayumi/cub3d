@@ -37,15 +37,15 @@ SRC			=	main.c \
 				2_exec/1_exec.c \
 				2_exec/2_init_play.c \
 				2_exec/3_start_graphics.c \
-				2_exec/4_move.c \
+				2_exec/4_time.c \
 				3_mlx/1_init_mlx.c \
 				3_mlx/2_mlx_cleanup.c \
 				4_raycast/1_raycast.c \
 				4_raycast/2_start_values.c \
-				4_raycast/3_time.c \
-				5_render/1_draw.c\
-				5_render/2_put_pixel.c\
-				5_render/3_put_wall.c \
+				4_raycast/3_draw.c \
+				4_raycast/4_put_pixel.c \
+				4_raycast/5_pt_wall.c \
+				5_move/1_time.c \
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 
