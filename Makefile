@@ -37,6 +37,7 @@ SRC			=	main.c \
 				2_exec/1_exec.c \
 				2_exec/2_init_play.c \
 				2_exec/3_start_graphics.c \
+				2_exec/4_move.c \
 				3_mlx/1_init_mlx.c \
 				3_mlx/2_mlx_cleanup.c \
 				4_raycast/1_raycast.c \

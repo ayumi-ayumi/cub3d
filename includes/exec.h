@@ -32,6 +32,7 @@ int	start_graphics(t_game *game);
 
 /*execution*/
 int			init_play_data(t_game *game, t_exec *exec);
+t_vec		turn_vec(t_vec vec, double angle);
 
 /*raycast*/
 int			raycast(t_game *game, t_exec *exec);
