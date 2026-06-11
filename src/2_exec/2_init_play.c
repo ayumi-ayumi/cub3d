@@ -24,11 +24,11 @@ static unsigned int	convert_rgb(int array[3])
 	unsigned int	g;
 	unsigned int	b;
 	
+	if (array[0] < 0 || array[1] < 0 || array[2] < 0)
+		return (-1);
 	r = (unsigned int)array[0];
 	g = (unsigned int)array[1];
 	b = (unsigned int)array[2];
-	if (array[0] < 0 || array[1] < 0 || array[2] < 0)
-		return (-1);
 	rgb = r << 16 | g << 8 | b;
 	return (rgb);
 }
