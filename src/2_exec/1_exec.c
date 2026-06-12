@@ -55,7 +55,6 @@ int	execution(t_game *game)
 		if (timing(&game->exec.play.move) == FAIL)
 			return (FAIL);
 		mlx_put_image_to_window(game->mlx, game->win, game->exec.screen.img, 0, 0);
-		move(game->exec);
 	}
 	return (SUCCESS);
 }
