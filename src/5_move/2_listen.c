@@ -4,6 +4,11 @@
 
 static int	tap_key(int	keycode, t_game *game)
 {
+	t_move	move;
+	t_play	play;
+
+	play = game->exec.play;
+	move = game->exec.play.move;
 	if (keycode == XK_Escape)
 		cleanup_and_exit(game);
 	if (keycode == XK_W || keycode == XK_Up)
