@@ -28,6 +28,7 @@ void		free_mlx_texture(void *mlx, void **target);
 
 /* mlx Loop */
 int	start_graphics(t_game *game);
+int	key_hook(int keycode, void *param);
 
 
 /*execution*/

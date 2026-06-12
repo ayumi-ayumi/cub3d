@@ -46,7 +46,6 @@ static void	handle_key_event(int	keycode, t_game *game)
 		play.dir = turn_vec(play.dir, M_PI_2);
 	if(keycode == XK_Right)
 		play.dir = turn_vec(play.dir, 3 * M_PI_2);
-	return (SUCCESS);
 }
 
 
@@ -55,7 +54,7 @@ int	key_hook(int keycode, void *param)
 	t_game		*game;
 
 	game = (t_game *)param;
-	handle_key_event(game, keycode);
+	handle_key_event(keycode, game);
 	return (0);
 }
 

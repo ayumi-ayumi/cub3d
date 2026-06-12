@@ -38,9 +38,6 @@ static int	init_mlx_texture(t_game *game)
 	game->exec.dir_texture = ft_calloc(5, sizeof(void *));
 	if (!game->exec.dir_texture)
 		return (FAIL);
-	game->exec.screen.img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	if (!game->exec.screen.img)
-		return (FAIL);
 	while (i < 4)
 	{
 		game->exec.dir_texture[i] = load_texture(game, game->config.dir_path[i]);
@@ -113,6 +110,9 @@ int	init_mlx(t_game *game)
 	// render_rect(game, (t_rect){0, 0, SCREEN_WIDTH, SCREEN_HEIGHT / 2, RED_PIXEL});
 	// render_rect(game, (t_rect){0, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2, GREEN_PIXEL});
 	if (init_mlx_texture(game) == FAIL)
+		return (free_win(game), free_mlx(game), FAIL);
+	game->exec.screen.img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (!game->exec.screen.img)
 		return (free_win(game), free_mlx(game), FAIL);
 	return (SUCCESS);
 }

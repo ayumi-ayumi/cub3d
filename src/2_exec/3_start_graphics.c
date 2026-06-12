@@ -15,7 +15,6 @@
 #include <mlx.h>
 
 
-
 int	close_window(void *param)
 {
 	t_game	*game;
@@ -32,7 +31,6 @@ int	start_graphics(t_game *game)
 		return (FAIL);
 	if (!game->exec.dir_texture)
 		return (FAIL);
-	render_map(game);
 	mlx_hook(game->win, 2, 1L << 0, key_hook, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_loop(game->mlx);

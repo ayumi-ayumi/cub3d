@@ -19,6 +19,40 @@ static unsigned int	convert_rgb(int array[3])
 	return (rgb);
 }
 
+static void	init_move(t_move *move)
+{
+	move->time = 0.0;
+	move->old_time = 0.0;
+	move->frame_time = 0.0;
+	move->move_speed = 0.0;
+	move->rot_speed = 0.0;
+}
+
+static void	init_play(t_play *play)
+{
+	play->move.time = 0;
+	play->move.old_time = 0;
+	play->plane = turn_vec(play->dir, -1 * M_PI_2);
+	play->plane.x = play->plane.x * 0.66;
+	play->plane.y = play->plane.y * 0.66;
+	play->ray.x = 0;
+	play->ray.y = 0;
+	play->map.col = 0;
+	play->map.row = 0;
+	play->delta_dist.x = 0;
+	play->delta_dist.y = 0;
+	play->side_dist.x = 0;
+	play->side_dist.y = 0;
+	play->step.col = 0;
+	play->step.row = 0;
+	play->wall_hit = 0;
+	play->side = 0;
+	play->perp_wall_dist = 0;
+	play->cam_x = 0;
+	play->texture_col = 0;
+	init_move(&play->move);
+}
+
 /*populates the game struct with initial data, val 0 can be -0*/
 int	init_play_data(t_game *game, t_exec *exec)
 {
@@ -34,13 +68,11 @@ int	init_play_data(t_game *game, t_exec *exec)
 		exec->play.dir = (t_vec){1, 0};
 	else
 		return (FAIL);
+	init_play(&exec->play) != SUCCESS;
 	exec->ceiling = convert_rgb(game->config.ceiling);
 	exec->floor = convert_rgb(game->config.floor);
-	exec->play.move.time = 0;
-	exec->play.move.old_time = 0;
-	exec->play.plane = turn_vec(exec->play.dir, -1 * M_PI_2);
-	exec->play.plane.x = exec->play.plane.x * 0.66;
-	exec->play.plane.y = exec->play.plane.y * 0.66;
+	exec->dir_texture = NULL;
+	// init_data() TODO
 	return (SUCCESS);
 }
 
