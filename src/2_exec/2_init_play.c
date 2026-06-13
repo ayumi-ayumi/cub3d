@@ -68,7 +68,7 @@ int	init_play_data(t_game *game, t_exec *exec)
 		exec->play.dir = (t_vec){1, 0};
 	else
 		return (FAIL);
-	init_play(&exec->play) != SUCCESS;
+	init_play(&exec->play);
 	exec->ceiling = convert_rgb(game->config.ceiling);
 	exec->floor = convert_rgb(game->config.floor);
 	exec->dir_texture = NULL;
