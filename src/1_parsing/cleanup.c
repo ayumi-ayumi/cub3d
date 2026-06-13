@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:43:33 by asato             #+#    #+#             */
-/*   Updated: 2026/06/02 19:52:52 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/13 14:11:20 by lbueno-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ void	cleanup_and_exit(t_game *game)
 		free_map(&game->map);
 	if (game->config.dir_path)
 		free_string_array(game->config.dir_path);
-	// free_entire_mlx(game);
+	free_entire_mlx(game);
 	exit (0);
 }
