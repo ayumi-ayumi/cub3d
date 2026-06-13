@@ -98,6 +98,7 @@ static int	init_mlx_texture(t_game *game)
 // 	return (0);
 // }
 
+/*initialize mlx, load textures and create buffer screen img*/
 int	init_mlx(t_game *game)
 {
 	nulling_init(game);
