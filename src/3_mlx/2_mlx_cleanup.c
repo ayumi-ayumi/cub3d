@@ -33,7 +33,7 @@ void	free_entire_mlx(t_game *game)
 {
 	int	i;
 
-	if (!&(game->exec) || !game->mlx)
+	if (!game->mlx)//removed check for game->exec because exec is not nulled when initialized
 		return ;
 	i = 0;
 	while (game->exec.dir_texture[i])

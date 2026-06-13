@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 16:40:38 by asato             #+#    #+#             */
-/*   Updated: 2026/06/13 14:39:59 by lbueno-m         ###   ########.fr       */
+/*   Updated: 2026/06/13 18:36:04 by lbueno-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int ac, char **av)
 		return (cleanup_and_exit(&game), 1);
 	if (execution(&game) == FAIL)
 		return (free_entire_mlx(&game), cleanup_and_exit(&game), FAIL);
-//	free_entire_mlx(&game);
+	free_entire_mlx(&game);
 	cleanup_and_exit(&game);
 	return (0);
 }

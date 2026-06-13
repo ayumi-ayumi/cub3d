@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/06/07 14:51:38 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/13 17:44:55 by vlara            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	replace_start_pos_char_0(t_map *map)
 
 	row = map->start_pos.row;
 	col = map->start_pos.col;
-	map->grid[map->start_pos.row][map->start_pos.col] = '0';
+	map->grid[row][col] = '0';//changed to silence comp. error
 }
 
 
