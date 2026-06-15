@@ -95,7 +95,7 @@ typedef struct s_data
 typedef struct s_exec
 {
 	void			**dir_texture;
-	t_data			screen;
+	t_data			scre;
 	int				draw_start;
 	int				draw_end;
 	unsigned int	ceiling;

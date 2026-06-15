@@ -41,7 +41,7 @@ static void	calc_height(t_exec *exec, int perp_wall_dist)
 	//TODO null all play values when initializing
 }
 
-/*loop through every pixel col of the screen*/
+/*loop through every pixel col of the scre*/
 int	raycast(t_game *game, t_exec *exec)
 {
 	int		x;

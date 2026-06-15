@@ -10,7 +10,7 @@ static void	nulling_init(t_game *game)
 	game->mlx = NULL;
 	game->win = NULL;
 	game->exec.dir_texture = NULL;
-	ft_bzero(&game->exec.screen, sizeof(t_data));
+	ft_bzero(&game->exec.scre, sizeof(t_data));
 }
 
 /*if mlx fails NULL will be returned ... guard is in calling function*/
@@ -28,7 +28,7 @@ static void	*load_texture(t_game *game, char *path)
 	return (texture);
 }
 
-/*loading paths to mlx pictures, creating screen img*/
+/*loading paths to mlx pictures, creating scre img*/
 static int	init_mlx_texture(t_game *game)
 {
 	int	i;
@@ -98,16 +98,16 @@ static int	init_mlx_texture(t_game *game)
 // 	return (0);
 // }
 
-static int	init_screen_buffer(t_game *game, t_data *screen)
+static int	init_scre_buffer(t_game *game, t_data *scre)
 {
-	screen->img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	if (!screen->img)
+	scre->img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (!scre->img)
 		return (free_win(game), free_mlx(game), FAIL);
-	screen->addr = mlx_get_data_addr(screen->img, &screen->bbp, &screen->line_length, &screen->endian);
+	scre->addr = mlx_get_data_addr(scre->img, &scre->bbp, &scre->line_length, &scre->endian);
 	return (SUCCESS);
 }
 
-/*initialize mlx, load textures and create buffer screen img*/
+/*initialize mlx, load textures and create buffer scre img*/
 int	init_mlx(t_game *game)
 {
 	nulling_init(game);
@@ -121,7 +121,7 @@ int	init_mlx(t_game *game)
 	// render_rect(game, (t_rect){0, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2, GREEN_PIXEL});
 	if (init_mlx_texture(game) == FAIL)
 		return (free_win(game), free_mlx(game), FAIL);
-	if (init_screen_buffer(game, &game->exec.screen) == FAIL)
+	if (init_scre_buffer(game, &game->exec.scre) == FAIL)
 		return (FAIL);
 	return (SUCCESS);
 }

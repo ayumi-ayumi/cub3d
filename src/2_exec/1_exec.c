@@ -8,16 +8,16 @@ static int	done(void)/*TODO*/
 	return (TRUE);
 }
 
-int	draw(t_game *game, t_move *move, t_data *screen)
+int	draw(t_game *game, t_move *move, t_data *scre)
 {
 		raycast(game, &game->exec);
 		if (timing(move) == FAIL)
 			return (FAIL);
-		mlx_put_image_to_window(game->mlx, game->win, screen->img, 0, 0);
+		mlx_put_image_to_window(game->mlx, game->win, scre->img, 0, 0);
 		return (SUCCESS);
 }
 
-/*setup of screen and start game loop*/
+/*setup of scre and start game loop*/
 int	execution(t_game *game)
 {
 	if (init_mlx(game) == FAIL || game->mlx == NULL
@@ -27,7 +27,7 @@ int	execution(t_game *game)
 		return (FAIL);
 	while (!done())
 	{
-		if (draw(game, &game->exec.play.move, &game->exec.screen) == FAIL)
+		if (draw(game, &game->exec.play.move, &game->exec.scre) == FAIL)
 			return (FAIL);
 	}
 	return (SUCCESS);
@@ -37,8 +37,8 @@ int	execution(t_game *game)
 // Testcode for execute
 // #define mapWidth 24
 // #define mapHeight 24
-// #define screenWidth 640
-// #define screenHeight 480
+// #define screWidth 640
+// #define screHeight 480
 //  int	main(void)
 //  {
 // 	int worldMap[mapWidth][mapHeight]=

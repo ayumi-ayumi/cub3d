@@ -12,7 +12,7 @@ void	put_wall(t_exec *exec, int *i, int tex_x)
 		color = color / 4;
 	while (*i < exec->draw_end)
 	{
-		put_pixel(&exec->screen, exec->play.cam_x, *i, color);
+		put_pixel(&exec->scre, exec->play.cam_x, *i, color);
 		*i += 1;
 	}
 	return ;
