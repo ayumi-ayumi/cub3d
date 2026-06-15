@@ -42,7 +42,7 @@ void		calc_start_values(t_play *play);
 int			timing(t_move *move);
 
 /*rendering*/
-void		draw_line(t_exec *exec);
+void		draw_line(t_exec *exec, int x);
 void		put_pixel(t_data *img, int x, int y, int colour);
-void		put_wall(t_exec *exec, int *i, int tex_x);
+void		put_wall(t_exec *exec, int *i, int tex_x, int x);
 #endif

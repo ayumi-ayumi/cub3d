@@ -54,7 +54,7 @@ int	raycast(t_game *game, t_exec *exec)
 		calc_start_values(&exec->play);
 		dda(game->map.grid, &exec->play);
 		calc_height(exec, exec->play.perp_wall_dist);
-		draw_line(exec);
+		draw_line(exec, x);
 		if (timing(&exec->play.move) != SUCCESS)
 			return (FAIL);
 		x++;
