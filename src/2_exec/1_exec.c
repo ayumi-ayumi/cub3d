@@ -1,11 +1,20 @@
 #include "cub3d.h"
 #include "exec.h"
-#include "libft.h"
 #include <mlx.h>
+#include <stddef.h>
 
 static int	done(void)/*TODO*/
 {
 	return (TRUE);
+}
+
+int	draw(t_game *game, t_move *move, t_data *screen)
+{
+		raycast(game, &game->exec);
+		if (timing(move) == FAIL)
+			return (FAIL);
+		mlx_put_image_to_window(game->mlx, game->win, screen->img, 0, 0);
+		return (SUCCESS);
 }
 
 /*setup of screen and start game loop*/
@@ -18,10 +27,8 @@ int	execution(t_game *game)
 		return (FAIL);
 	while (!done())
 	{
-		raycast(game, &game->exec);
-		if (timing(&game->exec.play.move) == FAIL)
+		if (draw(game, &game->exec.play.move, &game->exec.screen) == FAIL)
 			return (FAIL);
-		mlx_put_image_to_window(game->mlx, game->win, game->exec.screen.img, 0, 0);
 	}
 	return (SUCCESS);
 }
