@@ -7,16 +7,13 @@
 /*initiate whatever possible to 0 or NULL*/
 static void	nulling_init(t_game *game)
 {
-	int	i;
-
-	i = 0;
 	game->mlx = NULL;
 	game->win = NULL;
-	while (i < 5)
-	{
-		game->exec.dir_texture[i].img = NULL;
-		i++;
-	}
+	// while (i < 5)
+	// {
+	// 	game->exec.dir_texture[i].img = NULL;
+	// 	i++;
+	// }
 	ft_bzero(&game->exec.scre, sizeof(t_data));
 	game->exec.scre.img = NULL;
 }

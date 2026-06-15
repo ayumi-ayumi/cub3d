@@ -19,7 +19,6 @@ int	execution(t_game *game)
 	ft_bzero(&game->exec, sizeof(t_exec));
 	if (init_mlx(game) == FAIL)
 		return(FAIL);
-
 	if (init_play_data(game, &game->exec) == FAIL)
 		return (free_entire_mlx(game), FAIL);
 	if (start_graphics(game) == FAIL)
