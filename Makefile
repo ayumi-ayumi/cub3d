@@ -6,7 +6,7 @@
 #    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/06/07 15:17:05 by asato            ###   ########.fr        #
+#    Updated: 2026/06/13 17:58:27 by vlara            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,14 +37,16 @@ SRC			=	main.c \
 				2_exec/1_exec.c \
 				2_exec/2_init_play.c \
 				2_exec/3_start_graphics.c \
+				2_exec/4_move.c \
+				2_exec/utils.c \
 				3_mlx/1_init_mlx.c \
 				3_mlx/2_mlx_cleanup.c \
 				4_raycast/1_raycast.c \
 				4_raycast/2_start_values.c \
-				4_raycast/3_time.c \
-				5_render/1_draw.c\
-				5_render/2_put_pixel.c\
-				5_render/3_put_wall.c \
+				4_raycast/3_draw.c \
+				4_raycast/4_put_pixel.c \
+				4_raycast/5_put_wall.c \
+				4_raycast/6_time.c \
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 
