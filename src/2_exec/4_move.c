@@ -29,9 +29,6 @@ static void	move_side(t_play *play, char dir)
 /*changes pos and dir according to key and recalculates and sends img to win*/
 static void	handle_key_event(int	keycode, t_game *game)
 {
-	t_play	play;
-
-	play = game->exec.play;
 	if (keycode == XK_Escape)
 		cleanup_and_exit(game);
 	if (keycode == XK_w || keycode == XK_Up)
@@ -43,9 +40,9 @@ static void	handle_key_event(int	keycode, t_game *game)
 	if (keycode == XK_d)
 		move_side(&game->exec.play, 'r');
 	if(keycode == XK_Left)
-		play.dir = turn_vec(play.dir, M_PI_2);
+		game->exec.play.dir = turn_vec(game->exec.play.dir, M_PI_2);
 	if(keycode == XK_Right)
-		play.dir = turn_vec(play.dir, 3 * M_PI_2);
+		game->exec.play.dir = turn_vec(game->exec.play.dir, 3 * M_PI_2);
 	raycast(game, &game->exec);
 	mlx_put_image_to_window(game->mlx, game->win, game->exec.screen.img, 0, 0);
 }
