@@ -50,7 +50,7 @@ static int	init_mlx_texture(t_game *game)
 		if (!(game->exec.dir_texture[i].img))
 		{
 			j = i;
-			while (j > 0)
+			while (j >= 0)
 			{
 				free_mlx_texture(game->mlx, (void **)&game->exec.dir_texture[j].img);
 				ft_free((void **)&game->exec.dir_texture[j].img);
