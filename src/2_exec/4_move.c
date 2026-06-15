@@ -30,7 +30,10 @@ static void	move_side(t_play *play, char dir)
 static void	handle_key_event(int	keycode, t_game *game)
 {
 	if (keycode == XK_Escape)
+	{
+		free_entire_mlx(game);
 		cleanup_and_exit(game);
+	}
 	if (keycode == XK_w || keycode == XK_Up)
 		move_back_forth(&game->exec.play, 1);
 	if (keycode == XK_s || keycode == XK_Down)

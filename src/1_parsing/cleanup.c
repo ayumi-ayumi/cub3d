@@ -54,6 +54,6 @@ void	cleanup_and_exit(t_game *game)
 		free_map(&game->map);
 	if (game->config.dir_path)
 		free_string_array(game->config.dir_path);
-	free_entire_mlx(game);
+//	free_entire_mlx(game);
 	exit (0);
 }
