@@ -9,11 +9,7 @@ static void	nulling_init(t_game *game)
 {
 	game->mlx = NULL;
 	game->win = NULL;
-	// while (i < 5)
-	// {
-	// 	game->exec.dir_texture[i].img = NULL;
-	// 	i++;
-	// }
+	game->exec.dir_texture = NULL;
 	ft_bzero(&game->exec.scre, sizeof(t_data));
 	game->exec.scre.img = NULL;
 }
@@ -53,9 +49,9 @@ static int	init_mlx_texture(t_game *game)
 			while (j >= 0)
 			{
 				free_mlx_texture(game->mlx, (void **)&game->exec.dir_texture[j].img);
-				ft_free((void **)&game->exec.dir_texture[j].img);
 				j--;
 			}
+			ft_free((void **)&game->exec.dir_texture);//we call calloc only once for this so we also call free only once
 			return (FAIL);
 		}
 		game->exec.dir_texture[i].addr = mlx_get_data_addr(game->exec.dir_texture[i].img,
