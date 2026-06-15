@@ -98,6 +98,15 @@ static int	init_mlx_texture(t_game *game)
 // 	return (0);
 // }
 
+static int	init_screen_buffer(t_game *game, t_data *screen)
+{
+	screen->img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (!screen->img)
+		return (free_win(game), free_mlx(game), FAIL);
+	screen->addr = mlx_get_data_addr(screen->img, &screen->bbp, &screen->line_length, &screen->endian);
+	return (SUCCESS);
+}
+
 /*initialize mlx, load textures and create buffer screen img*/
 int	init_mlx(t_game *game)
 {
@@ -112,8 +121,7 @@ int	init_mlx(t_game *game)
 	// render_rect(game, (t_rect){0, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT / 2, GREEN_PIXEL});
 	if (init_mlx_texture(game) == FAIL)
 		return (free_win(game), free_mlx(game), FAIL);
-	game->exec.screen.img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	if (!game->exec.screen.img)
-		return (free_win(game), free_mlx(game), FAIL);
+	if (init_screen_buffer(game, &game->exec.screen) == FAIL)
+		return (FAIL);
 	return (SUCCESS);
 }
