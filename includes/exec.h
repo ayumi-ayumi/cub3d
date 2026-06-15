@@ -34,6 +34,7 @@ int	key_hook(int keycode, void *param);
 /*execution*/
 int			init_play_data(t_game *game, t_exec *exec);
 t_vec		turn_vec(t_vec vec, double angle);
+int			draw(t_game *game, t_move *move, t_data *screen);
 
 /*raycast*/
 int			raycast(t_game *game, t_exec *exec);

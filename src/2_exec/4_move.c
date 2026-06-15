@@ -43,8 +43,7 @@ static void	handle_key_event(int	keycode, t_game *game)
 		game->exec.play.dir = turn_vec(game->exec.play.dir, M_PI_2);
 	if(keycode == XK_Right)
 		game->exec.play.dir = turn_vec(game->exec.play.dir, 3 * M_PI_2);
-	raycast(game, &game->exec);
-	mlx_put_image_to_window(game->mlx, game->win, game->exec.screen.img, 0, 0);
+	draw(game, &game->exec.play.move, &game->exec.screen);
 }
 
 
