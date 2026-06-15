@@ -40,7 +40,7 @@ int	main(int ac, char **av)
 	if (!load_map_and_config(&game))
 		return (cleanup_and_exit(&game), 1);
 	if (execution(&game) == FAIL)
-		return (cleanup_and_exit(&game), FAIL);//TODO specific freeing
+		return (cleanup_and_exit(&game), FAIL);
 	free_entire_mlx(&game);
 	cleanup_and_exit(&game);
 	return (0);

@@ -3,6 +3,7 @@
 #include "libft.h"
 #include <mlx.h>
 #include <stddef.h>
+#include <stdio.h>/*for debugging */
 
 int	draw(t_game *game, t_move *move, t_data *scre)
 {
