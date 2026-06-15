@@ -20,15 +20,6 @@ static unsigned int	convert_rgb(int array[3])
 	return (rgb);
 }
 
-static void	init_move(t_move *move)
-{
-	move->time = 0.0;
-	move->old_time = 0.0;
-	move->frame_time = 0.0;
-	move->move_speed = 0.0;
-	move->rot_speed = 0.0;
-}
-
 
 /*populates the game struct with initial data, val 0 can be -0*/
 int	init_play_data(t_game *game, t_exec *exec)
@@ -50,10 +41,8 @@ int	init_play_data(t_game *game, t_exec *exec)
 	exec->play.plane.x = exec->play.plane.x * 0.66;
 	exec->play.plane.y = exec->play.plane.y * 0.66;
 	ft_bzero(&exec->play.move, sizeof(t_move));
-	init_move(&exec->play.move);
 	exec->ceiling = convert_rgb(game->config.ceiling);
 	exec->floor = convert_rgb(game->config.floor);
-	exec->dir_texture = NULL;
 	return (SUCCESS);
 }
 
