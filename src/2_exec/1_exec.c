@@ -1,12 +1,8 @@
 #include "cub3d.h"
 #include "exec.h"
+#include "libft.h"
 #include <mlx.h>
 #include <stddef.h>
-
-static int	done(void)/*TODO*/
-{
-	return (TRUE);
-}
 
 int	draw(t_game *game, t_move *move, t_data *scre)
 {
@@ -20,16 +16,14 @@ int	draw(t_game *game, t_move *move, t_data *scre)
 /*setup of scre and start game loop*/
 int	execution(t_game *game)
 {
-	if (init_mlx(game) == FAIL || game->mlx == NULL
-		|| init_play_data(game, &game->exec) == FAIL)
-		return (FAIL);
+	ft_bzero(&game->exec, sizeof(t_exec));
+	if (init_mlx(game) == FAIL)
+		return(FAIL);
+
+	if (init_play_data(game, &game->exec) == FAIL)
+		return (free_entire_mlx(game), FAIL);
 	if (start_graphics(game) == FAIL)
-		return (FAIL);
-	while (!done())
-	{
-		if (draw(game, &game->exec.play.move, &game->exec.scre) == FAIL)
-			return (FAIL);
-	}
+		return (free_entire_mlx(game), FAIL);
 	return (SUCCESS);
 }
 

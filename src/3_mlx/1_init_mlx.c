@@ -7,10 +7,18 @@
 /*initiate whatever possible to 0 or NULL*/
 static void	nulling_init(t_game *game)
 {
+	int	i;
+
+	i = 0;
 	game->mlx = NULL;
 	game->win = NULL;
-	game->exec.dir_texture = NULL;
+	while (i < 5)
+	{
+		game->exec.dir_texture[i].img = NULL;
+		i++;
+	}
 	ft_bzero(&game->exec.scre, sizeof(t_data));
+	game->exec.scre.img = NULL;
 }
 
 /*if mlx fails NULL will be returned ... guard is in calling function*/
@@ -35,24 +43,28 @@ static int	init_mlx_texture(t_game *game)
 	int	j;
 
 	i = 0;
-	game->exec.dir_texture = ft_calloc(5, sizeof(void *));
+	game->exec.dir_texture = ft_calloc(5, sizeof(t_data));
 	if (!game->exec.dir_texture)
 		return (FAIL);
 	while (i < 4)
 	{
-		game->exec.dir_texture[i] = load_texture(game, game->config.dir_path[i]);
+		game->exec.dir_texture[i].img = load_texture(game, game->config.dir_path[i]);
 		// ft_free((void **)&game->config.dir_path[i]);
-		if (!(game->exec.dir_texture[i]))
+		if (!(game->exec.dir_texture[i].img))
 		{
 			j = i;
 			while (j > 0)
 			{
-				free_mlx_texture(game->mlx, (void **)&game->exec.dir_texture[j]);
-				ft_free((void **)&game->exec.dir_texture[j]);
+				free_mlx_texture(game->mlx, (void **)&game->exec.dir_texture[j].img);
+				ft_free((void **)&game->exec.dir_texture[j].img);
 				j--;
 			}
 			return (FAIL);
 		}
+		game->exec.dir_texture[i].addr = mlx_get_data_addr(game->exec.dir_texture[i].img,
+				&game->exec.dir_texture[i].bpp, &game->exec.dir_texture[i].line_length,
+				&game->exec.dir_texture[i].endian);
+
 		i++;
 	}
 	return (SUCCESS);
@@ -100,10 +112,12 @@ static int	init_mlx_texture(t_game *game)
 
 static int	init_scre_buffer(t_game *game, t_data *scre)
 {
+	scre->img = NULL;
 	scre->img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!scre->img)
 		return (free_win(game), free_mlx(game), FAIL);
-	scre->addr = mlx_get_data_addr(scre->img, &scre->bbp, &scre->line_length, &scre->endian);
+	scre->addr = mlx_get_data_addr(scre->img,
+			&scre->bpp, &scre->line_length, &scre->endian);
 	return (SUCCESS);
 }
 
@@ -122,6 +136,6 @@ int	init_mlx(t_game *game)
 	if (init_mlx_texture(game) == FAIL)
 		return (free_win(game), free_mlx(game), FAIL);
 	if (init_scre_buffer(game, &game->exec.scre) == FAIL)
-		return (FAIL);
+		return (free_entire_mlx(game), FAIL);
 	return (SUCCESS);
 }
