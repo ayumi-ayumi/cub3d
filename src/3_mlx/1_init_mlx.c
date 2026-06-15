@@ -10,6 +10,7 @@ static void	nulling_init(t_game *game)
 	game->mlx = NULL;
 	game->win = NULL;
 	game->exec.dir_texture = NULL;
+	ft_bzero(&game->exec.screen, sizeof(t_data));
 }
 
 /*if mlx fails NULL will be returned ... guard is in calling function*/
