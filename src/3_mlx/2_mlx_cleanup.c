@@ -42,6 +42,8 @@ void	free_entire_mlx(t_game *game)
 		ft_free((void **)&game->exec.dir_texture[i]);
 		i++;
 	}
+	// mlx_destroy_image(game->mlx, game->minimap.img);
+
 	// ft_free((void **)&game->config.dir_path);
 	// free_string_array(game->config.dir_path);
 	free_win(game);

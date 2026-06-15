@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   201start_graphics.c                                :+:      :+:    :+:   */
+/*   3_start_graphics.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 15:19:26 by asato             #+#    #+#             */
-/*   Updated: 2026/06/07 15:19:59 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/15 18:56:59 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_tile(t_game *game, int row, int col)
 	tile = game->map.grid[row][col];
 	if (tile == '1')
 		mlx_put_image_to_window(game->mlx, game->win,
-			texture[0], col * TEXTURE_WIDTH, row * TEXTURE_HEIGHT);
+			texture[3], col * TEXTURE_WIDTH, row * TEXTURE_HEIGHT);
 	if (tile == '0')
 		mlx_put_image_to_window(game->mlx, game->win,
 			texture[1], col * TEXTURE_WIDTH, row * TEXTURE_HEIGHT);
@@ -88,7 +88,8 @@ int	start_graphics(t_game *game)
 		return (FAIL);
 	if (!game->exec.dir_texture)
 		return (FAIL);
-	render_map(game);
+	// render_map(game);
+	minimap(game);
 	mlx_hook(game->win, 2, 1L << 0, key_hook, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_loop(game->mlx);
