@@ -1,5 +1,6 @@
 #include "cub3d.h"
 #include "exec.h"
+#include "libft.h"
 #include <mlx.h>
 
 static int	done(void)/*TODO*/
@@ -10,16 +11,14 @@ static int	done(void)/*TODO*/
 /*setup of screen and start game loop*/
 int	execution(t_game *game)
 {
-	t_exec	exec;
-	
 	if (init_mlx(game) == FAIL || game->mlx == NULL
-		|| init_play_data(game, &exec) == FAIL)
+		|| init_play_data(game, &game->exec) == FAIL)
 		return (FAIL);
 	if (start_graphics(game) == FAIL)
 		return (FAIL);
 	while (!done())
 	{
-		raycast(game, &exec);
+		raycast(game, &game->exec);
 		if (timing(&game->exec.play.move) == FAIL)
 			return (FAIL);
 		mlx_put_image_to_window(game->mlx, game->win, game->exec.screen.img, 0, 0);

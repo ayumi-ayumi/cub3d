@@ -1,5 +1,6 @@
 #include "cub3d.h"/*for t_game and Macros*/
 #include "exec.h"/*for t_exec*/
+#include "libft.h"/*for ft_bezero*/
 #include <math.h> /*for sin and cos*/
 
 /*converts int[3] to int by shifting bits to their position*/
@@ -28,34 +29,11 @@ static void	init_move(t_move *move)
 	move->rot_speed = 0.0;
 }
 
-static void	init_play(t_play *play)
-{
-	play->move.time = 0;
-	play->move.old_time = 0;
-	play->plane = turn_vec(play->dir, -1 * M_PI_2);
-	play->plane.x = play->plane.x * 0.66;
-	play->plane.y = play->plane.y * 0.66;
-	play->ray.x = 0;
-	play->ray.y = 0;
-	play->map.col = 0;
-	play->map.row = 0;
-	play->delta_dist.x = 0;
-	play->delta_dist.y = 0;
-	play->side_dist.x = 0;
-	play->side_dist.y = 0;
-	play->step.col = 0;
-	play->step.row = 0;
-	play->wall_hit = 0;
-	play->side = 0;
-	play->perp_wall_dist = 0;
-	play->cam_x = 0;
-	play->texture_col = 0;
-	init_move(&play->move);
-}
 
 /*populates the game struct with initial data, val 0 can be -0*/
 int	init_play_data(t_game *game, t_exec *exec)
 {
+	ft_bzero(&exec->play, sizeof(t_play));
 	exec->play.pos.x = (double)game->map.start_pos.col + 0.5;
 	exec->play.pos.y = (double)game->map.height - (double)game->map.start_pos.row + 0.5;
 	if (game->map.start_orientation == 'N')
@@ -68,11 +46,14 @@ int	init_play_data(t_game *game, t_exec *exec)
 		exec->play.dir = (t_vec){1, 0};
 	else
 		return (FAIL);
-	init_play(&exec->play);
+	exec->play.plane = turn_vec(exec->play.dir, -1 * M_PI_2);
+	exec->play.plane.x = exec->play.plane.x * 0.66;
+	exec->play.plane.y = exec->play.plane.y * 0.66;
+	ft_bzero(&exec->play.move, sizeof(t_move));
+	init_move(&exec->play.move);
 	exec->ceiling = convert_rgb(game->config.ceiling);
 	exec->floor = convert_rgb(game->config.floor);
 	exec->dir_texture = NULL;
-	// init_data() TODO
 	return (SUCCESS);
 }
 

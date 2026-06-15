@@ -9,7 +9,6 @@ static void	nulling_init(t_game *game)
 {
 	game->mlx = NULL;
 	game->win = NULL;
-	// ft_bzero(&exec->screen, sizeof(t_data));
 	game->exec.dir_texture = NULL;
 }
 
