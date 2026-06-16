@@ -13,8 +13,8 @@ static int	get_texture_x(t_play *play)
 	return (tex_x);
 }
 
-/*draw screen col from top down*/
-void	draw_line(t_exec *exec)
+/*draw scre col from top down*/
+void	draw_line(t_exec *exec, int x)
 {
 	int	i;
 	int	tex_x;
@@ -23,14 +23,14 @@ void	draw_line(t_exec *exec)
 	tex_x = get_texture_x(&exec->play);
 	while (i < exec->draw_start - 1)
 	{
-		put_pixel(&exec->screen, exec->play.cam_x, i, exec->ceiling);
+		put_pixel(&exec->scre, x, i, exec->ceiling);
 		i++;
 	}
 	while (i < exec->draw_end)
-		put_wall(exec, &i, tex_x);
+		put_wall(exec, &i, tex_x, x);
 	while(i < SCREEN_HEIGHT)
 	{
-		put_pixel(&exec->screen, exec->play.cam_x, i, exec->floor);
+		put_pixel(&exec->scre, x, i, exec->floor);
 		i++;
 	}
 	return ;

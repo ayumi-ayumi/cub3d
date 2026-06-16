@@ -60,6 +60,8 @@ typedef	struct s_move
 	double	time;//time in milliseconds
 	double	old_time;
 	double	frame_time;
+	double	move_speed;
+	double	rot_speed;
 }	t_move;
 
 typedef struct s_play
@@ -84,7 +86,7 @@ typedef struct s_data
 {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
+	int		bpp;
 	int		line_length;
 	int		endian;
 }			t_data;
@@ -92,13 +94,13 @@ typedef struct s_data
 /*mlx img for walls*/
 typedef struct s_exec
 {
-	void	**dir_texture;
-	t_data	screen;
-	int		draw_start;
-	int		draw_end;
-	int		ceiling;
-	int		floor;
-	t_play	play;
+	t_data			*dir_texture;
+	t_data			scre;
+	int				draw_start;
+	int				draw_end;
+	unsigned int	ceiling;
+	unsigned int	floor;
+	t_play			play;
 }			t_exec;
 
 /*paths to wall image files*/

@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 15:19:26 by asato             #+#    #+#             */
-/*   Updated: 2026/06/15 18:56:59 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/16 15:23:22 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ int	start_graphics(t_game *game)
 {
 	if (!game || !game->mlx || !game->win)
 		return (FAIL);
-	if (!game->exec.dir_texture)
-		return (FAIL);
-	// render_map(game);
+	// if (!game->exec.dir_texture)//this is causing a segv
+	// 	return (FAIL);
+	// draw(game, &game->exec.play.move,&game->exec.scre);
 	minimap(game);
 	mlx_hook(game->win, 2, 1L << 0, key_hook, game);
 	mlx_hook(game->win, 17, 0, close_window, game);

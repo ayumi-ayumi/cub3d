@@ -1,11 +1,35 @@
 #include "cub3d.h"
 #include "exec.h"
+#include "libft.h"
 #include <mlx.h>
+#include <stddef.h>
+#include <stdio.h>/*for debugging */
 
-static int	done(void)/*TODO*/
+<<<<<<< Updated upstream
+int	draw(t_game *game, t_move *move, t_data *scre)
 {
-	return (TRUE);
+		raycast(game, &game->exec);
+		if (timing(move) == FAIL)
+			return (FAIL);
+		mlx_put_image_to_window(game->mlx, game->win, scre->img, 0, 0);
+		return (SUCCESS);
 }
+
+/*setup of scre and start game loop*/
+int	execution(t_game *game)
+{
+	ft_bzero(&game->exec, sizeof(t_exec));
+	if (init_mlx(game) == FAIL)
+		return(FAIL);
+	if (init_play_data(game, &game->exec) == FAIL)
+		return (free_entire_mlx(game), FAIL);
+	if (start_graphics(game) == FAIL)
+		return (free_entire_mlx(game), FAIL);
+=======
+// static int	done(void)/*TODO*/
+// {
+// 	return (TRUE);
+// }
 
 /*converts grid to coords (values stored in cols)*/
 /*
@@ -16,7 +40,7 @@ static int	convert_grid_to_coords(t_map map)
 	int	max_col;
 	int	max_row;
 	char **temp;
-	
+
 	max_row = map.height - 1;
 	max_col = map.width - 1;
 	temp = map.grid;
@@ -43,16 +67,17 @@ static int	convert_grid_to_coords(t_map map)
 int	execution(t_game *game)
 {
 	t_exec	exec;
-	
+
 	if (init_mlx(game) == FAIL || game->mlx == NULL
 		|| init_play_data(game, &exec) == FAIL)
 		return (FAIL);
 	if (start_graphics(game) == FAIL)
 		return (FAIL);
-	while (!done())
-	{
-		raycast(game, &exec);
-	}
+	// while (!done())
+	// {
+	// 	raycast(game, &exec);
+	// }
+>>>>>>> Stashed changes
 	return (SUCCESS);
 }
 
@@ -60,8 +85,8 @@ int	execution(t_game *game)
 // Testcode for execute
 // #define mapWidth 24
 // #define mapHeight 24
-// #define screenWidth 640
-// #define screenHeight 480
+// #define screWidth 640
+// #define screHeight 480
 //  int	main(void)
 //  {
 // 	int worldMap[mapWidth][mapHeight]=
@@ -92,5 +117,3 @@ int	execution(t_game *game)
 // 	  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 // 	};
 //  }
-
-

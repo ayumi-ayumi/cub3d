@@ -1,9 +1,10 @@
 # custom
 *.json
-.chache
+.cache
+.chache/*
 .gitignore
 tags
-cub3d
+cub3D
 obj/*
 .clangd
 *.json

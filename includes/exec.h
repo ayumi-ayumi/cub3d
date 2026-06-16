@@ -28,18 +28,21 @@ void		free_mlx_texture(void *mlx, void **target);
 
 /* mlx Loop */
 int	start_graphics(t_game *game);
+int	key_hook(int keycode, void *param);
 void	minimap(t_game *game);
 
 /*execution*/
 int			init_play_data(t_game *game, t_exec *exec);
+t_vec		turn_vec(t_vec vec, double angle);
+int			draw(t_game *game, t_move *move, t_data *screen);
 
 /*raycast*/
 int			raycast(t_game *game, t_exec *exec);
 void		calc_start_values(t_play *play);
-int			timing(t_play *play);
+int			timing(t_move *move);
 
 /*rendering*/
-void		draw_line(t_exec *exec);
+void		draw_line(t_exec *exec, int x);
 void		put_pixel(t_data *img, int x, int y, int colour);
-void		put_wall(t_exec *exec, int *i, int tex_x);
+void		put_wall(t_exec *exec, int *i, int tex_x, int x);
 #endif
