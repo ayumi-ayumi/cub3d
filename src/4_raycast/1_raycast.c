@@ -46,12 +46,13 @@ static void	calc_height(t_exec *exec, int perp_wall_dist)
 int	raycast(t_game *game, t_exec *exec)
 {
 	int		x;
+	double	cam_x;
 
 	x = 0;
 	while (x < SCREEN_WIDTH)
 	{
-		exec->play.cam_x = 2 * (double)x / (double)SCREEN_WIDTH - 1;
-		calc_start_values(&exec->play);
+		cam_x = 2 * (double)x / (double)SCREEN_WIDTH - 1;
+		calc_start_values(&exec->play, cam_x);
 		dda(game->map.grid, &exec->play);
 		calc_height(exec, exec->play.perp_wall_dist);
 		draw_line(exec, x);

@@ -38,7 +38,7 @@ int			draw(t_game *game, t_move *move, t_data *screen);
 
 /*raycast*/
 int			raycast(t_game *game, t_exec *exec);
-void		calc_start_values(t_play *play);
+void		calc_start_values(t_play *play, double cam_x);
 int			timing(t_move *move);
 
 /*rendering*/

@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/06/16 11:15:51 by chagen           ###   ########.fr       */
+/*   Updated: 2026/06/16 11:22:09 by chagen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ typedef struct s_play
 	char	side;//which wall side
 	double	perp_wall_dist;
 	t_move	move;
-	double	cam_x;
 	int		texture_col;
 }	t_play;
 
