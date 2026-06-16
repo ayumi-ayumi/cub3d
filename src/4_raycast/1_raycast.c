@@ -17,7 +17,7 @@ static void	dda(char **grid, t_play *play)
 			play->map.row += play->step.row;
 			play->side = NORTH_SOUTH;
 		}
-		if (grid[(int)play->map.row][(int)play->map.col] > 0)
+		if (grid[(int)play->map.row][(int)play->map.col] == '1')
 			play->wall_hit = TRUE;
 	}
 	if (play->side == 0)
@@ -26,14 +26,14 @@ static void	dda(char **grid, t_play *play)
 		play->perp_wall_dist = play->side_dist.y - play->delta_dist.y;
 }
 
-static void	calc_height(t_exec *exec, int perp_wall_dist)
+static void	calc_height(t_exec *exec, double perp_wall_dist)
 {
 	int	line_height;
 
-	if (perp_wall_dist <= 0.02)
+	if (perp_wall_dist <= 0.002)
 		line_height = SCREEN_HEIGHT;
 	else 
-		line_height = (int)SCREEN_HEIGHT / perp_wall_dist;
+		line_height = (int)(SCREEN_HEIGHT / perp_wall_dist);
 	exec->draw_start = (-line_height / 2) +  (SCREEN_HEIGHT / 2);
 	if (exec->draw_start < 0)
 		exec->draw_start = 0;
@@ -51,14 +51,14 @@ int	raycast(t_game *game, t_exec *exec)
 	x = 0;
 	while (x < SCREEN_WIDTH)
 	{
-		cam_x = 2 * (double)x / (double)SCREEN_WIDTH - 1;
+		cam_x = 2.0 * (double)x / (double)SCREEN_WIDTH - 1.0;
 		calc_start_values(&exec->play, cam_x);
 		dda(game->map.grid, &exec->play);
 		calc_height(exec, exec->play.perp_wall_dist);
 		draw_line(exec, x);
-		if (timing(&exec->play.move) != SUCCESS)
-			return (FAIL);
 		x++;
 	}
+	if (timing(&exec->play.move) != SUCCESS)
+		return (FAIL);
 	return (SUCCESS);
 }

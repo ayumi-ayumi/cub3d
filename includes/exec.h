@@ -1,8 +1,8 @@
 #ifndef EXEC_H
 # define EXEC_H
 
-# define SCREEN_HEIGHT 48
-# define SCREEN_WIDTH 64
+# define SCREEN_HEIGHT 480
+# define SCREEN_WIDTH 640
 # define TEXTURE_WIDTH 32
 # define TEXTURE_HEIGHT 32
 # define NORTH_SOUTH 1
