@@ -39,7 +39,7 @@ static void	calc_height(t_exec *exec, double perp_wall_dist)
 		exec->draw_start = 0;
 	exec->draw_end = (line_height / 2) +  (SCREEN_HEIGHT / 2);
 	if (exec->draw_end >= SCREEN_HEIGHT)
-		exec->draw_end = SCREEN_HEIGHT - 1;
+		exec->draw_end = SCREEN_HEIGHT;
 }
 
 /*loop through every pixel col of the scre*/
@@ -58,7 +58,5 @@ int	raycast(t_game *game, t_exec *exec)
 		draw_line(exec, x);
 		x++;
 	}
-	if (timing(&exec->play.move) != SUCCESS)
-		return (FAIL);
 	return (SUCCESS);
 }

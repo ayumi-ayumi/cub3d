@@ -20,7 +20,10 @@ int	timing(t_move *move)
 	move->old_time = move->time;
 	if (get_time(move) != SUCCESS)
 		return (FAIL);
-	move->frame_time = (move->time - move->old_time) / 1000;
+	if (move->old_time == 0)
+		move->frame_time = 0.0;
+	else
+		move->frame_time = (move->time - move->old_time) / 1000.0;
 	move->steplength = (move->frame_time) * 5.0;
 	move->radians = (move->frame_time) * 3.0;
 	return (SUCCESS);
