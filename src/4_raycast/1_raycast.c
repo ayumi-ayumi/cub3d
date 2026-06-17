@@ -58,5 +58,6 @@ int	raycast(t_game *game, t_exec *exec)
 		draw_line(exec, x);
 		x++;
 	}
+	draw_mini_map(&game->map, &exec->play, &exec->scre);
 	return (SUCCESS);
 }
