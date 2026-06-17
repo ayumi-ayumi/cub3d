@@ -5,6 +5,8 @@
 # define SCREEN_WIDTH 640
 # define TEXTURE_WIDTH 32
 # define TEXTURE_HEIGHT 32
+# define MOVESPEED 0.0125
+# define ROTSPEED 0.015
 # define NORTH_SOUTH 1
 # define WEST_EAST 0
 

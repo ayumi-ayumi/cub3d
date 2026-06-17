@@ -3,13 +3,15 @@
 #include <X11/keysym.h>/*for keycode*/
 #include <math.h>/*for pi*/
 #include <mlx.h>
-
+#include <stdio.h>
 
 /*moves with WDSA keys*/
 static void	move_back_forth(t_play *play, int dir)
 {
-	play->pos.x = play->pos.x + dir * (play->dir.x * play->move.move_speed);
-	play->pos.y = play->pos.y + dir * (play->dir.y * play->move.move_speed);
+	// play->pos.x = play->pos.x + dir * (play->dir.x * play->move.steplength);
+	// play->pos.y = play->pos.y + dir * (play->dir.y * play->move.steplength);
+	play->pos.x = play->pos.x + dir * (play->dir.x * MOVESPEED);
+	play->pos.y = play->pos.y + dir * (play->dir.y * MOVESPEED);
 }
 
 static void	move_side(t_play *play, char dir)
@@ -20,10 +22,12 @@ static void	move_side(t_play *play, char dir)
 	if (dir == 'l')
 		factor = 1;
 	if (dir == 'r')
-		factor = 3;
+		factor = -1;
 	new_dir = turn_vec(play->dir, (double)factor * M_PI_2);
-	play->pos.x = play->pos.x + (new_dir.x * play->move.move_speed);
-	play->pos.y = play->pos.y + (new_dir.y * play->move.move_speed);
+	// play->pos.x = play->pos.x + (new_dir.x * play->move.steplength);
+	// play->pos.y = play->pos.y + (new_dir.y * play->move.steplength);
+	play->pos.x = play->pos.x + (new_dir.x * MOVESPEED);
+	play->pos.y = play->pos.y + (new_dir.y * MOVESPEED);
 }
 
 /*changes pos and dir according to key and recalculates and sends img to win*/
@@ -43,9 +47,10 @@ static void	handle_key_event(int	keycode, t_game *game)
 	if (keycode == XK_d)
 		move_side(&game->exec.play, 'r');
 	if(keycode == XK_Left)
-		game->exec.play.dir = turn_vec(game->exec.play.dir, M_PI_2);
+		game->exec.play.dir = turn_vec(game->exec.play.dir, M_PI_2 * ROTSPEED);
 	if(keycode == XK_Right)
-		game->exec.play.dir = turn_vec(game->exec.play.dir, 3 * M_PI_2);
+		game->exec.play.dir = turn_vec(game->exec.play.dir, 2 * M_PI - M_PI_2 * ROTSPEED);
+	printf("frametime  %.5lf, pos.x = %.2lf pos.y = %.2lf\n", game->exec.play.move.frame_time, game->exec.play.pos.x, game->exec.play.pos.y);
 	draw(game, &game->exec.play.move, &game->exec.scre);
 }
 

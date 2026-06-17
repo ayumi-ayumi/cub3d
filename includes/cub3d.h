@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/06/16 11:22:09 by chagen           ###   ########.fr       */
+/*   Updated: 2026/06/17 12:29:30 by chagen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ typedef	struct s_move
 {
 	double	time;//time in milliseconds
 	double	old_time;
-	double	frame_time;
-	double	move_speed;
-	double	rot_speed;
+	double	frame_time;//time in seconds
+	double	steplength;
+	double	radians;
 }	t_move;
 
 typedef struct s_play
