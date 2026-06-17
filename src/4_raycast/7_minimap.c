@@ -1,7 +1,6 @@
 #include "cub3d.h"
 #include "exec.h"/*for put_pixel*/
 #include <math.h>
-#include <stdio.h>/*for debuggin*/
 
 static int	on_pos(t_play *play, int i, int j)
 {
@@ -32,7 +31,6 @@ static void	put_dir(t_map map, t_data *screen, t_play play)
 	while(t <= 2.0)
 	{
 		pixel = convert(add_vec(play.pos, mult_vec(t, play.dir)));
-		printf("hello from put_dir %d, %d \n", pixel.col, pixel.row);
 		if (pixel.col > max.col || pixel.row >  max.row || pixel.col < 0 || pixel.row < 0)
 			break;
 		put_pixel(screen, pixel.col, pixel.row, 0xFFFFFF);
