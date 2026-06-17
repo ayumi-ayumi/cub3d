@@ -3,7 +3,6 @@
 #include <X11/keysym.h>/*for keycode*/
 #include <math.h>/*for pi*/
 #include <mlx.h>
-#include <stdio.h>
 
 /*moves with WDSA keys*/
 static void	move_back_forth(t_game *game, t_play *play, int dir)
@@ -56,7 +55,6 @@ static void	handle_key_event(int	keycode, t_game *game)
 		game->exec.play.dir = turn_vec(game->exec.play.dir, M_PI_2 * ROTSPEED);
 	if(keycode == XK_Right)
 		game->exec.play.dir = turn_vec(game->exec.play.dir, 2 * M_PI - M_PI_2 * ROTSPEED);
-	printf("frametime  %.5lf, pos.x = %.2lf pos.y = %.2lf\n", game->exec.play.move.frame_time, game->exec.play.pos.x, game->exec.play.pos.y);
 	draw(game, &game->exec.play.move, &game->exec.scre);
 }
 
