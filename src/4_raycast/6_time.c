@@ -1,7 +1,7 @@
 #include "cub3d.h"
 #include <mlx.h>
 #include <sys/time.h>
-
+/* populates move->time in milliseconds*/
 static int	get_time(t_move *move)
 {
 	struct timeval tv;
@@ -14,13 +14,17 @@ static int	get_time(t_move *move)
 
 
 /*frame time is the time the frame has taken in seconds*/
+/*speed is 5 squares per second and 3 radians per second*/
 int	timing(t_move *move)
 {
 	move->old_time = move->time;
 	if (get_time(move) != SUCCESS)
 		return (FAIL);
-	move->frame_time = (move->time - move->old_time) / 1000.0;
-	move->move_speed = (move->frame_time) * 5.0;
-	move->rot_speed = (move->frame_time) * 3.0;
+	if (move->old_time == 0)
+		move->frame_time = 0.0;
+	else
+		move->frame_time = (move->time - move->old_time) / 1000.0;
+	move->steplength = (move->frame_time) * 5.0;
+	move->radians = (move->frame_time) * 3.0;
 	return (SUCCESS);
 }

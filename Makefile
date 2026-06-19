@@ -6,7 +6,7 @@
 #    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/06/13 17:58:27 by vlara            ###   ########.fr        #
+#    Updated: 2026/06/17 15:52:08 by chagen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRC			=	main.c \
 				4_raycast/4_put_pixel.c \
 				4_raycast/5_put_wall.c \
 				4_raycast/6_time.c \
+				4_raycast/7_minimap.c \
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 
