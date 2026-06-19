@@ -8,8 +8,6 @@
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
 # define MINI 20
-# define NORTH_SOUTH 1
-# define WEST_EAST 0
 
 # include "cub3d.h"
 

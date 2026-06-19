@@ -12,14 +12,14 @@ static int	get_texture_x(t_play *play)
 	// tex_x = 0;
 	// percent = play->side_dist.x - (int)play->side_dist.x;
 	// tex_x = (int)(percent *  TEXTURE_WIDTH);
-	if (play->side == WEST_EAST)
+	if (play->side == DIR_WE|| play->side == DIR_EA)
 		wall_x = play->pos.y + play->perp_wall_dist * play->ray.y;
 	else
 		wall_x = play->pos.x + play->perp_wall_dist * play->ray.x;
 	percent = wall_x - floor(wall_x);
 	tex_x = (int)(percent * (double)TEXTURE_WIDTH);
-	if ((play->side == WEST_EAST && play->ray.x > 0)
-			|| (play->side == NORTH_SOUTH && play->ray.y < 0))
+	if (((play->side == DIR_WE || play->side == DIR_EA) && play->ray.x > 0)
+			|| ((play->side == DIR_NO || play->side == DIR_SO) && play->ray.y < 0))
 		tex_x = TEXTURE_WIDTH - tex_x - 1;
 	return (tex_x);
 }
