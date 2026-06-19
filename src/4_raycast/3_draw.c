@@ -1,48 +1,45 @@
 #include "cub3d.h"
 #include "exec.h"
+#include "libft.h"
 #include <math.h>
 
 /*calculate which texture pixel col to display*/
-static int	get_texture_x(t_play *play)
+static void	get_texture_x(t_play *play, t_paint *paint)
 {
-	int	tex_x;
-	double	percent;
 	double	wall_x;
+	double	percent;
 
-	// tex_x = 0;
-	// percent = play->side_dist.x - (int)play->side_dist.x;
-	// tex_x = (int)(percent *  TEXTURE_WIDTH);
 	if (play->side == DIR_WE|| play->side == DIR_EA)
 		wall_x = play->pos.y + play->perp_wall_dist * play->ray.y;
 	else
 		wall_x = play->pos.x + play->perp_wall_dist * play->ray.x;
 	percent = wall_x - floor(wall_x);
-	tex_x = (int)(percent * (double)TEXTURE_WIDTH);
+	paint->tex.col = (int)(percent * (double)TEXTURE_WIDTH);
 	if (((play->side == DIR_WE || play->side == DIR_EA) && play->ray.x > 0)
 			|| ((play->side == DIR_NO || play->side == DIR_SO) && play->ray.y < 0))
-		tex_x = TEXTURE_WIDTH - tex_x - 1;
-	return (tex_x);
+		paint->tex.col = TEXTURE_WIDTH - paint->tex.col - 1;
 }
+
 
 /*draw scre col from top down*/
 void	draw_line(t_exec *exec, int x)
 {
-	int	i;
-	int	tex_x;
+	t_paint paint;
 
-	i = 0;
-	tex_x = get_texture_x(&exec->play);
-	while (i < exec->draw_start)
+	ft_bzero(&paint, sizeof(t_paint));
+	paint.screen.col = x;
+	while (paint.screen.row < exec->draw_start)
+		get_texture_x(&exec->play, &paint);
 	{
-		put_pixel(&exec->scre, x, i, exec->ceiling);
-		i++;
+		put_pixel(&exec->scre, x, paint.screen.row, exec->ceiling);
+		paint.screen.row++;
 	}
-	while (i < exec->draw_end)
-		put_wall(exec, &i, tex_x, x);
-	while(i < SCREEN_HEIGHT)
+	while (paint.screen.row < exec->draw_end)
+		put_wall(exec, &paint.screen.row, paint.tex.col, x);
+	while(paint.screen.row < SCREEN_HEIGHT)
 	{
-		put_pixel(&exec->scre, x, i, exec->floor);
-		i++;
+		put_pixel(&exec->scre, x, paint.screen.row, exec->floor);
+		paint.screen.row++;
 	}
 	return ;
 }

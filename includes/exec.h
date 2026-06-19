@@ -10,15 +10,14 @@
 # define MINI 20
 
 # include "cub3d.h"
-
-/*mlx img for walls*/
-// typedef struct s_exec
-// {
-// 	void	*no;
-//  	void	*so;
-//  	void	*we;
-//  	void	*ea;
-// }			t_exec;
+/*structs*/
+typedef struct s_paint
+{
+	t_pos			screen;
+	t_pos			tex;
+	double			percent;
+	unsigned int	color;
+}	t_paint;
 
 /* mlx */
 int			init_mlx(t_game *game);
