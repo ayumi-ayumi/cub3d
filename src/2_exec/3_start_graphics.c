@@ -25,6 +25,15 @@ int	close_window(void *param)
 	return (1);
 }
 
+int	draw(t_game *game, t_move *move, t_data *scre)
+{
+		raycast(game, &game->exec);
+		if (timing(move) == FAIL)
+			return (FAIL);
+		mlx_put_image_to_window(game->mlx, game->win, scre->img, 0, 0);
+		return (SUCCESS);
+}
+
 int	start_graphics(t_game *game)
 {
 	if (!game || !game->mlx || !game->win)
