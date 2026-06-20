@@ -12,7 +12,8 @@ void	put_wall(t_exec *exec, int *i, int tex_x, int x)
 		color = color / 4;
 	while (*i < exec->draw_end)
 	{
-		put_pixel(&exec->scre, x, *i, color);
+		img_pix_put(&exec->scre, x, *i, color);
+		// put_pixel(&exec->scre, x, *i, color);
 		*i += 1;
 	}
 	return ;
@@ -28,5 +29,5 @@ void	put_wall(t_exec *exec, int *i, int tex_x, int x)
 // 	int	row;
 //
 // 	row = get_texture_row();
-// 	put_pixel()	
+// 	put_pixel()
 // }
