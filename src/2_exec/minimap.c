@@ -1,28 +1,15 @@
 // #include "cub3d.h"
 #include "exec.h"
 #include <mlx.h>
-
-// #define WALL_COLOR    0xFF0000  // グレー（壁）
-#define WALL_COLOR    0x333333  // グレー（壁）
-#define FLOOR_COLOR   0xCCCCCC  // 薄いグレー（床）
-#define PLAYER_COLOR  0xFF0000  // 赤（プレイヤー）
-
-typedef struct s_tile
-{
-    int	x;
-    int	y;
-    int width;
-    int height;
-    int color;
-}	t_tile;
+#include <math.h>
 
 void	img_pix_put(t_data *img, int x, int y, int color)
 {
-    char    *pixel;
-	int	i;
+	char	*pixel;
+	int		i;
 
 	i = img->bpp - 8;
-    pixel = img->addr + (y * img->line_length + x * (img->bpp / 8));
+	pixel = img->addr + (y * img->line_length + x * (img->bpp / 8));
 	while (i >= 0)
 	{
 		if (img->endian != 0)
@@ -51,57 +38,66 @@ int	render_tile(t_game *game, t_tile tile)
 	return (0);
 }
 
-void	render_margin(t_game *game)
+static t_pos	convert(t_vec a)
 {
-	t_tile	tile;
-	int		size;
-	int		i;
+	t_pos	result;
 
+	result.col = (int)(a.x * (double)MINI);
+	result.row = (int)(a.y * (double)MINI);
+	return (result);
+}
 
-	size = 10;
-	tile = (t_tile){0, 0, size, size, 0};
-	i = 0;
-	while (i < game->map.width + 2)
+static void	put_dir(t_map map, t_data *screen, t_play play)
+{
+	double	t;
+	t_pos	pixel;
+	t_pos	max;
+
+	t = 0.0;
+	max.col = map.width * MINI;
+	max.row = map.height * MINI;
+	while (t <= 2.0)
 	{
-		tile.x = i * size + 10;
-		tile.y = 10;
-		tile.color = FLOOR_COLOR;
-		render_tile(game, tile);
-		i++;
+		pixel = convert(add_vec(play.pos, mult_vec(t, play.dir)));
+		if (pixel.col > max.col || pixel.row >  max.row || pixel.col < 0 || pixel.row < 0)
+			break;
+		img_pix_put(screen, pixel.col, pixel.row, 0xFFFFFF);
+		t += 0.01;
 	}
 }
 
 void	draw_minimap(t_game *game)
 {
-	int	row;
-	int	col;
-	int size = 10;
-	t_tile tile;
+	int		row;
+	int		col;
+	int		size;
+	t_tile	tile;
+	t_tile	player;
 
+	size = 10;
 	tile = (t_tile){0, 0, size, size, 0};
 	row = 0;
-	render_margin(game);
 	while (row < game->map.height)
 	{
 		col = 0;
 		while (game->map.grid[row][col] != '\0')
 		{
-			tile.x = col * size + 20; // margin 20pixels
-			tile.y = row * size + 20; // margin 20pixels
+			tile.x = col * size;
+			tile.y = row * size;
 
 			if (game->map.grid[row][col] == '1')
 				tile.color = WALL_COLOR;
 			else
 				tile.color = FLOOR_COLOR;
-
 			render_tile(game, tile);
+
 			col++;
 		}
 		if (col < game->map.width)
 		{
 			while (col < game->map.width)
 			{
-				tile.x = col * size + 20; // margin 20pixels
+				tile.x = col * size;
 				tile.color = FLOOR_COLOR;
 				render_tile(game, tile);
 				col++;
@@ -109,9 +105,11 @@ void	draw_minimap(t_game *game)
 		}
 		row++;
 	}
-}
-
-void	minimap(t_game *game)
-{
-	draw_minimap(game);
+	player.x = game->exec.play.pos.x * size;
+	player.y = game->exec.play.pos.y * size;
+	player.width = 4;
+	player.height = 4;
+	player.color = PLAYER_COLOR;
+	render_tile(game, player);
+	put_dir(game->map, &game->exec.scre, game->exec.play);
 }

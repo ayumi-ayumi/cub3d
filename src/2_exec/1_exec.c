@@ -11,7 +11,6 @@ int	draw(t_game *game, t_move *move, t_data *scre)
 		if (timing(move) == FAIL)
 			return (FAIL);
 		mlx_put_image_to_window(game->mlx, game->win, scre->img, 0, 0);
-		// minimap(game);
 		return (SUCCESS);
 }
 
