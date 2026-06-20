@@ -41,10 +41,10 @@ static void	calc_side_dist(t_play *play)
 }
 
 /*calculate initial vectors and positions for dda*/
-void	calc_start_values(t_play *play)
+void	calc_start_values(t_play *play, double cam_x)
 {
-	play->ray.x = play->dir.x + play->plane.x * play->cam_x;
-	play->ray.y = play->dir.y + play->plane.y * play->cam_x;
+	play->ray.x = play->dir.x + play->plane.x * cam_x;
+	play->ray.y = play->dir.y + play->plane.y * cam_x;
 	play->map.col = (int)(play->pos.x);
 	play->map.row = (int)(play->pos.y);
 	play->wall_hit = 0;

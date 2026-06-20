@@ -1,10 +1,13 @@
 #ifndef EXEC_H
 # define EXEC_H
 
-# define SCREEN_HEIGHT 1480
-# define SCREEN_WIDTH 1640
+# define SCREEN_HEIGHT 480
+# define SCREEN_WIDTH 640
 # define TEXTURE_WIDTH 32
 # define TEXTURE_HEIGHT 32
+# define MOVESPEED 0.0125
+# define ROTSPEED 0.015
+# define MINI 20
 # define NORTH_SOUTH 1
 # define WEST_EAST 0
 
@@ -33,16 +36,23 @@ int	key_hook(int keycode, void *param);
 
 /*execution*/
 int			init_play_data(t_game *game, t_exec *exec);
-t_vec		turn_vec(t_vec vec, double angle);
 int			draw(t_game *game, t_move *move, t_data *screen);
 
 /*raycast*/
 int			raycast(t_game *game, t_exec *exec);
-void		calc_start_values(t_play *play);
+void		calc_start_values(t_play *play, double cam_x);
 int			timing(t_move *move);
+void		draw_mini_map(t_map *map, t_play *play, t_data *screen);
 
 /*rendering*/
 void		draw_line(t_exec *exec, int x);
 void		put_pixel(t_data *img, int x, int y, int colour);
 void		put_wall(t_exec *exec, int *i, int tex_x, int x);
+
+/*utils*/
+t_vec		turn_vec(t_vec vec, double angle);
+t_vec		add_vec(t_vec a, t_vec b);
+t_vec		subst_vec(t_vec a, t_vec b);
+t_vec		mult_vec(double factor, t_vec b);
+t_vec		divt_vec(t_vec a, double dev);
 #endif

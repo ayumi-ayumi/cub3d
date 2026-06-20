@@ -16,3 +16,49 @@ t_vec	turn_vec(t_vec vec, double angle)
 	turned.y = vec.x * sinu + vec.y * cosi;
 	return (turned);
 }
+
+
+t_vec add_vec(t_vec a, t_vec b)
+{
+	t_vec	result;
+
+	result.x = a.x + b.x;
+	result.y = a.y + b.y;
+	return (result);
+}
+
+t_vec subst_vec(t_vec a, t_vec b)
+{
+	t_vec	result;
+
+	result.x = a.x - b.x;
+	result.y = a.y - b.y;
+	return (result);
+}
+
+
+t_vec mult_vec(double factor, t_vec b)
+{
+	t_vec	result;
+
+	result.x = factor * b.x;
+	result.y = factor * b.y;
+	return (result);
+}
+
+t_vec divt_vec(t_vec a, double dev)
+{
+	t_vec	result;
+
+	if (dev == 0.0)
+	{
+		result.x = 10e23 * a.x;
+		result.y = 10e23 * a.y;
+	}
+	else
+	{
+	result.x = a.x / dev;
+	result.y = a.y / dev;
+	}
+	return (result);
+}
