@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/20 16:10:36 by asato             #+#    #+#             */
-/*   Updated: 2026/06/20 16:10:37 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/20 19:14:52 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,28 @@ static t_pos	convert(t_vec a)
 static void	put_dir(t_map map, t_data *screen, t_play play)
 {
 	double	t;
-	t_pos	pixel;
+	t_pos	line;
 	t_pos	max;
+	t_vec	ray_dir;
+	double	angle;;
 
-	t = 0.0;
 	max.col = map.width * MINI;
 	max.row = map.height * MINI;
-	while (t <= 2.0)
+	angle = (M_PI / 6) * -1;
+	play.pos.x += 0.2;
+	while (angle < M_PI / 6)
 	{
-		pixel = convert(add_vec(play.pos, mult_vec(t, play.dir)));
-		if (pixel.col > max.col || pixel.row >  max.row || pixel.col < 0 || pixel.row < 0)
+		t = 0.0;
+		while (t <= 3.0)
+		{
+			ray_dir = turn_vec(play.dir, angle);
+			line = convert(add_vec(play.pos, mult_vec(t, ray_dir)));
+			if (line.col > max.col || line.row >  max.row || line.col < 0 || line.row < 0)
 			break;
-		img_pix_put(screen, pixel.col, pixel.row, 0xFFFFFF);
-		t += 0.01;
+			img_pix_put(screen, line.col, line.row, FAN_COLOR);
+			t += 0.01;
+		}
+		angle += 0.01;
 	}
 }
 
@@ -82,34 +91,31 @@ void	draw_minimap(t_game *game)
 {
 	int		row;
 	int		col;
-	int		size;
 	t_tile	tile;
 	t_tile	player;
 
-	size = 10;
-	tile = (t_tile){0, 0, size, size, 0};
+	tile = (t_tile){0, 0, TILE_SIZE, TILE_SIZE, 0};
 	row = 0;
 	while (row < game->map.height)
 	{
 		col = 0;
 		while (game->map.grid[row][col] != '\0')
 		{
-			tile.x = col * size;
-			tile.y = row * size;
+			tile.x = col * TILE_SIZE;
+			tile.y = row * TILE_SIZE;
 
 			if (game->map.grid[row][col] == '1')
 				tile.color = WALL_COLOR;
 			else
 				tile.color = FLOOR_COLOR;
 			render_tile(game, tile);
-
 			col++;
 		}
 		if (col < game->map.width)
 		{
 			while (col < game->map.width)
 			{
-				tile.x = col * size;
+				tile.x = col * TILE_SIZE;
 				tile.color = FLOOR_COLOR;
 				render_tile(game, tile);
 				col++;
@@ -117,8 +123,8 @@ void	draw_minimap(t_game *game)
 		}
 		row++;
 	}
-	player.x = game->exec.play.pos.x * size;
-	player.y = game->exec.play.pos.y * size;
+	player.x = game->exec.play.pos.x * TILE_SIZE;
+	player.y = game->exec.play.pos.y * TILE_SIZE;
 	player.width = 4;
 	player.height = 4;
 	player.color = PLAYER_COLOR;
