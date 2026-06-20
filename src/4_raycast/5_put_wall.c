@@ -28,5 +28,5 @@ void	put_wall(t_exec *exec, int *i, int tex_x, int x)
 // 	int	row;
 //
 // 	row = get_texture_row();
-// 	put_pixel()	
+// 	put_pixel()
 // }

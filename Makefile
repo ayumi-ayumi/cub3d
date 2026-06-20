@@ -6,7 +6,7 @@
 #    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/06/17 15:52:08 by chagen           ###   ########.fr        #
+#    Updated: 2026/06/20 13:17:16 by asato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC			=	main.c \
 				2_exec/1_exec.c \
 				2_exec/2_init_play.c \
 				2_exec/3_start_graphics.c \
+				2_exec/minimap.c \
 				2_exec/4_move.c \
 				2_exec/utils.c \
 				3_mlx/1_init_mlx.c \

@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/06/17 12:29:30 by chagen           ###   ########.fr       */
+/*   Updated: 2026/06/20 13:16:36 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct s_game
 	t_config	config;
 	t_map		map;
 	t_exec		exec;
+	t_data		minimap;
 }				t_game;
 
 int		execution(t_game *game);
