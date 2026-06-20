@@ -7,9 +7,22 @@
 # define TEXTURE_HEIGHT 32
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
-# define MINI 20
+# define MINI 10
+# define WALL_COLOR 0x333333
+# define FLOOR_COLOR 0xCCCCCC
+# define PLAYER_COLOR 0xFF0000
 
 # include "cub3d.h"
+# include <stdio.h>
+/*mlx img for walls*/
+// typedef struct s_exec
+// {
+// 	void	*no;
+//  	void	*so;
+//  	void	*we;
+//  	void	*ea;
+// }			t_exec;
+
 /*structs*/
 typedef struct s_paint
 {
@@ -19,6 +32,15 @@ typedef struct s_paint
 	unsigned int	color;
 }	t_paint;
 
+typedef struct s_tile
+{
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+	int	color;
+}	t_tile;
+
 /* mlx */
 int			init_mlx(t_game *game);
 void		free_mlx(t_game *game);
@@ -27,8 +49,12 @@ void		free_mlx_texture(void *mlx, void **target);
 // void		free_entire_mlx(t_game *game, t_exec *exec);
 
 /* mlx Loop */
-int	start_graphics(t_game *game);
-int	key_hook(int keycode, void *param);
+int			start_graphics(t_game *game);
+int			key_hook(int keycode, void *param);
+void		draw_minimap(t_game *game);
+int			render_tile(t_game *game, t_tile tile);
+
+void		img_pix_put(t_data *img, int x, int y, int color);
 
 
 /*execution*/

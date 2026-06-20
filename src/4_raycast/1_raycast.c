@@ -43,7 +43,7 @@ static void	calc_height(t_exec *exec, double perp_wall_dist)
 
 	if (perp_wall_dist <= 0.002)
 		line_height = SCREEN_HEIGHT;
-	else 
+	else
 		line_height = (int)(SCREEN_HEIGHT / perp_wall_dist);
 	exec->draw_start = (-line_height / 2) +  (SCREEN_HEIGHT / 2);
 	if (exec->draw_start < 0)
@@ -69,6 +69,7 @@ int	raycast(t_game *game, t_exec *exec)
 		draw_line(exec, x);
 		x++;
 	}
-	draw_mini_map(&game->map, &exec->play, &exec->scre);
+	draw_minimap(game);
+	// draw_mini_map(&game->map, &exec->play, &exec->scre);
 	return (SUCCESS);
 }
