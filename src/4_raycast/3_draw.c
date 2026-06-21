@@ -28,14 +28,14 @@ void	draw_line(t_exec *exec, int x)
 
 	ft_bzero(&paint, sizeof(t_paint));
 	paint.screen.col = x;
+	get_texture_x(&exec->play, &paint);
 	while (paint.screen.row < exec->draw_start)
-		get_texture_x(&exec->play, &paint);
 	{
 		put_pixel(&exec->scre, x, paint.screen.row, exec->ceiling);
 		paint.screen.row++;
 	}
 	while (paint.screen.row < exec->draw_end)
-		put_wall(exec, &paint.screen.row, paint.tex.col, x);
+		put_wall(exec, &paint);
 	while(paint.screen.row < SCREEN_HEIGHT)
 	{
 		put_pixel(&exec->scre, x, paint.screen.row, exec->floor);
