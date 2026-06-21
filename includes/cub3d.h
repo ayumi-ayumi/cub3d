@@ -99,6 +99,7 @@ typedef struct s_exec
 	int				draw_end;
 	unsigned int	ceiling;
 	unsigned int	floor;
+	unsigned int	wall_height;
 	t_play			play;
 }			t_exec;
 
