@@ -13,15 +13,6 @@
 # define PLAYER_COLOR 0xFF0000
 
 # include "cub3d.h"
-# include <stdio.h>
-/*mlx img for walls*/
-// typedef struct s_exec
-// {
-// 	void	*no;
-//  	void	*so;
-//  	void	*we;
-//  	void	*ea;
-// }			t_exec;
 
 /*structs*/
 typedef struct s_paint
@@ -34,11 +25,11 @@ typedef struct s_paint
 
 typedef struct s_tile
 {
-	int	x;
-	int	y;
-	int	width;
-	int	height;
-	int	color;
+	int				x;
+	int				y;
+	int				width;
+	int				height;
+	unsigned int	color;
 }	t_tile;
 
 /* mlx */
@@ -54,7 +45,8 @@ int			key_hook(int keycode, void *param);
 void		draw_minimap(t_game *game);
 int			render_tile(t_game *game, t_tile tile);
 
-void		img_pix_put(t_data *img, int x, int y, int color);
+void			img_pix_put(t_data *img, int x, int y, unsigned int color);
+unsigned int	get_pixel_colour(t_data *img, int x, int y);
 
 
 /*execution*/
