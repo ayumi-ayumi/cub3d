@@ -62,7 +62,7 @@ void		draw_mini_map(t_map *map, t_play *play, t_data *screen);
 /*rendering*/
 void		draw_line(t_exec *exec, int x);
 void		put_pixel(t_data *img, int x, int y, int colour);
-void		put_wall(t_exec *exec, int *i, int tex_x, int x);
+void		put_wall(t_exec *exec, t_paint *paint);
 
 /*utils*/
 t_vec		turn_vec(t_vec vec, double angle);
