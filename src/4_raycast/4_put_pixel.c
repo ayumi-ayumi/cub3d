@@ -41,19 +41,17 @@ unsigned int	get_pixel_colour(t_data *img, int x, int y)
  	last = first + bytespp - 1;
 	if (img->bpp > (int)sizeof(unsigned int) * CHAR_BIT)
 		return (0);
-	while (first <= last)
+	while (img->endian != 0 && first <= last)
 	{
 		color = color << CHAR_BIT;
-		if (img->endian != 0)
-		{
-			color += ((unsigned int)(*first)) & 0xFF;
-			first++;
-		}
-		if (img->endian == 0)
-		{
-			color += ((unsigned int)(*last)) & 0xFF;
-			last--;
-		}
+		color += ((unsigned int)(*first)) & 0xFF;
+		first++;
+	}
+	while (img->endian == 0 && first <= last)
+	{
+		color = color << CHAR_BIT;
+		color += ((unsigned int)(*last)) & 0xFF;
+		last--;
 	}
 	return (color);
 }
