@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:28:05 by asato             #+#    #+#             */
-/*   Updated: 2026/06/04 16:12:42 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 17:21:52 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static int	store_map_grid(t_game *game, char *line, int i)
 
 int	extract_map(t_game *game)
 {
-	int	line_num;
+	int	row_idx;
 	int	i;
 
-	line_num = 0;
+	row_idx = 0;
 	i = 6;
 	if (game->file_contents[i][0] == '1' || game->file_contents[i][0] == ' ')
 	{
@@ -38,12 +38,12 @@ int	extract_map(t_game *game)
 			return (0);
 		while (game->file_contents[i] != NULL)
 		{
-			if (!store_map_grid(game, game->file_contents[i], line_num))
+			if (!store_map_grid(game, game->file_contents[i], row_idx))
 				return (0);
 			i++;
-			line_num++;
+			row_idx++;
 		}
-		game->map.grid[line_num] = NULL;
+		game->map.grid[row_idx] = NULL;
 	}
 	return (1);
 }
