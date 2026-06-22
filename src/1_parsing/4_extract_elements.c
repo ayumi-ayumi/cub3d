@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 16:29:13 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 17:08:18 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	extract_rgb(int rgb[3], char *str)
 	rgb_str = ft_split(&str[i], ',');
 	if (!rgb_str)
 		return (0);
-	i = 0; // validate the number is within the range 0-255
+	i = 0;
 	while (rgb_str[i])
 	{
 		if (i >= 3)
