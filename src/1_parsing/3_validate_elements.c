@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 16:29:13 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 17:07:28 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,16 @@ static int	trim_space_in_line(t_game *game)
 {
 	int		i;
 	char	*temp;
-	char	**file_contents;
 
-	file_contents = game->file_contents;
 	i = 0;
 	while (i < 6)
 	{
-		temp = ft_strtrim(file_contents[i], " ");
+		temp = ft_strtrim(game->file_contents[i], " ");
 		if (!temp)
 			return (0);
-		free(file_contents[i]);
-		file_contents[i] = temp;
-		if (!file_contents[i])
+		free(game->file_contents[i]);
+		game->file_contents[i] = temp;
+		if (!game->file_contents[i])
 			return (0);
 		i++;
 	}
