@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:43:33 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 16:25:51 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 18:37:31 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	free_map(t_map *map)
 	}
 	ft_free((void **)&map->grid);
 }
-
 
 void	cleanup_and_exit(t_game *game)
 {
