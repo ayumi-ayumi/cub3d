@@ -1,6 +1,14 @@
 #include "cub3d.h"
 #include "exec.h"
 
+static void	calc_perp_wall_dist(t_play *play)
+{
+	if (play->side == DIR_WE || play->side == DIR_EA)
+		play->perp_wall_dist = play->side_dist.x - play->delta_dist.x;
+	else
+		play->perp_wall_dist = play->side_dist.y - play->delta_dist.y;
+}
+
 static void	dda(char **grid, t_play *play)
 {
 	while(play->wall_hit == FALSE)
@@ -9,35 +17,36 @@ static void	dda(char **grid, t_play *play)
 		{
 			play->side_dist.x += play->delta_dist.x;
 			play->map.col += play->step.col;
-			play->side = WEST_EAST;
+			if (play->ray.x > 0)
+				play->side = DIR_WE;
+			else
+			 play->side = DIR_EA;
 		}
 		else
 		{
 			play->side_dist.y += play->delta_dist.y;
 			play->map.row += play->step.row;
-			play->side = NORTH_SOUTH;
+			if (play->ray.y > 0)
+				play->side = DIR_SO; 
+			else
+			 play->side = DIR_NO;
 		}
 		if (grid[(int)play->map.row][(int)play->map.col] == '1')
 			play->wall_hit = TRUE;
 	}
-	if (play->side == 0)
-		play->perp_wall_dist = play->side_dist.x - play->delta_dist.x;
-	else
-		play->perp_wall_dist = play->side_dist.y - play->delta_dist.y;
+	calc_perp_wall_dist(play);
 }
 
 static void	calc_height(t_exec *exec, double perp_wall_dist)
 {
-	int	line_height;
-
-	if (perp_wall_dist <= 0.002)
-		line_height = SCREEN_HEIGHT;
+	if (perp_wall_dist < 0.01)
+		exec->wall_height = 100 * SCREEN_HEIGHT;
 	else
-		line_height = (int)(SCREEN_HEIGHT / perp_wall_dist);
-	exec->draw_start = (-line_height / 2) +  (SCREEN_HEIGHT / 2);
+		exec->wall_height = (unsigned int)((double)SCREEN_HEIGHT /perp_wall_dist);
+	exec->draw_start = -(exec->wall_height / 2) +  (SCREEN_HEIGHT / 2);
 	if (exec->draw_start < 0)
 		exec->draw_start = 0;
-	exec->draw_end = (line_height / 2) +  (SCREEN_HEIGHT / 2);
+	exec->draw_end = (exec->wall_height / 2) +  (SCREEN_HEIGHT / 2);
 	if (exec->draw_end >= SCREEN_HEIGHT)
 		exec->draw_end = SCREEN_HEIGHT;
 }

@@ -1,21 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minimap.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/20 16:10:36 by asato             #+#    #+#             */
-/*   Updated: 2026/06/20 19:14:52 by asato            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-// #include "cub3d.h"
+#include "cub3d.h"
 #include "exec.h"
 #include <mlx.h>
-#include <math.h>
 
-void	img_pix_put(t_data *img, int x, int y, int color)
+void	img_pix_put(t_data *img, int x, int y, unsigned int color)
 {
 	char	*pixel;
 	int		i;

@@ -99,7 +99,7 @@ int	extract_rgb_config(t_game *game)
 			&& !extract_rgb(game->config.floor, line))
 			return (0);
 		if ((ft_strncmp(line, "C", 1) == 0)
-			&& !extract_rgb(game->config.floor, line))
+			&& !extract_rgb(game->config.ceiling, line))
 			return (0);
 		i++;
 	}

@@ -66,19 +66,19 @@ typedef	struct s_move
 
 typedef struct s_play
 {
-	t_vec	pos;
-	t_vec	dir;
-	t_vec	plane;
-	t_vec	ray;
-	t_pos	map;
-	t_vec	delta_dist;
-	t_vec	side_dist;//maybe not needed
-	t_pos	step;//what dir to step
-	char	wall_hit;
-	char	side;//which wall side
-	double	perp_wall_dist;
-	t_move	move;
-	int		texture_col;
+	t_vec		pos;
+	t_vec		dir;
+	t_vec		plane;
+	t_vec		ray;
+	t_pos		map;
+	t_vec		delta_dist;
+	t_vec		side_dist;//maybe not needed
+	t_pos		step;//what dir to step
+	char		wall_hit;
+	t_direction	side;//which wall side
+	double		perp_wall_dist;
+	t_move		move;
+	int			texture_col;
 }	t_play;
 
 typedef struct s_data
@@ -99,6 +99,7 @@ typedef struct s_exec
 	int				draw_end;
 	unsigned int	ceiling;
 	unsigned int	floor;
+	unsigned int	wall_height;
 	t_play			play;
 }			t_exec;
 
