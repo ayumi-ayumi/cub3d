@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 18:02:52 by asato             #+#    #+#             */
-/*   Updated: 2026/06/04 16:09:36 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 16:29:13 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int	load_map_and_config(t_game *game);
 int	parse_file(t_game *game);
 
 /* Extract elements */
-int	exract_elements(t_game *game);
+int	extract_elements(t_game *game);
 int	extract_map(t_game *game);
-int	extract_dir_config(t_game *game);
+int	extract_texture_config(t_game *game);
 int	extract_rgb_config(t_game *game);
-void	free_dir_parh(char **dir_path_arr);
+void	free_texture_paths(char **texture_paths_arr);
 
 /* validate a map*/
 int	validate_map(t_map *map);
