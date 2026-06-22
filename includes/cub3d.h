@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 16:26:05 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 18:02:33 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,4 +141,5 @@ int		execution(t_game *game);
 void	free_map(t_map *map);
 void	free_entire_mlx(t_game *game);
 void	cleanup_and_exit(t_game *game);
+void	print_error(char *error);
 #endif
