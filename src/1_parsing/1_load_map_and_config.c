@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 21:45:54 by asato             #+#    #+#             */
-/*   Updated: 2026/05/27 20:01:18 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 16:18:46 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,15 @@ int	load_map_and_config(t_game *game)
 {
 	t_map	*map;
 
-	game->map = (t_map){NULL, 0, 0, 0, {-1, -1}};
+	if (!game)
+		return (0);
+	game->map = (t_map){
+		.grid = NULL,
+		.height = 0,
+		.width = 0,
+		.start_orientation = 0,
+		.start_pos = {-1, -1}
+	};
 	map = &game->map;
 	if (!parse_file(game) || !validate_map(map))
 		return (0);
