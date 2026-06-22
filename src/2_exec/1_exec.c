@@ -3,16 +3,7 @@
 #include "libft.h"
 #include <mlx.h>
 #include <stddef.h>
-#include <stdio.h>/*for debugging */
 
-int	draw(t_game *game, t_move *move, t_data *scre)
-{
-		raycast(game, &game->exec);
-		if (timing(move) == FAIL)
-			return (FAIL);
-		mlx_put_image_to_window(game->mlx, game->win, scre->img, 0, 0);
-		return (SUCCESS);
-}
 
 /*setup of scre and start game loop*/
 int	execution(t_game *game)

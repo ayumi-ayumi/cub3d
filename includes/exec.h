@@ -8,30 +8,28 @@
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
 # define MINI 10
-# define NORTH_SOUTH 1
-# define WEST_EAST 0
 # define WALL_COLOR 0x333333
 # define FLOOR_COLOR 0xCCCCCC
 # define PLAYER_COLOR 0xFF0000
 
 # include "cub3d.h"
-# include <stdio.h>
-/*mlx img for walls*/
-// typedef struct s_exec
-// {
-// 	void	*no;
-//  	void	*so;
-//  	void	*we;
-//  	void	*ea;
-// }			t_exec;
+
+/*structs*/
+typedef struct s_paint
+{
+	t_pos			screen;
+	t_pos			tex;
+	double			percent;
+	unsigned int	color;
+}	t_paint;
 
 typedef struct s_tile
 {
-	int	x;
-	int	y;
-	int	width;
-	int	height;
-	int	color;
+	int				x;
+	int				y;
+	int				width;
+	int				height;
+	unsigned int	color;
 }	t_tile;
 
 /* mlx */
@@ -47,7 +45,8 @@ int			key_hook(int keycode, void *param);
 void		draw_minimap(t_game *game);
 int			render_tile(t_game *game, t_tile tile);
 
-void		img_pix_put(t_data *img, int x, int y, int color);
+void			img_pix_put(t_data *img, int x, int y, unsigned int color);
+unsigned int	get_pixel_colour(t_data *img, int x, int y);
 
 
 /*execution*/
@@ -63,7 +62,7 @@ void		draw_mini_map(t_map *map, t_play *play, t_data *screen);
 /*rendering*/
 void		draw_line(t_exec *exec, int x);
 void		put_pixel(t_data *img, int x, int y, int colour);
-void		put_wall(t_exec *exec, int *i, int tex_x, int x);
+void		put_wall(t_exec *exec, t_paint *paint);
 
 /*utils*/
 t_vec		turn_vec(t_vec vec, double angle);

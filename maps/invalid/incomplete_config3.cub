@@ -4,8 +4,8 @@ SO ./textures/so.xpm
 WE ./textures/we.xpm
 
 
-FF 20,100,0
-C 225,30,0
+FF 203,191,174
+C 169,214,255
 
 1111
 10N1

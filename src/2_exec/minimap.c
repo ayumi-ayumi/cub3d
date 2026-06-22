@@ -1,9 +1,8 @@
-// #include "cub3d.h"
+#include "cub3d.h"
 #include "exec.h"
 #include <mlx.h>
-#include <math.h>
 
-void	img_pix_put(t_data *img, int x, int y, int color)
+void	img_pix_put(t_data *img, int x, int y, unsigned int color)
 {
 	char	*pixel;
 	int		i;
