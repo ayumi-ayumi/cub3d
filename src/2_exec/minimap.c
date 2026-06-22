@@ -1,6 +1,11 @@
 #include "cub3d.h"
 #include "exec.h"
+#include <math.h>/*for pi*/
 #include <mlx.h>
+
+#ifndef M_PI
+# define M_PI 3.14159265358979323846
+#endif
 
 void	img_pix_put(t_data *img, int x, int y, unsigned int color)
 {
@@ -52,7 +57,7 @@ static void	put_dir(t_map map, t_data *screen, t_play play)
 	t_pos	line;
 	t_pos	max;
 	t_vec	ray_dir;
-	double	angle;;
+	double	angle;
 
 	max.col = map.width * MINI;
 	max.row = map.height * MINI;
