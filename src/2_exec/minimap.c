@@ -12,6 +12,8 @@ void	img_pix_put(t_data *img, int x, int y, unsigned int color)
 	char	*pixel;
 	int		i;
 
+	if (!img || !img->addr || x < 0 || y < 0)
+		return ;
 	i = img->bpp - 8;
 	pixel = img->addr + (y * img->line_length + x * (img->bpp / 8));
 	while (i >= 0)
@@ -29,8 +31,6 @@ int	render_tile(t_game *game, t_tile tile)
 	int	i;
 	int	j;
 
-	if (game->win == NULL)
-		return (1);
 	i = tile.y;
 	while (i < tile.y + tile.height)
 	{
@@ -70,8 +70,8 @@ static void	put_dir(t_map map, t_data *screen, t_play play)
 		{
 			ray_dir = turn_vec(play.dir, angle);
 			line = convert(add_vec(play.pos, mult_vec(t, ray_dir)));
-			if (line.col > max.col || line.row >  max.row || line.col < 0 || line.row < 0)
-			break;
+			if (line.col >= max.col || line.row >= max.row || line.col < 0 || line.row < 0) //  valid pixel indices go from 0 to max - 1.
+				break ;
 			img_pix_put(screen, line.col, line.row, FAN_COLOR);
 			t += 0.01;
 		}
@@ -95,7 +95,6 @@ void	draw_minimap(t_game *game)
 		{
 			tile.x = col * TILE_SIZE;
 			tile.y = row * TILE_SIZE;
-
 			if (game->map.grid[row][col] == '1')
 				tile.color = WALL_COLOR;
 			else
