@@ -48,8 +48,8 @@ void	free_entire_mlx(t_game *game)
 	}
 	if (game->exec.scre.img)
 		mlx_destroy_image(game->mlx, game->exec.scre.img);
-	// ft_free((void **)&game->config.dir_path);
-	// free_string_array(game->config.dir_path);
+	// ft_free((void **)&game->config.texture_paths);
+	// free_string_array(game->config.texture_paths);
 	free_win(game);
 	free_mlx(game);
 }

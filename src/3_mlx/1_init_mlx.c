@@ -42,8 +42,8 @@ static int	init_mlx_texture(t_game *game)
 		return (FAIL);
 	while (i < 4)
 	{
-		game->exec.dir_texture[i].img = load_texture(game, game->config.dir_path[i]);
-		// ft_free((void **)&game->config.dir_path[i]);
+		game->exec.dir_texture[i].img = load_texture(game, game->config.texture_paths[i]);
+		// ft_free((void **)&game->config.texture_paths[i]);
 		if (!(game->exec.dir_texture[i].img))
 		{
 			j = i;

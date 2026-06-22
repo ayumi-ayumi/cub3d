@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/06/04 16:07:30 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 16:29:13 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static int	extract_path(t_game *game, char *str, t_direction dir)
 		i++;
 	if (str[i] == '\0')
 		return (0);
-	game->config.dir_path[dir] = ft_strdup(&str[i]);
-	if (!game->config.dir_path[dir])
+	game->config.texture_paths[dir] = ft_strdup(&str[i]);
+	if (!game->config.texture_paths[dir])
 		return (0);
 	return (1);
 }
 
-int	extract_dir_config(t_game *game)
+int	extract_texture_config(t_game *game)
 {
 	int		i;
 	char	*line;
@@ -106,16 +106,16 @@ int	extract_rgb_config(t_game *game)
 	return (1);
 }
 
-void	free_dir_parh(char **dir_path_arr)
+void	free_texture_paths(char **texture_paths_arr)
 {
 	int	i;
 
 	i = 0;
 	while (i < 4)
 	{
-		if (!dir_path_arr[i])
+		if (!texture_paths_arr[i])
 			i++;
-		ft_free((void **)&dir_path_arr[i++]);
+		ft_free((void **)&texture_paths_arr[i++]);
 	}
-	ft_free((void **)&dir_path_arr);
+	ft_free((void **)&texture_paths_arr);
 }
