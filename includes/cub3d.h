@@ -94,7 +94,7 @@ typedef struct s_data
 /*mlx img for walls*/
 typedef struct s_exec
 {
-	t_data			*dir_texture;
+	t_data			*wall_texture;
 	t_data			scre;
 	int				draw_start;
 	int				draw_end;

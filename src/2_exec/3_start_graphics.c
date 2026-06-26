@@ -37,7 +37,7 @@ int	start_graphics(t_game *game)
 {
 	if (!game || !game->mlx || !game->win)
 		return (FAIL);
-	// if (!game->exec.dir_texture)//this is causing a segv
+	// if (!game->exec.wall_texture)//this is causing a segv
 	// 	return (FAIL);
 	draw(game, &game->exec.play.move, &game->exec.scre);
 	mlx_hook(game->win, 2, 1L << 0, key_hook, game);
