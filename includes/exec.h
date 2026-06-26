@@ -42,7 +42,6 @@ void				free_mlx_texture(void *mlx, void **target);
 int					start_graphics(t_game *game);
 int					key_hook(int keycode, void *param);
 void				draw_minimap(t_game *game);
-void				img_pix_put(t_data *img, int x, int y, unsigned int color);
 unsigned int		get_pixel_colour(t_data *img, int x, int y);
 
 /*execution*/

@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 17:51:57 by asato             #+#    #+#             */
-/*   Updated: 2026/06/26 17:54:39 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/26 19:02:27 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <math.h>/*for pi*/
 #include <mlx.h>
 
-void	img_pix_put(t_data *img, int x, int y, unsigned int color)
+static void	img_pix_put(t_data *img, int x, int y, unsigned int color)
 {
 	char	*pixel;
 	int		i;
@@ -59,10 +59,10 @@ static t_pos	convert(t_vec a)
 	return (result);
 }
 
-static void	display_fan_beam(t_map map, t_data *screen, t_play play)//TODO @Ayumi what is this function doing? why doesnt it use play.dir?
+static void	display_fan_beam(t_map map, t_data *screen, t_play play)
 {
 	double	t;
-	t_pos	line;
+	t_pos	point;
 	t_pos	max;
 	t_vec	ray_dir;
 	double	angle;
@@ -77,16 +77,18 @@ static void	display_fan_beam(t_map map, t_data *screen, t_play play)//TODO @Ayum
 		ray_dir = turn_vec(play.dir, angle);
 		while (t <= TILE_SIZE)
 		{
-			line = convert(add_vec(play.pos, mult_vec(t, ray_dir)));
-			if (line.col >= max.col || line.row >= max.row || line.col < 0 || line.row < 0
-				|| map.grid[line.row / TILE_SIZE][line.col / TILE_SIZE] == '1') //  valid pixel indices go from 0 to max - 1.
+			point = convert(add_vec(play.pos, mult_vec(t, ray_dir)));
+			if (point.col >= max.col || point.row >= max.row || point.col < 0
+				|| point.row < 0 || map.grid[point.row / TILE_SIZE][point.col
+				/ TILE_SIZE] == '1') //  valid pixel indices go from 0 to max - 1.
 				break ;
-			img_pix_put(screen, line.col, line.row, FAN_COLOR);
+			img_pix_put(screen, point.col, point.row, FAN_COLOR);
 			t += 0.01;
 		}
 		angle += 0.01;
 	}
 }
+
 
 void	draw_minimap(t_game *game)
 {
