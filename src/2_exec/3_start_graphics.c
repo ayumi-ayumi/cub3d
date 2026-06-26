@@ -13,6 +13,7 @@
 // #include "cub3d.h"
 #include "exec.h"
 #include <mlx.h>
+#include <math.h>/*for M_PI_2*/
 
 int	close_window(void *param)
 {
@@ -26,6 +27,10 @@ int	close_window(void *param)
 
 int	draw(t_game *game, t_move *move, t_data *scre)
 {
+	t_play	*play;
+
+	play = &game->exec.play;
+	play->plane = turn_vec(play->dir, -1 * M_PI_2);
 	raycast(game, &game->exec);
 	if (timing(move) == FAIL)
 		return (FAIL);

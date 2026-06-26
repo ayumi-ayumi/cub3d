@@ -51,7 +51,10 @@ static void	calc_height(t_exec *exec, double perp_wall_dist)
 		exec->draw_end = SCREEN_HEIGHT;
 }
 
-/*loop through every pixel col of the scre*/
+/*
+ * loop through every pixel col of the scre
+ * cam_x range is -1 to 1.
+ */
 int	raycast(t_game *game, t_exec *exec)
 {
 	int		x;
