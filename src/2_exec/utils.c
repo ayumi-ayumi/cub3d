@@ -10,8 +10,8 @@ t_vec	turn_vec(t_vec vec, double angle)
 	double	sinu;
 	t_vec	turned;
 
-	cosi = cos(2 * M_PI - angle);
-	sinu = sin(2 * M_PI - angle);
+	cosi = cos(-1 * angle);
+	sinu = sin( -1 * angle);
 	turned.x = vec.x * cosi - vec.y * sinu;
 	turned.y = vec.x * sinu + vec.y * cosi;
 	return (turned);
