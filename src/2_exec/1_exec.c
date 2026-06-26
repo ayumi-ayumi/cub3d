@@ -5,7 +5,7 @@
 #include <stddef.h>
 
 /*setup of scre and start game loop*/
-int	execution(t_game *game)
+int	execute_game(t_game *game)
 {
 	ft_bzero(&game->exec, sizeof(t_exec));
 	if (init_mlx(game) == FAIL)

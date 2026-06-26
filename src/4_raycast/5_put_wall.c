@@ -21,7 +21,7 @@ void	put_wall(t_exec *exec, t_paint *paint)
 	while (paint->screen.row < exec->draw_end)
 	{
 		paint->tex.row = (int)(floor(tex_per_pixel));
-		color = get_pixel_colour(&exec->dir_texture[side],
+		color = get_pixel_colour(&exec->wall_texture[side],
 				paint->tex.col, paint->tex.row);
 		put_pixel(&exec->scre, paint->screen.col, paint->screen.row, color);
 		tex_per_pixel += ratio;

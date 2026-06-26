@@ -3,10 +3,6 @@
 #include <math.h>/*for pi*/
 #include <mlx.h>
 
-#ifndef M_PI
-# define M_PI 3.14159265358979323846
-#endif
-
 void	img_pix_put(t_data *img, int x, int y, unsigned int color)
 {
 	char	*pixel;
@@ -51,7 +47,7 @@ static t_pos	convert(t_vec a)
 	return (result);
 }
 
-static void	put_dir(t_map map, t_data *screen, t_play play)
+static void	put_dir(t_map map, t_data *screen, t_play play)//TODO @Ayumi what is this function doing? why doesnt it use play.dir?
 {
 	double	t;
 	t_pos	line;
@@ -61,7 +57,7 @@ static void	put_dir(t_map map, t_data *screen, t_play play)
 
 	max.col = map.width * MINI;
 	max.row = map.height * MINI;
-	angle = (M_PI / 6) * -1;
+	angle = (M_PI / 6) * - 1;
 	play.pos.x += 0.2;
 	while (angle < M_PI / 6)
 	{

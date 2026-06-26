@@ -11,7 +11,7 @@
 	git diff
 	git add <file>
 	git diff --staged
-	git commit -m "VERB filename: description"
+	git commit -m "VERB description"
 	git push
 
 ## New branch

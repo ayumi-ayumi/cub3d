@@ -94,7 +94,7 @@ typedef struct s_data
 /*mlx img for walls*/
 typedef struct s_exec
 {
-	t_data			*dir_texture;
+	t_data			*wall_texture;
 	t_data			scre;
 	int				draw_start;
 	int				draw_end;
@@ -134,7 +134,7 @@ typedef struct s_game
 	t_data		minimap;
 }				t_game;
 
-int		execution(t_game *game);
+int		execute_game(t_game *game);
 // void	cleanup_exec(t_game *game, t_exec *exec);
 
 /* Clean Up */

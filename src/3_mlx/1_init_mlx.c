@@ -9,7 +9,7 @@ static void	nulling_init(t_game *game)
 {
 	game->mlx = NULL;
 	game->win = NULL;
-	game->exec.dir_texture = NULL;
+	game->exec.wall_texture = NULL;
 	ft_bzero(&game->exec.scre, sizeof(t_data));
 	game->exec.scre.img = NULL;
 	ft_bzero(&game->minimap, sizeof(t_data));
@@ -31,32 +31,32 @@ static void	*load_texture(t_game *game, char *path)
 }
 
 /*loading paths to mlx pictures, creating scre img*/
-static int	init_mlx_texture(t_game *game, t_data *dir_texture)
+static int	init_mlx_texture(t_game *game, t_data *wall_texture)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	dir_texture = ft_calloc(5, sizeof(t_data));
-	if (!dir_texture)
+	wall_texture = ft_calloc(5, sizeof(t_data));
+	if (!wall_texture)
 		return (FAIL);
 	while (i < 4)
 	{
-		dir_texture[i].img = load_texture(game, game->config.texture_paths[i]);
-		if (!(dir_texture[i].img))
+		wall_texture[i].img = load_texture(game, game->config.texture_paths[i]);
+		if (!(wall_texture[i].img))
 		{
 			j = i;
 			while (j >= 0)
-				free_mlx_texture(game->mlx, (void **)&dir_texture[j--].img);
-			ft_free((void **)&dir_texture);//we call calloc only once for this so we also call free only once
+				free_mlx_texture(game->mlx, (void **)&wall_texture[j--].img);
+			ft_free((void **)&wall_texture);//we call calloc only once for this so we also call free only once
 			return (print_error("Texture path is invalid"), FAIL);
 		}
-		dir_texture[i].addr = mlx_get_data_addr(dir_texture[i].img,
-				&dir_texture[i].bpp, &dir_texture[i].line_length,
-				&dir_texture[i].endian);
+		wall_texture[i].addr = mlx_get_data_addr(wall_texture[i].img,
+				&wall_texture[i].bpp, &wall_texture[i].line_length,
+				&wall_texture[i].endian);
 		i++;
 	}
-	game->exec.dir_texture = dir_texture;
+	game->exec.wall_texture = wall_texture;
 	return (SUCCESS);
 }
 
@@ -78,7 +78,7 @@ int	init_mlx(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (FAIL);
-	if (init_mlx_texture(game, game->exec.dir_texture) == FAIL)
+	if (init_mlx_texture(game, game->exec.wall_texture) == FAIL)
 		return (free_win(game), free_mlx(game), FAIL);
 	game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3d");
 	if (!game->win)
