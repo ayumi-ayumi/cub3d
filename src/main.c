@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 		error_and_exit("File extension must be \".cub\".\n");
 	if (!load_map_and_config(&game))
 		return (cleanup_and_exit(&game), 1);
-	if (execute_game(&game) == FAIL) // The function name can be execute_game()
+	if (execute_game(&game) == FAIL)
 		return (cleanup_and_exit(&game), FAIL);
 	free_entire_mlx(&game);
 	cleanup_and_exit(&game);
