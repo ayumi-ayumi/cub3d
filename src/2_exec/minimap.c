@@ -59,23 +59,33 @@ static t_pos	convert(t_vec a)
 	return (result);
 }
 
-static void	display_fan_beam(t_map map, t_data *screen, t_play play)//TODO @Ayumi what is this function doing? why doesnt it use play.dir?
+static int	find_max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
+}
+
+static void	display_fan_beam(t_map map, t_data *screen, t_play play)
 {
 	double	t;
 	t_pos	line;
 	t_pos	max;
 	t_vec	ray_dir;
 	double	angle;
+	int		fan_max;
 
 	max.col = map.width * TILE_SIZE;
 	max.row = map.height * TILE_SIZE;
 	angle = (M_PI / 6) * - 1;
+	fan_max = find_max(max.row, max.col);
 	play.pos.x += 0.2;
 	while (angle < M_PI / 6)
 	{
 		t = 0.0;
 		ray_dir = turn_vec(play.dir, angle);
-		while (t <= TILE_SIZE)
+		while (t <= fan_max)
 		{
 			line = convert(add_vec(play.pos, mult_vec(t, ray_dir)));
 			if (line.col >= max.col || line.row >= max.row || line.col < 0 || line.row < 0

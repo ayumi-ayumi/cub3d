@@ -43,9 +43,9 @@ static void	calc_height(t_exec *exec, double perp_wall_dist)
 		exec->wall_height = 100 * SCREEN_HEIGHT;
 	else
 		exec->wall_height = (unsigned int)((double)SCREEN_HEIGHT / perp_wall_dist);
-	exec->draw_start = -(exec->wall_height / 2) + (SCREEN_HEIGHT / 2);
-	if (exec->draw_start < 0)
-		exec->draw_start = 0;
+	exec->draw_start = (SCREEN_HEIGHT / 2) - (exec->wall_height / 2);
+	// if (exec->draw_start < 0)
+	// 	exec->draw_start = 0;
 	exec->draw_end = (exec->wall_height / 2) + (SCREEN_HEIGHT / 2);
 	if (exec->draw_end >= SCREEN_HEIGHT)
 		exec->draw_end = SCREEN_HEIGHT;
