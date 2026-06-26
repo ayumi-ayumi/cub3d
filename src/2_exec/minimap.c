@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 17:51:57 by asato             #+#    #+#             */
-/*   Updated: 2026/06/26 19:02:27 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/26 19:04:17 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ static t_pos	convert(t_vec a)
 	return (result);
 }
 
+static int	find_max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
+}
+
 static void	display_fan_beam(t_map map, t_data *screen, t_play play)
 {
 	double	t;
@@ -66,16 +74,18 @@ static void	display_fan_beam(t_map map, t_data *screen, t_play play)
 	t_pos	max;
 	t_vec	ray_dir;
 	double	angle;
+	int		fan_max;
 
 	max.col = map.width * TILE_SIZE;
 	max.row = map.height * TILE_SIZE;
 	angle = (M_PI / 6) * - 1;
+	fan_max = find_max(max.row, max.col);
 	play.pos.x += 0.2;
 	while (angle < M_PI / 6)
 	{
 		t = 0.0;
 		ray_dir = turn_vec(play.dir, angle);
-		while (t <= TILE_SIZE)
+		while (t <= fan_max)
 		{
 			point = convert(add_vec(play.pos, mult_vec(t, ray_dir)));
 			if (point.col >= max.col || point.row >= max.row || point.col < 0
