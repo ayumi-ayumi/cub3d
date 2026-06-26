@@ -7,8 +7,8 @@
 # define TEXTURE_HEIGHT 32
 # define MOVESPEED 0.02125
 # define ROTSPEED 0.015
-# define MINI 10
 # define TILE_SIZE 10
+# define PLAYER_SIZE 4
 # define WALL_COLOR 0x333333
 # define FLOOR_COLOR 0xCCCCCC
 # define PLAYER_COLOR 0xFF0000
@@ -29,8 +29,6 @@ typedef struct s_tile
 {
 	int				x;
 	int				y;
-	int				width;
-	int				height;
 	unsigned int	color;
 }	t_tile;
 
