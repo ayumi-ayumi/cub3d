@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/06/04 16:33:45 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 16:11:49 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@
 static void	store_start_orientation(t_map *map)
 {
 	char	*dirs;
+	t_pos	start_pos;
 	int		i;
 
 	dirs = "NSEW";
+	start_pos = map->start_pos;
 	i = 0;
 	while (i < 4)
 	{
-		if (map->grid[map->start_pos.row][map->start_pos.col] == dirs[i])
+		if (map->grid[start_pos.row][start_pos.col] == dirs[i])
 		{
 			map->start_orientation = dirs[i];
 			break ;
@@ -56,7 +58,7 @@ static t_pos	find_start_pos(t_map *map)
 	int		col_idx;
 	t_pos	target_pos;
 
-	target_pos = (t_pos){-1, -1};
+	target_pos = (t_pos){.row = -1, .col = -1};
 	row_idx = 0;
 	while (row_idx < map->height)
 	{

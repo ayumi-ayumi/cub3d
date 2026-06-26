@@ -4,7 +4,7 @@
 /* populates move->time in milliseconds*/
 static int	get_time(t_move *move)
 {
-	struct timeval tv;
+	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL) != SUCCESS)
 		return (FAIL);

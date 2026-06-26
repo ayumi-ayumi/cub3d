@@ -8,9 +8,13 @@
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
 # define MINI 10
+# define TILE_SIZE 10
+# define NORTH_SOUTH 1
+# define WEST_EAST 0
 # define WALL_COLOR 0x333333
 # define FLOOR_COLOR 0xCCCCCC
 # define PLAYER_COLOR 0xFF0000
+# define FAN_COLOR 0xDDFFCC
 
 # include "cub3d.h"
 

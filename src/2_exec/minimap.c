@@ -1,12 +1,19 @@
 #include "cub3d.h"
 #include "exec.h"
+#include <math.h>/*for pi*/
 #include <mlx.h>
+
+#ifndef M_PI
+# define M_PI 3.14159265358979323846
+#endif
 
 void	img_pix_put(t_data *img, int x, int y, unsigned int color)
 {
 	char	*pixel;
 	int		i;
 
+	if (!img || !img->addr || x < 0 || y < 0)
+		return ;
 	i = img->bpp - 8;
 	pixel = img->addr + (y * img->line_length + x * (img->bpp / 8));
 	while (i >= 0)
@@ -24,8 +31,6 @@ int	render_tile(t_game *game, t_tile tile)
 	int	i;
 	int	j;
 
-	if (game->win == NULL)
-		return (1);
 	i = tile.y;
 	while (i < tile.y + tile.height)
 	{
@@ -49,19 +54,28 @@ static t_pos	convert(t_vec a)
 static void	put_dir(t_map map, t_data *screen, t_play play)
 {
 	double	t;
-	t_pos	pixel;
+	t_pos	line;
 	t_pos	max;
+	t_vec	ray_dir;
+	double	angle;
 
-	t = 0.0;
 	max.col = map.width * MINI;
 	max.row = map.height * MINI;
-	while (t <= 2.0)
+	angle = (M_PI / 6) * -1;
+	play.pos.x += 0.2;
+	while (angle < M_PI / 6)
 	{
-		pixel = convert(add_vec(play.pos, mult_vec(t, play.dir)));
-		if (pixel.col > max.col || pixel.row >  max.row || pixel.col < 0 || pixel.row < 0)
-			break;
-		img_pix_put(screen, pixel.col, pixel.row, 0xFFFFFF);
-		t += 0.01;
+		t = 0.0;
+		while (t <= 3.0)
+		{
+			ray_dir = turn_vec(play.dir, angle);
+			line = convert(add_vec(play.pos, mult_vec(t, ray_dir)));
+			if (line.col >= max.col || line.row >= max.row || line.col < 0 || line.row < 0) //  valid pixel indices go from 0 to max - 1.
+				break ;
+			img_pix_put(screen, line.col, line.row, FAN_COLOR);
+			t += 0.01;
+		}
+		angle += 0.01;
 	}
 }
 
@@ -69,34 +83,30 @@ void	draw_minimap(t_game *game)
 {
 	int		row;
 	int		col;
-	int		size;
 	t_tile	tile;
 	t_tile	player;
 
-	size = 10;
-	tile = (t_tile){0, 0, size, size, 0};
+	tile = (t_tile){0, 0, TILE_SIZE, TILE_SIZE, 0};
 	row = 0;
 	while (row < game->map.height)
 	{
 		col = 0;
 		while (game->map.grid[row][col] != '\0')
 		{
-			tile.x = col * size;
-			tile.y = row * size;
-
+			tile.x = col * TILE_SIZE;
+			tile.y = row * TILE_SIZE;
 			if (game->map.grid[row][col] == '1')
 				tile.color = WALL_COLOR;
 			else
 				tile.color = FLOOR_COLOR;
 			render_tile(game, tile);
-
 			col++;
 		}
 		if (col < game->map.width)
 		{
 			while (col < game->map.width)
 			{
-				tile.x = col * size;
+				tile.x = col * TILE_SIZE;
 				tile.color = FLOOR_COLOR;
 				render_tile(game, tile);
 				col++;
@@ -104,8 +114,8 @@ void	draw_minimap(t_game *game)
 		}
 		row++;
 	}
-	player.x = game->exec.play.pos.x * size;
-	player.y = game->exec.play.pos.y * size;
+	player.x = game->exec.play.pos.x * TILE_SIZE;
+	player.y = game->exec.play.pos.y * TILE_SIZE;
 	player.width = 4;
 	player.height = 4;
 	player.color = PLAYER_COLOR;

@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 16:40:38 by asato             #+#    #+#             */
-/*   Updated: 2026/06/20 13:17:59 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 13:48:35 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 #include "libft.h"
 #include <unistd.h>
 
-static int	is_extension_correct(t_game *game, char *file_name)
+static t_bool	is_extension_correct(t_game *game, char *file_name)
 {
 	int	file_name_len;
 
 	if (!file_name)
-		return (0);
+		return (FALSE);
 	file_name_len = ft_strlen(file_name);
 	if (ft_strncmp(file_name + (file_name_len - 4), ".cub", 4) != 0)
-		return (0);
+		return (FALSE);
 	game->file_path = file_name;
-	return (1);
+	return (TRUE);
 }
 
 int	main(int ac, char **av)
@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 		error_and_exit("File extension must be \".cub\".\n");
 	if (!load_map_and_config(&game))
 		return (cleanup_and_exit(&game), 1);
-	if (execution(&game) == FAIL)
+	if (execution(&game) == FAIL) // The function name can be execute_game()
 		return (cleanup_and_exit(&game), FAIL);
 	free_entire_mlx(&game);
 	cleanup_and_exit(&game);

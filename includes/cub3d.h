@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/06/20 13:16:36 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 18:02:33 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stddef.h>/*for NULL*/
 //# include "exec.h"
 
+typedef int	t_bool;
 typedef enum s_direction
 {
 	DIR_NO = 0,
@@ -106,11 +107,7 @@ typedef struct s_exec
 /*paths to wall image files*/
 typedef struct s_config
 {
-	char	**dir_path;
-	// char	*no;
-	// char	*so;
-	// char	*we;
-	// char	*ea;
+	char	**texture_paths;
 	int		floor[3];
 	int		ceiling[3];
 }			t_config;
@@ -144,4 +141,5 @@ int		execution(t_game *game);
 void	free_map(t_map *map);
 void	free_entire_mlx(t_game *game);
 void	cleanup_and_exit(t_game *game);
+void	print_error(char *error);
 #endif

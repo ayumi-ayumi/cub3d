@@ -9,10 +9,10 @@ static void	nulling_init(t_game *game)
 {
 	game->mlx = NULL;
 	game->win = NULL;
-	ft_bzero(&game->minimap, sizeof(t_data));
 	game->exec.dir_texture = NULL;
 	ft_bzero(&game->exec.scre, sizeof(t_data));
 	game->exec.scre.img = NULL;
+	ft_bzero(&game->minimap, sizeof(t_data));
 }
 
 /*if mlx fails NULL will be returned ... guard is in calling function*/
@@ -31,39 +31,34 @@ static void	*load_texture(t_game *game, char *path)
 }
 
 /*loading paths to mlx pictures, creating scre img*/
-static int	init_mlx_texture(t_game *game)
+static int	init_mlx_texture(t_game *game, t_data *dir_texture)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	game->exec.dir_texture = ft_calloc(5, sizeof(t_data));
-	if (!game->exec.dir_texture)
+	dir_texture = ft_calloc(5, sizeof(t_data));
+	if (!dir_texture)
 		return (FAIL);
 	while (i < 4)
 	{
-		game->exec.dir_texture[i].img = load_texture(game, game->config.dir_path[i]);
-		// ft_free((void **)&game->config.dir_path[i]);
-		if (!(game->exec.dir_texture[i].img))
+		dir_texture[i].img = load_texture(game, game->config.texture_paths[i]);
+		if (!(dir_texture[i].img))
 		{
 			j = i;
 			while (j >= 0)
-			{
-				free_mlx_texture(game->mlx, (void **)&game->exec.dir_texture[j].img);
-				j--;
-			}
-			ft_free((void **)&game->exec.dir_texture);//we call calloc only once for this so we also call free only once
-			return (FAIL);
+				free_mlx_texture(game->mlx, (void **)&dir_texture[j--].img);
+			ft_free((void **)&dir_texture);//we call calloc only once for this so we also call free only once
+			return (print_error("Texture path is invalid"), FAIL);
 		}
-		game->exec.dir_texture[i].addr = mlx_get_data_addr(game->exec.dir_texture[i].img,
-				&game->exec.dir_texture[i].bpp, &game->exec.dir_texture[i].line_length,
-				&game->exec.dir_texture[i].endian);
-
+		dir_texture[i].addr = mlx_get_data_addr(dir_texture[i].img,
+				&dir_texture[i].bpp, &dir_texture[i].line_length,
+				&dir_texture[i].endian);
 		i++;
 	}
+	game->exec.dir_texture = dir_texture;
 	return (SUCCESS);
 }
-
 
 static int	init_scre_buffer(t_game *game, t_data *scre)
 {
@@ -83,12 +78,11 @@ int	init_mlx(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (FAIL);
+	if (init_mlx_texture(game, game->exec.dir_texture) == FAIL)
+		return (free_win(game), free_mlx(game), FAIL);
 	game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3d");
 	if (!game->win)
 		return (free_mlx(game), FAIL);
-
-	if (init_mlx_texture(game) == FAIL)
-		return (free_win(game), free_mlx(game), FAIL);
 	if (init_scre_buffer(game, &game->exec.scre) == FAIL)
 		return (free_entire_mlx(game), FAIL);
 	return (SUCCESS);

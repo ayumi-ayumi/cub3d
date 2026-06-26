@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/06/13 17:44:55 by vlara            ###   ########.fr       */
+/*   Updated: 2026/06/22 14:36:33 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,11 @@ static int	validate_map_charset(t_map *map)
 
 static void	replace_start_pos_char_0(t_map *map)
 {
-	int	row;
-	int	col;
+	t_pos	start_pos;
 
-	row = map->start_pos.row;
-	col = map->start_pos.col;
-	map->grid[row][col] = '0';//changed to silence comp. error
+	start_pos = map->start_pos;
+	map->grid[start_pos.row][start_pos.col] = '0';
 }
-
-
 
 int	validate_map(t_map *map)
 {

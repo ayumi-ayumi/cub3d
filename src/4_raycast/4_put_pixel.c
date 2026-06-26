@@ -5,8 +5,8 @@
 /*iterates over img_addr byte by byte char is one byt*/
 void	put_pixel(t_data *img, int x, int y, unsigned int color)
 {
-	char 	*pixel;
-	int	i;
+	char	*pixel;
+	int		i;
 
 	i = img->bpp - 8;
 	pixel = img->addr + (y * img->line_length + x * (img->bpp / 8));
@@ -38,7 +38,7 @@ unsigned int	get_pixel_colour(t_data *img, int x, int y)
 	color = 0;
 	bytespp = img->bpp / CHAR_BIT;
 	first = img->addr + (y * img->line_length + x * bytespp);
- 	last = first + bytespp - 1;
+	last = first + bytespp - 1;
 	if (img->bpp > (int)sizeof(unsigned int) * CHAR_BIT)
 		return (0);
 	while (img->endian != 0 && first <= last)

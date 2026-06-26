@@ -11,7 +11,7 @@ static void	calc_perp_wall_dist(t_play *play)
 
 static void	dda(char **grid, t_play *play)
 {
-	while(play->wall_hit == FALSE)
+	while (play->wall_hit == FALSE)
 	{
 		if (play->side_dist.x < play->side_dist.y)
 		{
@@ -20,16 +20,16 @@ static void	dda(char **grid, t_play *play)
 			if (play->ray.x > 0)
 				play->side = DIR_WE;
 			else
-			 play->side = DIR_EA;
+				play->side = DIR_EA;
 		}
 		else
 		{
 			play->side_dist.y += play->delta_dist.y;
 			play->map.row += play->step.row;
 			if (play->ray.y > 0)
-				play->side = DIR_SO; 
+				play->side = DIR_SO;
 			else
-			 play->side = DIR_NO;
+				play->side = DIR_NO;
 		}
 		if (grid[(int)play->map.row][(int)play->map.col] == '1')
 			play->wall_hit = TRUE;
@@ -42,11 +42,11 @@ static void	calc_height(t_exec *exec, double perp_wall_dist)
 	if (perp_wall_dist < 0.01)
 		exec->wall_height = 100 * SCREEN_HEIGHT;
 	else
-		exec->wall_height = (unsigned int)((double)SCREEN_HEIGHT /perp_wall_dist);
-	exec->draw_start = -(exec->wall_height / 2) +  (SCREEN_HEIGHT / 2);
+		exec->wall_height = (unsigned int)((double)SCREEN_HEIGHT / perp_wall_dist);
+	exec->draw_start = -(exec->wall_height / 2) + (SCREEN_HEIGHT / 2);
 	if (exec->draw_start < 0)
 		exec->draw_start = 0;
-	exec->draw_end = (exec->wall_height / 2) +  (SCREEN_HEIGHT / 2);
+	exec->draw_end = (exec->wall_height / 2) + (SCREEN_HEIGHT / 2);
 	if (exec->draw_end >= SCREEN_HEIGHT)
 		exec->draw_end = SCREEN_HEIGHT;
 }

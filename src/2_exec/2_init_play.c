@@ -10,7 +10,7 @@ static unsigned int	convert_rgb(int array[3])
 	unsigned int	r;
 	unsigned int	g;
 	unsigned int	b;
-	
+
 	if (array[0] < 0 || array[1] < 0 || array[2] < 0)
 		return (-1);
 	r = (unsigned int)array[0];
@@ -19,7 +19,6 @@ static unsigned int	convert_rgb(int array[3])
 	rgb = r << 16 | g << 8 | b;
 	return (rgb);
 }
-
 
 /*populates the game struct with initial data, val 0 can be -0*/
 int	init_play_data(t_game *game, t_exec *exec)

@@ -3,7 +3,6 @@
 #include <mlx.h>
 #include <math.h> /*for sin and cos*/
 
-
 /*turning matrice turns counterclockwise even though in mirrored grid*/
 t_vec	turn_vec(t_vec vec, double angle)
 {
@@ -18,8 +17,7 @@ t_vec	turn_vec(t_vec vec, double angle)
 	return (turned);
 }
 
-
-t_vec add_vec(t_vec a, t_vec b)
+t_vec	add_vec(t_vec a, t_vec b)
 {
 	t_vec	result;
 
@@ -28,7 +26,7 @@ t_vec add_vec(t_vec a, t_vec b)
 	return (result);
 }
 
-t_vec mult_vec(double factor, t_vec b)
+t_vec	mult_vec(double factor, t_vec b)
 {
 	t_vec	result;
 

@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/06/04 16:04:27 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 17:07:28 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,20 @@ static int	validate_config(t_game *game)
 		return (0);
 	if (!validate_prefix(game))
 		return (0);
-	game->config.dir_path = ft_calloc(5, sizeof(char *));
-	if (!game->config.dir_path)
+	game->config.texture_paths = ft_calloc(5, sizeof(char *));
+	if (!game->config.texture_paths)
 		return (0);
-	if (!extract_dir_config(game))
-		return (free_dir_parh(game->config.dir_path), 0);
+	if (!extract_texture_config(game))
+		return (free_texture_paths(game->config.texture_paths), 0);
 	if (!extract_rgb_config(game))
 		return (0);
 	return (1);
 }
 
-int	exract_elements(t_game *game)
+int	extract_elements(t_game *game)
 {
 	if (!validate_config(game))
-		return (print_error("Imcopmete config data\n"), 0);
+		return (print_error("Incomplete config data\n"), 0);
 	game->map.height = game->map.height - 6 + 1;
 	if (!extract_map(game))
 		return (0);

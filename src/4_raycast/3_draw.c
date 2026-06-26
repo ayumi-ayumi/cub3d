@@ -9,7 +9,7 @@ static void	get_texture_x(t_play *play, t_paint *paint)
 	double	wall_x;
 	double	percent;
 
-	if (play->side == DIR_WE|| play->side == DIR_EA)
+	if (play->side == DIR_WE || play->side == DIR_EA)
 		wall_x = play->pos.y + play->perp_wall_dist * play->ray.y;
 	else
 		wall_x = play->pos.x + play->perp_wall_dist * play->ray.x;
@@ -20,11 +20,10 @@ static void	get_texture_x(t_play *play, t_paint *paint)
 		paint->tex.col = TEXTURE_WIDTH - paint->tex.col - 1;
 }
 
-
 /*draw scre col from top down*/
 void	draw_line(t_exec *exec, int x)
 {
-	t_paint paint;
+	t_paint	paint;
 
 	ft_bzero(&paint, sizeof(t_paint));
 	paint.screen.col = x;
@@ -36,7 +35,7 @@ void	draw_line(t_exec *exec, int x)
 	}
 	while (paint.screen.row < exec->draw_end)
 		put_wall(exec, &paint);
-	while(paint.screen.row < SCREEN_HEIGHT)
+	while (paint.screen.row < SCREEN_HEIGHT)
 	{
 		put_pixel(&exec->scre, x, paint.screen.row, exec->floor);
 		paint.screen.row++;

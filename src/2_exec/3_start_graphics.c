@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 15:19:26 by asato             #+#    #+#             */
-/*   Updated: 2026/06/20 14:58:43 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/22 18:38:55 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	close_window(void *param)
 
 int	draw(t_game *game, t_move *move, t_data *scre)
 {
-		raycast(game, &game->exec);
-		if (timing(move) == FAIL)
-			return (FAIL);
-		mlx_put_image_to_window(game->mlx, game->win, scre->img, 0, 0);
-		return (SUCCESS);
+	raycast(game, &game->exec);
+	if (timing(move) == FAIL)
+		return (FAIL);
+	mlx_put_image_to_window(game->mlx, game->win, scre->img, 0, 0);
+	return (SUCCESS);
 }
 
 int	start_graphics(t_game *game)
@@ -39,7 +39,7 @@ int	start_graphics(t_game *game)
 		return (FAIL);
 	// if (!game->exec.dir_texture)//this is causing a segv
 	// 	return (FAIL);
-	draw(game, &game->exec.play.move,&game->exec.scre);
+	draw(game, &game->exec.play.move, &game->exec.scre);
 	mlx_hook(game->win, 2, 1L << 0, key_hook, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_loop(game->mlx);

@@ -28,7 +28,7 @@ static void	put_dir(t_map map, t_data *screen, t_play play)
 	t = 0.0;
 	max.col = map.width * MINI;
 	max.row = map.height * MINI;
-	while(t <= 2.0)
+	while (t <= 2.0)
 	{
 		pixel = convert(add_vec(play.pos, mult_vec(t, play.dir)));
 		if (pixel.col > max.col || pixel.row >  max.row || pixel.col < 0 || pixel.row < 0)
@@ -45,7 +45,7 @@ void	draw_mini_map(t_map *map, t_play *play, t_data *screen)
 
 	i = 0;
 	j = 0;
-	while (i <  map->width * MINI)
+	while (i < map->width * MINI)
 	{
 		j = 0;
 		while (j < map->height * MINI)

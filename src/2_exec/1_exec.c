@@ -4,7 +4,6 @@
 #include <mlx.h>
 #include <stddef.h>
 
-
 /*setup of scre and start game loop*/
 int	execution(t_game *game)
 {
