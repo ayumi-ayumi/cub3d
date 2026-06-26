@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/26 17:51:57 by asato             #+#    #+#             */
+/*   Updated: 2026/06/26 17:54:39 by asato            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 #include "exec.h"
 #include <math.h>/*for pi*/
@@ -22,16 +34,16 @@ void	img_pix_put(t_data *img, int x, int y, unsigned int color)
 	}
 }
 
-int	render_tile(t_game *game, t_tile tile)
+static int	render_tile(t_game *game, t_tile tile, int size)
 {
 	int	i;
 	int	j;
 
 	i = tile.y;
-	while (i < tile.y + tile.height)
+	while (i < tile.y + size)
 	{
 		j = tile.x;
-		while (j < tile.x + tile.width)
+		while (j < tile.x + size)
 			img_pix_put(&game->exec.scre, j++, i, tile.color);
 		++i;
 	}
@@ -42,12 +54,12 @@ static t_pos	convert(t_vec a)
 {
 	t_pos	result;
 
-	result.col = (int)(a.x * (double)MINI);
-	result.row = (int)(a.y * (double)MINI);
+	result.col = (int)(a.x * (double)TILE_SIZE);
+	result.row = (int)(a.y * (double)TILE_SIZE);
 	return (result);
 }
 
-static void	put_dir(t_map map, t_data *screen, t_play play)//TODO @Ayumi what is this function doing? why doesnt it use play.dir?
+static void	display_fan_beam(t_map map, t_data *screen, t_play play)//TODO @Ayumi what is this function doing? why doesnt it use play.dir?
 {
 	double	t;
 	t_pos	line;
@@ -55,18 +67,19 @@ static void	put_dir(t_map map, t_data *screen, t_play play)//TODO @Ayumi what is
 	t_vec	ray_dir;
 	double	angle;
 
-	max.col = map.width * MINI;
-	max.row = map.height * MINI;
+	max.col = map.width * TILE_SIZE;
+	max.row = map.height * TILE_SIZE;
 	angle = (M_PI / 6) * - 1;
 	play.pos.x += 0.2;
 	while (angle < M_PI / 6)
 	{
 		t = 0.0;
-		while (t <= 3.0)
+		ray_dir = turn_vec(play.dir, angle);
+		while (t <= TILE_SIZE)
 		{
-			ray_dir = turn_vec(play.dir, angle);
 			line = convert(add_vec(play.pos, mult_vec(t, ray_dir)));
-			if (line.col >= max.col || line.row >= max.row || line.col < 0 || line.row < 0) //  valid pixel indices go from 0 to max - 1.
+			if (line.col >= max.col || line.row >= max.row || line.col < 0 || line.row < 0
+				|| map.grid[line.row / TILE_SIZE][line.col / TILE_SIZE] == '1') //  valid pixel indices go from 0 to max - 1.
 				break ;
 			img_pix_put(screen, line.col, line.row, FAN_COLOR);
 			t += 0.01;
@@ -82,7 +95,7 @@ void	draw_minimap(t_game *game)
 	t_tile	tile;
 	t_tile	player;
 
-	tile = (t_tile){0, 0, TILE_SIZE, TILE_SIZE, 0};
+	tile = (t_tile){0, 0, 0};
 	row = 0;
 	while (row < game->map.height)
 	{
@@ -95,7 +108,7 @@ void	draw_minimap(t_game *game)
 				tile.color = WALL_COLOR;
 			else
 				tile.color = FLOOR_COLOR;
-			render_tile(game, tile);
+			render_tile(game, tile, TILE_SIZE);
 			col++;
 		}
 		if (col < game->map.width)
@@ -104,7 +117,7 @@ void	draw_minimap(t_game *game)
 			{
 				tile.x = col * TILE_SIZE;
 				tile.color = FLOOR_COLOR;
-				render_tile(game, tile);
+				render_tile(game, tile, TILE_SIZE);
 				col++;
 			}
 		}
@@ -112,9 +125,7 @@ void	draw_minimap(t_game *game)
 	}
 	player.x = game->exec.play.pos.x * TILE_SIZE;
 	player.y = game->exec.play.pos.y * TILE_SIZE;
-	player.width = 4;
-	player.height = 4;
 	player.color = PLAYER_COLOR;
-	render_tile(game, player);
-	put_dir(game->map, &game->exec.scre, game->exec.play);
+	render_tile(game, player, PLAYER_SIZE);
+	display_fan_beam(game->map, &game->exec.scre, game->exec.play);
 }
