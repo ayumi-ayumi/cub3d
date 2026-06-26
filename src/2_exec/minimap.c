@@ -75,7 +75,7 @@ static void	display_fan_beam(t_map map, t_data *screen, t_play play)//TODO @Ayum
 	{
 		t = 0.0;
 		ray_dir = turn_vec(play.dir, angle);
-		while (t <= TILE_SIZE)
+		while (t <= TILE_SIZE * map.width)
 		{
 			line = convert(add_vec(play.pos, mult_vec(t, ray_dir)));
 			if (line.col >= max.col || line.row >= max.row || line.col < 0 || line.row < 0
