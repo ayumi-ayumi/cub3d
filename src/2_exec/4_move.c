@@ -54,7 +54,7 @@ static void	handle_key_event(int	keycode, t_game *game)
 	if (keycode == XK_Left)
 		game->exec.play.dir = turn_vec(game->exec.play.dir, M_PI_2 * ROTSPEED);
 	if (keycode == XK_Right)
-		game->exec.play.dir = turn_vec(game->exec.play.dir, 2 * M_PI - M_PI_2 * ROTSPEED);
+		game->exec.play.dir = turn_vec(game->exec.play.dir,  -1 * M_PI_2 * ROTSPEED);
 	draw(game, &game->exec.play.move, &game->exec.scre);
 }
 
