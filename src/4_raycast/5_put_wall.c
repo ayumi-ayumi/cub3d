@@ -4,27 +4,29 @@
 #include <math.h>
 
 /*
- * tex_per_pixel is amount of height one screen pixel represents
+ * tex_y is amount of height one screen pixel represents
  * in the texture.
  */
 void	put_wall(t_exec *exec, t_paint *paint)
 {
 	unsigned int	color;
 	double			ratio;
-	double			tex_per_pixel;
-	int				side;
+	double			tex_y;
 
 	ratio = (double)TEXTURE_HEIGHT / (double)exec->wall_height;
-	tex_per_pixel = 0;
-	side = (int)exec->play.side;
-	paint->tex.row = 0;
-	while (paint->screen.row < exec->draw_end)
+	tex_y = 0;
+	while (exec->draw_start++ < 0)
+		tex_y += ratio;
+	while (paint->screen.row <  SCREEN_HEIGHT  && paint->screen.row < exec->draw_end)
 	{
-		paint->tex.row = (int)(floor(tex_per_pixel));
-		color = get_pixel_colour(&exec->wall_texture[side],
-				paint->tex.col, paint->tex.row);
-		put_pixel(&exec->scre, paint->screen.col, paint->screen.row, color);
-		tex_per_pixel += ratio;
+		if (tex_y >= 0 && tex_y < TEXTURE_HEIGHT)
+		{
+			paint->tex.row = (int)(floor(tex_y));
+			color = get_pixel_colour(&exec->wall_texture[(int)exec->play.side],
+					paint->tex.col, paint->tex.row);
+			put_pixel(&exec->scre, paint->screen.col, paint->screen.row, color);
+		}
+		tex_y += ratio;
 		paint->screen.row += 1;
 	}
 	return ;
