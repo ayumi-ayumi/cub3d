@@ -134,7 +134,7 @@ typedef struct s_game
 	t_data		minimap;
 }				t_game;
 
-int		execution(t_game *game);
+int		execute_game(t_game *game);
 // void	cleanup_exec(t_game *game, t_exec *exec);
 
 /* Clean Up */
