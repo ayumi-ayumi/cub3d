@@ -52,7 +52,14 @@ int					draw(t_game *game, t_move *move, t_data *screen);
 int					raycast(t_game *game, t_exec *exec);
 void				calc_start_values(t_play *play, double cam_x);
 int					timing(t_move *move);
-void				draw_mini_map(t_map *map, t_play *play, t_data *screen);
+void				draw_minimap(t_game *game);
+void				draw_tiles(t_game *game);
+void 				draw_player(t_game *game);
+void				display_fan_beam(t_map map, t_data *screen, t_play play);
+void				img_pix_put(t_data *img, int x, int y, unsigned int color);
+void				render_tile(t_game *game, t_tile tile, int size);
+t_pos				convert(t_vec a);
+int					find_max(int a, int b);
 
 /*rendering*/
 void				draw_line(t_exec *exec, int x);
