@@ -41,7 +41,6 @@ void				free_mlx_texture(void *mlx, void **target);
 /* mlx Loop */
 int					start_graphics(t_game *game);
 int					key_hook(int keycode, void *param);
-void				draw_minimap(t_game *game);
 unsigned int		get_pixel_colour(t_data *img, int x, int y);
 
 /*execution*/
@@ -52,7 +51,6 @@ int					draw(t_game *game, t_move *move, t_data *screen);
 int					raycast(t_game *game, t_exec *exec);
 void				calc_start_values(t_play *play, double cam_x);
 int					timing(t_move *move);
-void				draw_minimap(t_game *game);
 void				draw_tiles(t_game *game);
 void 				draw_player(t_game *game);
 void				display_vision_cone(t_map map, t_data *screen, t_play play);

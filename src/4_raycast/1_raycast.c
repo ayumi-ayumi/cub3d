@@ -51,7 +51,7 @@ static void	calc_height(t_exec *exec, double perp_wall_dist)
 		exec->draw_end = SCREEN_HEIGHT;
 }
 
-void	draw_minimap(t_game *game)
+static void	draw_minimap(t_game *game)
 {
 	draw_tiles(game);
 	draw_player(game);
