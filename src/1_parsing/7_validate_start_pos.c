@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 16:11:49 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/29 09:57:42 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static int	count_char_in_map(t_map *map, char c)
 	return (count);
 }
 
-// Check if a map has only either of N, S, E, W
+/* Check if a map has only either of N, S, E, W */
 int	validate_start_position(t_map *map)
 {
 	char	*dirs;
