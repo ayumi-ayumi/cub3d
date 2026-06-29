@@ -65,7 +65,7 @@ typedef struct s_play
 	t_vec			delta_dist;
 	t_vec			side_dist; // maybe not needed
 	t_pos			step;      // what dir to step
-	char			wall_hit; // is this char?? or int??
+	t_bool			wall_hit; // is this char?? or int??
 	t_direction		side; // which wall side
 	double			perp_wall_dist;
 	int				texture_col;
