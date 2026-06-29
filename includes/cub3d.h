@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/06/26 18:25:28 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/29 10:01:30 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ typedef struct s_play
 	t_vec			delta_dist;
 	t_vec			side_dist; // maybe not needed
 	t_pos			step;      // what dir to step
-	char			wall_hit;
+	char			wall_hit; // is this char?? or int??
 	t_direction		side; // which wall side
 	double			perp_wall_dist;
 	t_move			move;
