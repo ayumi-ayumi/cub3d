@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:43:33 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 18:37:31 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/29 10:04:44 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ void	cleanup_and_exit(t_game *game)
 		free_map(&game->map);
 	if (game->config.texture_paths)
 		free_string_array(game->config.texture_paths);
-//	free_entire_mlx(game);
 	exit (0);
 }

@@ -6,13 +6,13 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:20:15 by asato             #+#    #+#             */
-/*   Updated: 2026/06/04 16:33:53 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/29 09:59:04 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "cub3d.h"
 #include "parser.h"
-#include <unistd.h>
+// #include <unistd.h>
 
 static int	friend_with_0(char c)
 {
@@ -33,10 +33,10 @@ static int	check_around_0(t_map *map)
 		{
 			if (map->grid[row_idx][col_idx] == '0')
 			{
-				if (!friend_with_0(map->grid[row_idx - 1][col_idx]) //UP
-				|| !friend_with_0(map->grid[row_idx][col_idx + 1]) // RIGHT
-				|| !friend_with_0(map->grid[row_idx + 1][col_idx]) // DOWN
-				|| !friend_with_0(map->grid[row_idx][col_idx - 1])) //LEFT
+				if (!friend_with_0(map->grid[row_idx - 1][col_idx])
+				|| !friend_with_0(map->grid[row_idx][col_idx + 1])
+				|| !friend_with_0(map->grid[row_idx + 1][col_idx])
+				|| !friend_with_0(map->grid[row_idx][col_idx - 1]))
 					return (0);
 			}
 			col_idx++;
@@ -101,11 +101,9 @@ static int	has_this_row_wall(t_map *map, int row_idx)
 
 int	is_enclosed_by_walls(t_map *map)
 {
-	if (!has_this_row_wall(map, 0)
-		|| !has_this_row_wall(map, map->height - 1)) // check if first and last row with walls
+	if (!has_this_row_wall(map, 0) || !has_this_row_wall(map, map->height - 1))
 		return (0);
-	if (!has_left_side_wall(map)
-		|| !has_right_side_wall(map)) // check if sides with walls
+	if (!has_left_side_wall(map) || !has_right_side_wall(map))
 		return (0);
 	if (!check_around_0(map))
 		return (0);

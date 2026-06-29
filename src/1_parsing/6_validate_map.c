@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   6_validate_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: Ayumi <Ayumi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 14:36:33 by asato            ###   ########.fr       */
+/*   Created: 2026/05/25 17:28:05 by asato             #+#    #+#             */
+/*   Updated: 2026/06/29 09:52:39 by Ayumi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	is_allowed_char(char c)
 		|| c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
-// Check if a map has only 1, 0, N, S, E, W or SPACE
+/* Check if a map has only 1, 0, N, S, E, W or SPACE */
 static int	validate_map_charset(t_map *map)
 {
 	int	row_idx;

@@ -6,10 +6,9 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 18:02:33 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/29 10:01:30 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -21,14 +20,14 @@
 # include <stddef.h>/*for NULL*/
 //# include "exec.h"
 
-typedef int	t_bool;
+typedef int			t_bool;
 typedef enum s_direction
 {
 	DIR_NO = 0,
 	DIR_SO,
 	DIR_WE,
 	DIR_EA
-}			t_direction;
+}					t_direction;
 
 typedef enum s_keycode
 {
@@ -41,55 +40,55 @@ typedef enum s_keycode
 	KEY_S = 115,
 	KEY_A = 97,
 	KEY_ESC = 65307
-}			t_keycode;
+}					t_keycode;
 
 /* STRUCTS */
 typedef struct s_position
 {
-	int		row;
-	int		col;
-}			t_pos;
+	int				row;
+	int				col;
+}					t_pos;
 
-typedef	struct s_vec
+typedef struct s_vec
 {
-	double	x;
-	double	y;
-}	t_vec;
+	double			x;
+	double			y;
+}					t_vec;
 
-typedef	struct s_move
+typedef struct s_move
 {
-	double	time;//time in milliseconds
-	double	old_time;
-	double	frame_time;//time in seconds
-	double	steplength;
-	double	radians;
-}	t_move;
+	double			time; // time in milliseconds
+	double			old_time;
+	double			frame_time; // time in seconds
+	double			steplength;
+	double			radians;
+}					t_move;
 
 typedef struct s_play
 {
-	t_vec		pos;
-	t_vec		dir;
-	t_vec		plane;
-	t_vec		ray;
-	t_pos		map;
-	t_vec		delta_dist;
-	t_vec		side_dist;//maybe not needed
-	t_pos		step;//what dir to step
-	char		wall_hit;
-	t_direction	side;//which wall side
-	double		perp_wall_dist;
-	t_move		move;
-	int			texture_col;
-}	t_play;
+	t_vec			pos;
+	t_vec			dir;
+	t_vec			plane;
+	t_vec			ray;
+	t_pos			map;
+	t_vec			delta_dist;
+	t_vec			side_dist; // maybe not needed
+	t_pos			step;      // what dir to step
+	char			wall_hit; // is this char?? or int??
+	t_direction		side; // which wall side
+	double			perp_wall_dist;
+	t_move			move;
+	int				texture_col;
+}					t_play;
 
 typedef struct s_data
 {
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_length;
-	int		endian;
-}			t_data;
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				line_length;
+	int				endian;
+}					t_data;
 
 /*mlx img for walls*/
 typedef struct s_exec
@@ -102,44 +101,43 @@ typedef struct s_exec
 	unsigned int	floor;
 	unsigned int	wall_height;
 	t_play			play;
-}			t_exec;
+}					t_exec;
 
 /*paths to wall image files*/
 typedef struct s_config
 {
-	char	**texture_paths;
-	int		floor[3];
-	int		ceiling[3];
-}			t_config;
+	char			**texture_paths;
+	int				floor[3];
+	int				ceiling[3];
+}					t_config;
 
 typedef struct s_map
 {
-	char		**grid;
-	int			height;
-	int			width;
-	char		start_orientation;
-	t_pos		start_pos;
-}				t_map;
-
+	char			**grid;
+	int				height;
+	int				width;
+	char			start_orientation;
+	t_pos			start_pos;
+}					t_map;
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
-	char		*file_path;
-	char		**file_contents;
-	t_config	config;
-	t_map		map;
-	t_exec		exec;
-	t_data		minimap;
-}				t_game;
+	void			*mlx;
+	void			*win;
+	char			*file_path;
+	char			**file_contents;
+	t_config		config;
+	t_map			map;
+	t_exec			exec;
+	t_data			minimap;
+}					t_game;
 
-int		execute_game(t_game *game);
+int					execute_game(t_game *game);
 // void	cleanup_exec(t_game *game, t_exec *exec);
 
 /* Clean Up */
-void	free_map(t_map *map);
-void	free_entire_mlx(t_game *game);
-void	cleanup_and_exit(t_game *game);
-void	print_error(char *error);
+void				free_map(t_map *map);
+void				free_entire_mlx(t_game *game);
+void				cleanup_and_exit(t_game *game);
+void				print_error(char *error);
 #endif

@@ -13,23 +13,23 @@
 #ifndef PARSER_H
 # define PARSER_H
 # include "cub3d.h"
-#include <stdio.h>
+# include <stdio.h>
 
 /* Load map and config */
-int	load_map_and_config(t_game *game);
-int	parse_file(t_game *game);
+int		load_map_and_config(t_game *game);
+int		parse_file(t_game *game);
 
 /* Extract elements */
-int	extract_elements(t_game *game);
-int	extract_map(t_game *game);
-int	extract_texture_config(t_game *game);
-int	extract_rgb_config(t_game *game);
+int		extract_elements(t_game *game);
+int		extract_map(t_game *game);
+int		extract_texture_config(t_game *game);
+int		extract_rgb_config(t_game *game);
 void	free_texture_paths(char **texture_paths_arr);
 
 /* validate a map*/
-int	validate_map(t_map *map);
-int	validate_start_position(t_map *map);
-int	is_enclosed_by_walls(t_map *map);
+int		validate_map(t_map *map);
+int		validate_start_position(t_map *map);
+int		is_enclosed_by_walls(t_map *map);
 
 /* Error Handling */
 void	error_and_exit(char *error);

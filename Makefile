@@ -37,7 +37,6 @@ SRC			=	main.c \
 				2_exec/1_exec.c \
 				2_exec/2_init_play.c \
 				2_exec/3_start_graphics.c \
-				2_exec/minimap.c \
 				2_exec/4_move.c \
 				2_exec/utils.c \
 				3_mlx/1_init_mlx.c \
@@ -48,6 +47,8 @@ SRC			=	main.c \
 				4_raycast/4_put_pixel.c \
 				4_raycast/5_put_wall.c \
 				4_raycast/6_time.c \
+				4_raycast/7_minimap.c \
+				4_raycast/8_minimap_utils.c \
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 

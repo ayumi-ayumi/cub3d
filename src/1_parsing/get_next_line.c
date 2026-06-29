@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:13:46 by asato             #+#    #+#             */
-/*   Updated: 2026/05/16 14:11:18 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/29 10:04:55 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,41 +115,3 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-
-/*
-#include <stdio.h>
-int	main(void)
-{
-	int		fd;
-	char	*next_line;
-	int		count;
-
-	count = 0;
-	fd = open("text01.txt", O_RDONLY);
-	if (fd == -1)
-	{
-		printf("ERROR opening file");
-		return (1);
-	}
-	// while (1)
-	// {
-		// 	next_line = get_next_line(fd);
-		// 	if (next_line == NULL)
-		// 		break ;
-		// 	count++;
-		// 	printf("[%d]:%s\n", count, next_line);
-		// 	free(next_line);
-		// 	next_line = NULL;
-		// }
-		next_line = "";
-		while (next_line)
-		{
-			next_line = get_next_line(fd);
-			// printf("> %s", next_line);
-			free(next_line);
-		}
-		close(fd);
-		return (0);
-	}
-
-	*/
