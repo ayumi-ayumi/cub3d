@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 17:51:57 by asato             #+#    #+#             */
-/*   Updated: 2026/06/29 10:13:07 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/29 10:17:46 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <math.h>/*for pi*/
 #include <mlx.h>
 
-static void	draw_beam(t_map map, t_data *screen, t_play play, t_vec ray_dir)
+static void	draw_line(t_map map, t_data *screen, t_play play, t_vec ray_dir)
 {
 	t_pos	point;
 	t_pos	max;
@@ -47,7 +47,7 @@ void	display_vision_cone(t_map map, t_data *screen, t_play play)
 	while (angle < M_PI / 6)
 	{
 		ray_dir = turn_vec(play.dir, angle);
-		draw_beam(map, screen, play, ray_dir);
+		draw_line(map, screen, play, ray_dir);
 		angle += 0.01;
 	}
 }
