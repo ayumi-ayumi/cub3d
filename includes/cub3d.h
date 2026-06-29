@@ -55,15 +55,6 @@ typedef struct s_vec
 	double			y;
 }					t_vec;
 
-typedef struct s_move
-{
-	double			time; // time in milliseconds
-	double			old_time;
-	double			frame_time; // time in seconds
-	double			steplength;
-	double			radians;
-}					t_move;
-
 typedef struct s_play
 {
 	t_vec			pos;
@@ -77,7 +68,6 @@ typedef struct s_play
 	char			wall_hit; // is this char?? or int??
 	t_direction		side; // which wall side
 	double			perp_wall_dist;
-	t_move			move;
 	int				texture_col;
 }					t_play;
 

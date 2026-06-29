@@ -45,12 +45,12 @@ unsigned int		get_pixel_colour(t_data *img, int x, int y);
 
 /*execution*/
 int					init_play_data(t_game *game, t_exec *exec);
-int					draw(t_game *game, t_move *move, t_data *screen);
+int					draw(t_game *game, t_data *scre);
 
 /*raycast*/
 int					raycast(t_game *game, t_exec *exec);
 void				calc_start_values(t_play *play, double cam_x);
-int					timing(t_move *move);
+// int					timing(t_move *move);
 void				draw_tiles(t_game *game);
 void 				draw_player(t_game *game);
 void				display_vision_cone(t_map map, t_data *screen, t_play play);
