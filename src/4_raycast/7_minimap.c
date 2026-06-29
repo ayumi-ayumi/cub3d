@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   7_minimap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ayumi <Ayumi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 17:51:57 by asato             #+#    #+#             */
-/*   Updated: 2026/06/27 13:41:05 by Ayumi            ###   ########.fr       */
+/*   Updated: 2026/06/29 10:13:07 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	draw_beam(t_map map, t_data *screen, t_play play, t_vec ray_dir)
 	}
 }
 
-void	display_fan_beam(t_map map, t_data *screen, t_play play)
+void	display_vision_cone(t_map map, t_data *screen, t_play play)
 {
 	t_vec	ray_dir;
 	double	angle;

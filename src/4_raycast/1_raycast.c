@@ -55,7 +55,7 @@ void	draw_minimap(t_game *game)
 {
 	draw_tiles(game);
 	draw_player(game);
-	display_fan_beam(game->map, &game->exec.scre, game->exec.play);
+	display_vision_cone(game->map, &game->exec.scre, game->exec.play);
 }
 
 /*

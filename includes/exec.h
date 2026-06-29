@@ -55,7 +55,7 @@ int					timing(t_move *move);
 void				draw_minimap(t_game *game);
 void				draw_tiles(t_game *game);
 void 				draw_player(t_game *game);
-void				display_fan_beam(t_map map, t_data *screen, t_play play);
+void				display_vision_cone(t_map map, t_data *screen, t_play play);
 void				img_pix_put(t_data *img, int x, int y, unsigned int color);
 void				render_tile(t_game *game, t_tile tile, int size);
 t_pos				convert(t_vec a);
