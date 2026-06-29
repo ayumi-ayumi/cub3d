@@ -30,14 +30,14 @@ void	draw_line(t_exec *exec, int x)
 	get_texture_x(&exec->play, &paint);
 	while (paint.screen.row < exec->draw_start)
 	{
-		put_pixel(&exec->scre, x, paint.screen.row, exec->ceiling);
+		img_pix_put(&exec->scre, x, paint.screen.row, exec->ceiling);
 		paint.screen.row++;
 	}
 	while (paint.screen.row < exec->draw_end)
 		put_wall(exec, &paint);
 	while (paint.screen.row < SCREEN_HEIGHT)
 	{
-		put_pixel(&exec->scre, x, paint.screen.row, exec->floor);
+		img_pix_put(&exec->scre, x, paint.screen.row, exec->floor);
 		paint.screen.row++;
 	}
 	return ;
