@@ -6,15 +6,13 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:25:09 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 17:01:45 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 18:47:19 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
 #include "parser.h"
 #include "libft.h"
 #include "get_next_line.h"
-#include <unistd.h>
 
 static void	count_lines(t_game *game)
 {

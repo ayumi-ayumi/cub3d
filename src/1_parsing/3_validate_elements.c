@@ -6,14 +6,12 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 17:07:28 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 18:47:26 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
 #include "parser.h"
 #include "libft.h"
-#include <unistd.h>
 
 static int	validate_prefix(t_game *game)
 {

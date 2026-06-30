@@ -6,14 +6,12 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:13:46 by asato             #+#    #+#             */
-/*   Updated: 2026/06/29 10:04:55 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 19:34:47 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "get_next_line.h"
-#include <stdlib.h>
-#include <unistd.h>
 #include <fcntl.h>
 
 char	*get_stash(int fd, char *stash)

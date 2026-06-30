@@ -6,13 +6,11 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:20:15 by asato             #+#    #+#             */
-/*   Updated: 2026/06/29 09:59:04 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 19:35:23 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
 #include "parser.h"
-// #include <unistd.h>
 
 static int	friend_with_0(char c)
 {
@@ -20,7 +18,7 @@ static int	friend_with_0(char c)
 		|| c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
-static int	check_around_0(t_map *map)
+int	check_around_0(t_map *map)
 {
 	int	row_idx;
 	int	col_idx;
@@ -46,7 +44,7 @@ static int	check_around_0(t_map *map)
 	return (1);
 }
 
-static int	has_left_side_wall(t_map *map)
+int	has_left_side_wall(t_map *map)
 {
 	int	row_idx;
 	int	col_idx;
@@ -65,7 +63,7 @@ static int	has_left_side_wall(t_map *map)
 	return (1);
 }
 
-static int	has_right_side_wall(t_map *map)
+int	has_right_side_wall(t_map *map)
 {
 	int	row_idx;
 	int	col_idx;
@@ -83,7 +81,7 @@ static int	has_right_side_wall(t_map *map)
 	return (1);
 }
 
-static int	has_this_row_wall(t_map *map, int row_idx)
+int	has_this_row_wall(t_map *map, int row_idx)
 {
 	int	col_idx;
 
@@ -96,16 +94,5 @@ static int	has_this_row_wall(t_map *map, int row_idx)
 			return (0);
 		col_idx++;
 	}
-	return (1);
-}
-
-int	is_enclosed_by_walls(t_map *map)
-{
-	if (!has_this_row_wall(map, 0) || !has_this_row_wall(map, map->height - 1))
-		return (0);
-	if (!has_left_side_wall(map) || !has_right_side_wall(map))
-		return (0);
-	if (!check_around_0(map))
-		return (0);
 	return (1);
 }

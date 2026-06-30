@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   6_validate_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ayumi <Ayumi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:28:05 by asato             #+#    #+#             */
-/*   Updated: 2026/06/29 09:52:39 by Ayumi            ###   ########.fr       */
+/*   Updated: 2026/06/30 19:31:08 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
 #include "parser.h"
 
 static int	is_allowed_char(char c)
@@ -37,6 +36,17 @@ static int	validate_map_charset(t_map *map)
 		}
 		row_idx++;
 	}
+	return (1);
+}
+
+int	is_enclosed_by_walls(t_map *map)
+{
+	if (!has_this_row_wall(map, 0) || !has_this_row_wall(map, map->height - 1))
+		return (0);
+	if (!has_left_side_wall(map) || !has_right_side_wall(map))
+		return (0);
+	if (!check_around_0(map))
+		return (0);
 	return (1);
 }
 

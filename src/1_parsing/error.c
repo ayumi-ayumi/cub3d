@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ayumi <Ayumi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:43:43 by asato             #+#    #+#             */
-/*   Updated: 2026/06/29 09:25:25 by Ayumi            ###   ########.fr       */
+/*   Updated: 2026/06/30 19:36:44 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
 #include "parser.h"
 #include <stdio.h>
 #include <stdlib.h>

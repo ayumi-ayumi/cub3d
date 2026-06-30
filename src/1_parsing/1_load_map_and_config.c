@@ -6,13 +6,11 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 21:45:54 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 16:18:46 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 18:47:13 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
 #include "parser.h"
-#include <unistd.h>
 
 int	load_map_and_config(t_game *game)
 {
@@ -32,14 +30,3 @@ int	load_map_and_config(t_game *game)
 		return (0);
 	return (1);
 }
-
-// For testing
-// void	print_map(char **map)
-// {
-// 	int i = 0;
-// 	while (map[i])
-// 	{
-// 		printf("line %i: %s\n", i, map[i]);
-// 		i++;
-// 	}
-// }
