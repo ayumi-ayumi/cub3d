@@ -4,16 +4,20 @@
 #include <math.h>/*for pi*/
 #include <mlx.h>
 
+
 /*moves with WDSA keys*/
 static void	move_back_forth(t_game *game, t_play *play, int dir)
 {
 	t_vec	new;
+	t_vec	check_radius;
 
 	new.x = play->pos.x + dir * (play->dir.x * MOVESPEED);
 	new.y = play->pos.y + dir * (play->dir.y * MOVESPEED);
-	if (game->map.grid[(int)play->pos.y][(int)new.x] == '0')
+	check_radius.x = new.x + dir * play->dir.x * COLLISION_RADIUS;
+	check_radius.y = new.y + dir * play->dir.y * COLLISION_RADIUS;
+	if (game->map.grid[(int)play->pos.y][(int)check_radius.x] == '0')
 		play->pos.x = new.x;
-	if (game->map.grid[(int)new.y][(int)play->pos.x] == '0')
+	if (game->map.grid[(int)check_radius.y][(int)play->pos.x] == '0')
 		play->pos.y = new.y;
 }
 
@@ -21,13 +25,16 @@ static void	move_side(t_game *game, t_play *play, double angle)
 {
 	t_vec	new_dir;
 	t_vec	new;
+	t_vec	check_radius;
 
 	new_dir = turn_vec(play->dir, angle);
 	new.x = play->pos.x + (new_dir.x * MOVESPEED);
 	new.y = play->pos.y + (new_dir.y * MOVESPEED);
-	if (game->map.grid[(int)play->pos.y][(int)new.x] == '0')
+	check_radius.x = new.x + (new_dir.x * COLLISION_RADIUS);
+	check_radius.y = new.y + (new_dir.y * COLLISION_RADIUS);
+	if (game->map.grid[(int)play->pos.y][(int)check_radius.x] == '0')
 		play->pos.x = new.x;
-	if (game->map.grid[(int)new.y][(int)play->pos.x] == '0')
+	if (game->map.grid[(int)check_radius.y][(int)play->pos.x] == '0')
 		play->pos.y = new.y;
 }
 
