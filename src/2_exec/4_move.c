@@ -7,10 +7,8 @@
 /*moves with WDSA keys*/
 static void	move_back_forth(t_game *game, t_play *play, int dir)
 {
-	t_vec new;
+	t_vec	new;
 
-	// play->pos.x = play->pos.x + dir * (play->dir.x * play->move.steplength);
-	// play->pos.y = play->pos.y + dir * (play->dir.y * play->move.steplength);
 	new.x = play->pos.x + dir * (play->dir.x * MOVESPEED);
 	new.y = play->pos.y + dir * (play->dir.y * MOVESPEED);
 	if (game->map.grid[(int)play->pos.y][(int)new.x] == '0')
@@ -25,8 +23,6 @@ static void	move_side(t_game *game, t_play *play, double angle)
 	t_vec	new;
 
 	new_dir = turn_vec(play->dir, angle);
-	// play->pos.x = play->pos.x + (new_dir.x * play->move.steplength);
-	// play->pos.y = play->pos.y + (new_dir.y * play->move.steplength);
 	new.x = play->pos.x + (new_dir.x * MOVESPEED);
 	new.y = play->pos.y + (new_dir.y * MOVESPEED);
 	if (game->map.grid[(int)play->pos.y][(int)new.x] == '0')
@@ -36,7 +32,7 @@ static void	move_side(t_game *game, t_play *play, double angle)
 }
 
 /*changes pos and dir according to key and recalculates and sends img to win*/
-static void	handle_key_event(int	keycode, t_game *game)
+static void	handle_key_event(int keycode, t_game *game)
 {
 	if (keycode == XK_Escape)
 	{
@@ -54,7 +50,8 @@ static void	handle_key_event(int	keycode, t_game *game)
 	if (keycode == XK_Left)
 		game->exec.play.dir = turn_vec(game->exec.play.dir, M_PI_2 * ROTSPEED);
 	if (keycode == XK_Right)
-		game->exec.play.dir = turn_vec(game->exec.play.dir,  -1 * M_PI_2 * ROTSPEED);
+		game->exec.play.dir = turn_vec(game->exec.play.dir,
+				-1 * M_PI_2 * ROTSPEED);
 	draw(game, &game->exec.play.move, &game->exec.scre);
 }
 

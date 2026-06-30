@@ -16,7 +16,7 @@ static void	get_texture_x(t_play *play, t_paint *paint)
 	percent = wall_x - floor(wall_x);
 	paint->tex.col = (int)(percent * (double)TEXTURE_WIDTH);
 	if (((play->side == DIR_WE || play->side == DIR_EA) && play->ray.x > 0)
-			|| ((play->side == DIR_NO || play->side == DIR_SO) && play->ray.y < 0))
+		|| ((play->side == DIR_NO || play->side == DIR_SO) && play->ray.y < 0))
 		paint->tex.col = TEXTURE_WIDTH - paint->tex.col - 1;
 }
 

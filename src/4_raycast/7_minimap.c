@@ -15,7 +15,8 @@
 #include <math.h>/*for pi*/
 #include <mlx.h>
 
-static void	draw_vision_line(t_map map, t_data *screen, t_play play, t_vec ray_dir)
+static void	draw_vision_line(t_map map, t_data *screen,
+							t_play play, t_vec ray_dir)
 {
 	t_pos	point;
 	t_pos	max;
@@ -42,7 +43,7 @@ void	display_vision_cone(t_map map, t_data *screen, t_play play)
 	t_vec	ray_dir;
 	double	angle;
 
-	angle = (M_PI / 6) * - 1;
+	angle = (M_PI / 6) * -1;
 	play.pos.x += 0.2;
 	while (angle < M_PI / 6)
 	{
@@ -93,7 +94,7 @@ void	draw_tiles(t_game *game)
 	}
 }
 
-void draw_player(t_game *game)
+void	draw_player(t_game *game)
 {
 	t_tile	player;
 	

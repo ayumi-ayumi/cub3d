@@ -17,7 +17,8 @@ void	put_wall(t_exec *exec, t_paint *paint)
 	tex_y = 0;
 	while (exec->draw_start++ < 0)
 		tex_y += ratio;
-	while (paint->screen.row <  SCREEN_HEIGHT  && paint->screen.row < exec->draw_end)
+	while (paint->screen.row < SCREEN_HEIGHT
+		&& paint->screen.row < exec->draw_end)
 	{
 		if (tex_y >= 0 && tex_y < TEXTURE_HEIGHT)
 		{
@@ -32,15 +33,14 @@ void	put_wall(t_exec *exec, t_paint *paint)
 	return ;
 }
 
-
-
-// static int get_texture_row();
-
-// void	put_wall(t_exec *exec, int cam_x, int *i)
-// {
-// 	int	col;
-// 	int	row;
-//
-// 	row = get_texture_row();
-// 	put_pixel()
-// }
+/*
+**  static int get_texture_row();
+**  void	put_wall(t_exec *exec, int cam_x, int *i)
+**  {
+**  	int	col;
+**  	int	row;
+** 
+**  	row = get_texture_row();
+**  	put_pixel()
+**  }
+*/
