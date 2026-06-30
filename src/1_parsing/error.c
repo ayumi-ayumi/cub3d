@@ -18,7 +18,7 @@
 void	error_and_exit(char *error)
 {
 	printf("Error: %s\n", error);
-	exit(0);
+	exit(0);/*@Ayumi: i think we should exit with a FAIL = 1 here not with SUCCESS = 0 */
 }
 
 void	print_error(char *error) // it can be stored in global utils
