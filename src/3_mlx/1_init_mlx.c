@@ -48,7 +48,7 @@ static int	init_mlx_texture(t_game *game, t_data *wall_texture)
 			j = i;
 			while (j >= 0)
 				free_mlx_texture(game->mlx, (void **)&wall_texture[j--].img);
-			ft_free((void **)&wall_texture);//we call calloc only once for this so we also call free only once
+			ft_free((void **)&wall_texture);
 			return (print_error("Texture path is invalid"), FAIL);
 		}
 		wall_texture[i].addr = mlx_get_data_addr(wall_texture[i].img,

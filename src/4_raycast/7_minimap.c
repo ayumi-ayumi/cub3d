@@ -97,7 +97,7 @@ void	draw_tiles(t_game *game)
 void	draw_player(t_game *game)
 {
 	t_tile	player;
-	
+
 	player.x = game->exec.play.pos.x * TILE_SIZE;
 	player.y = game->exec.play.pos.y * TILE_SIZE;
 	player.color = PLAYER_COLOR;
