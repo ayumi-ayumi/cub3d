@@ -3,8 +3,8 @@
 
 # define SCREEN_HEIGHT 480
 # define SCREEN_WIDTH 640
-# define TEXTURE_WIDTH 32
-# define TEXTURE_HEIGHT 32
+# define TEXTURE_WIDTH 64
+# define TEXTURE_HEIGHT 64
 # define MOVESPEED 0.02125
 # define ROTSPEED 0.015
 # define TILE_SIZE 10

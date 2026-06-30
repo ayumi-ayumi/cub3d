@@ -6,14 +6,13 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 18:02:52 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 18:02:27 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 19:36:05 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 # include "cub3d.h"
-# include <stdio.h>
 
 /* Load map and config */
 int		load_map_and_config(t_game *game);
@@ -30,6 +29,11 @@ void	free_texture_paths(char **texture_paths_arr);
 int		validate_map(t_map *map);
 int		validate_start_position(t_map *map);
 int		is_enclosed_by_walls(t_map *map);
+int		check_around_0(t_map *map);
+int		has_left_side_wall(t_map *map);
+int		has_right_side_wall(t_map *map);
+int		has_this_row_wall(t_map *map, int row_idx);
+
 
 /* Error Handling */
 void	error_and_exit(char *error);
