@@ -24,7 +24,8 @@ void	img_pix_put(t_data *img, int x, int y, unsigned int color)
 /*
  * TODO enhance performance by precalculating img->bpp /8 and put it in a struct
  * last points to the last 8 bits of the current pixel
- * last and first are of type char so that they always iterate bits (1 byte) at a time
+ * last and first are of type char so that they always
+ * iterate bits (1 byte) at a time
  */
 
 /*iterates over pixelcolor byte by byte and copies last 4 bytes in color*/
@@ -39,7 +40,7 @@ unsigned int	get_pixel_colour(t_data *img, int x, int y)
 	bytespp = img->bpp / CHAR_BIT;
 	first = img->addr + (y * img->line_length + x * bytespp);
 	last = first + bytespp - 1;
-	if (img->bpp > (int)sizeof(unsigned int) * CHAR_BIT)
+	if (img->bpp > (int) sizeof(unsigned int) * CHAR_BIT)
 		return (0);
 	while (img->endian != 0 && first <= last)
 	{

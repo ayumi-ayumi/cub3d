@@ -25,7 +25,8 @@ void	put_wall(t_exec *exec, t_paint *paint)
 			paint->tex.row = (int)(floor(tex_y));
 			color = get_pixel_colour(&exec->wall_texture[(int)exec->play.side],
 					paint->tex.col, paint->tex.row);
-			img_pix_put(&exec->scre, paint->screen.col, paint->screen.row, color);
+			img_pix_put(&exec->scre, paint->screen.col,
+				paint->screen.row, color);
 		}
 		tex_y += ratio;
 		paint->screen.row += 1;
