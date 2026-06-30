@@ -2,7 +2,6 @@
 #include "exec.h"
 #include "libft.h"
 #include <mlx.h>
-#include <stddef.h>/*for NULL*/
 
 /*initiate whatever possible to 0 or NULL*/
 static void	nulling_init(t_game *game)
