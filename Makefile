@@ -46,7 +46,6 @@ SRC			=	main.c \
 				4_raycast/3_draw.c \
 				4_raycast/4_put_pixel.c \
 				4_raycast/5_put_wall.c \
-				4_raycast/6_time.c \
 				4_raycast/7_minimap.c \
 				4_raycast/8_minimap_utils.c \
 

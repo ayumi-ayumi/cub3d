@@ -25,15 +25,15 @@ int	close_window(void *param)
 	return (1);
 }
 
-int	draw(t_game *game, t_move *move, t_data *scre)
+int	draw(t_game *game, t_data *scre)
 {
 	t_play	*play;
 
 	play = &game->exec.play;
 	play->plane = turn_vec(play->dir, -1 * M_PI_2);
 	raycast(game, &game->exec);
-	if (timing(move) == FAIL)
-		return (FAIL);
+	// if (timing(move) == FAIL)
+	// 	return (FAIL);
 	mlx_put_image_to_window(game->mlx, game->win, scre->img, 0, 0);
 	return (SUCCESS);
 }
@@ -42,7 +42,7 @@ int	start_graphics(t_game *game)
 {
 	if (!game || !game->mlx || !game->win)
 		return (FAIL);
-	draw(game, &game->exec.play.move, &game->exec.scre);
+	draw(game, &game->exec.scre);
 	mlx_hook(game->win, 2, 1L << 0, key_hook, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_loop(game->mlx);

@@ -12,27 +12,7 @@
 
 #include "cub3d.h"
 #include "exec.h"
-#include <math.h>/*for pi*/
 #include <mlx.h>
-
-void	img_pix_put(t_data *img, int x, int y, unsigned int color)
-{
-	char	*pixel;
-	int		i;
-
-	if (!img || !img->addr || x < 0 || y < 0)
-		return ;
-	i = img->bpp - 8;
-	pixel = img->addr + (y * img->line_length + x * (img->bpp / 8));
-	while (i >= 0)
-	{
-		if (img->endian != 0)
-			*pixel++ = (color >> i) & 0xFF;
-		else
-			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
-		i -= 8;
-	}
-}
 
 void	render_tile(t_game *game, t_tile tile, int size)
 {
