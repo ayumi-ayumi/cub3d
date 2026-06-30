@@ -32,8 +32,6 @@ int	draw(t_game *game, t_data *scre)
 	play = &game->exec.play;
 	play->plane = turn_vec(play->dir, -1 * M_PI_2);
 	raycast(game, &game->exec);
-	// if (timing(move) == FAIL)
-	// 	return (FAIL);
 	mlx_put_image_to_window(game->mlx, game->win, scre->img, 0, 0);
 	return (SUCCESS);
 }
