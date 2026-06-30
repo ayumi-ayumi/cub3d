@@ -1,5 +1,6 @@
 # custom
 *.json
+nvim.log
 .cache
 .chache/*
 .gitignore

@@ -38,7 +38,6 @@ int	init_play_data(t_game *game, t_exec *exec)
 		return (FAIL);
 	exec->play.plane = turn_vec(exec->play.dir, 3 * M_PI_2);
 	exec->play.plane = mult_vec(0.66, exec->play.plane);
-	ft_bzero(&exec->play.move, sizeof(t_move));
 	exec->ceiling = convert_rgb(game->config.ceiling);
 	exec->floor = convert_rgb(game->config.floor);
 	return (SUCCESS);

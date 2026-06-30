@@ -33,7 +33,7 @@ void	free_entire_mlx(t_game *game)
 {
 	int	i;
 
-	if (!game->mlx)//removed check for game->exec because exec is not nulled when initialized
+	if (!game->mlx)
 		return ;
 	if (game->exec.wall_texture)
 	{
@@ -41,15 +41,16 @@ void	free_entire_mlx(t_game *game)
 		while (i < 4)
 		{
 			if (game->exec.wall_texture[i].img)
-				free_mlx_texture(game->mlx, (void **)&game->exec.wall_texture[i].img);
+			{
+				free_mlx_texture(game->mlx,
+					(void **)&game->exec.wall_texture[i].img);
+			}
 			i++;
 		}
 		ft_free((void **)&game->exec.wall_texture);
 	}
 	if (game->exec.scre.img)
 		mlx_destroy_image(game->mlx, game->exec.scre.img);
-	// ft_free((void **)&game->config.texture_paths);
-	// free_string_array(game->config.texture_paths);
 	free_win(game);
 	free_mlx(game);
 }

@@ -24,8 +24,8 @@ static void	calc_side_dist(t_play *play)
 	else
 	{
 		play->step.col = 1;
-		play->side_dist.x = (1 + play->map.col - play->pos.x) \
-		* play->delta_dist.x;
+		play->side_dist.x = (1 + play->map.col - play->pos.x)
+			* play->delta_dist.x;
 	}
 	if (play->ray.y < 0)
 	{
@@ -35,8 +35,8 @@ static void	calc_side_dist(t_play *play)
 	else
 	{
 		play->step.row = 1;
-		play->side_dist.y = (1 + play->map.row - play->pos.y) * \
-		play->delta_dist.y;
+		play->side_dist.y = (1 + play->map.row - play->pos.y)
+			* play->delta_dist.y;
 	}
 }
 
