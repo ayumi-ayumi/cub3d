@@ -51,7 +51,7 @@ int					draw(t_game *game, t_data *scre);
 int					raycast(t_game *game, t_exec *exec);
 void				calc_start_values(t_play *play, double cam_x);
 void				draw_tiles(t_game *game);
-void 				draw_player(t_game *game);
+void				draw_player(t_game *game);
 void				display_vision_cone(t_map map, t_data *screen, t_play play);
 void				render_tile(t_game *game, t_tile tile, int size);
 t_pos				convert(t_vec a);
