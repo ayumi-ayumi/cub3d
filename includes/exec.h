@@ -12,7 +12,7 @@
 # define WALL_COLOR 0x333333
 # define FLOOR_COLOR 0xCCCCCC
 # define PLAYER_COLOR 0xFF0000
-# define FAN_COLOR 0xDDFFCC
+# define FAN_COLOR 0xF7C7C3
 
 # include "cub3d.h"
 
