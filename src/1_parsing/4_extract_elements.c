@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 18:47:32 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 20:04:35 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	extract_rgb(int rgb[3], char *str)
 	i = 0;
 	while (rgb_str[i])
 	{
-		if (i >= 3)
+		if (i >= 3 || !ft_is_all_digit(rgb_str[i]))
 			return (free_string_array(rgb_str), 0);
 		num = 0;
 		num = ft_atoi(rgb_str[i]);
