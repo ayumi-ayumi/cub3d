@@ -7,6 +7,7 @@
 # define TEXTURE_HEIGHT 32
 # define MOVESPEED 0.02125
 # define ROTSPEED 0.015
+# define COLLISION_RADIUS 0.15
 # define TILE_SIZE 10
 # define PLAYER_SIZE 4
 # define WALL_COLOR 0x333333
