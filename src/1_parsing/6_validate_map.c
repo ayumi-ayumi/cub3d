@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:28:05 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 19:31:08 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 20:05:57 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,19 @@ static void	replace_start_pos_char_0(t_map *map)
 int	validate_map(t_map *map)
 {
 	if (!map || !map->grid)
-		return (print_error("No map found.\n"), 0);
+		return (print_error("No map found"), 0);
 	if (!validate_map_charset(map))
 	{
-		print_error("The map contains invalid characters.\n");
+		print_error("The map contains invalid characters");
 		return (0);
 	}
 	if (!validate_start_position(map))
 	{
-		print_error("The map must have only one start position.\n");
+		print_error("The map must have only one start position");
 		return (0);
 	}
 	if (!is_enclosed_by_walls(map))
-		return (print_error("Map is not surrounded by walls🧱 or invalid\n"), 0);
+		return (print_error("Map is not surrounded by walls🧱 or invalid"), 0);
 	replace_start_pos_char_0(map);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:25:09 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 18:47:19 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 20:05:33 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	parse_file(t_game *game)
 	fd = open(game->file_path, O_RDONLY);
 	if (fd == -1)
 	{
-		print_error("Failed opening a file or a file doesn't exit.\n");
+		print_error("Failed opening a file or a file doesn't exit");
 		close(fd);
 		return (0);
 	}

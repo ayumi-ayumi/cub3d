@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 18:47:26 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 20:05:24 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	validate_config(t_game *game)
 int	extract_elements(t_game *game)
 {
 	if (!validate_config(game))
-		return (print_error("Incomplete config data\n"), 0);
+		return (print_error("Incomplete config data"), 0);
 	game->map.height = game->map.height - 6 + 1;
 	if (!extract_map(game))
 		return (0);
