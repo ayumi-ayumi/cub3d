@@ -1,11 +1,10 @@
 EA ./textures/ea.xpm
 SO ./textures/so.xpm
 WE ./textures/we.xpm
+NO ./textures/no.xpm
 
 F 203idlkajsdf,191,174
 C 225,30,0
-
-                        NO ./textures/no.xpm
 
 1111
 10N1
