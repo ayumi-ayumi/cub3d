@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/06/29 10:01:30 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 18:38:55 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,6 @@ typedef enum s_direction
 	DIR_WE,
 	DIR_EA
 }					t_direction;
-
-typedef enum s_keycode
-{
-	ARROW_UP = 65362,
-	ARROW_RIGHT = 65363,
-	ARROW_DOWN = 65364,
-	ARROW_LEFT = 65361,
-	KEY_W = 119,
-	KEY_D = 100,
-	KEY_S = 115,
-	KEY_A = 97,
-	KEY_ESC = 65307
-}					t_keycode;
 
 /* STRUCTS */
 typedef struct s_position
@@ -93,14 +80,6 @@ typedef struct s_exec
 	t_play			play;
 }					t_exec;
 
-/*paths to wall image files*/
-typedef struct s_config
-{
-	char			**texture_paths;
-	int				floor[3];
-	int				ceiling[3];
-}					t_config;
-
 typedef struct s_map
 {
 	char			**grid;
@@ -109,6 +88,14 @@ typedef struct s_map
 	char			start_orientation;
 	t_pos			start_pos;
 }					t_map;
+
+/*paths to wall image files*/
+typedef struct s_config
+{
+	char			**texture_paths;
+	int				floor[3];
+	int				ceiling[3];
+}					t_config;
 
 typedef struct s_game
 {
@@ -123,7 +110,6 @@ typedef struct s_game
 }					t_game;
 
 int					execute_game(t_game *game);
-// void	cleanup_exec(t_game *game, t_exec *exec);
 
 /* Clean Up */
 void				free_map(t_map *map);

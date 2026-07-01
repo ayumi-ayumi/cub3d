@@ -6,14 +6,12 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:28:05 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 17:21:52 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 18:47:09 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
 #include "parser.h"
 #include "libft.h"
-#include <stdlib.h>
 
 static int	store_map_grid(t_game *game, char *line, int i)
 {

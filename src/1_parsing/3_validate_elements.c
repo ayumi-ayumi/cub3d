@@ -6,14 +6,12 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 17:07:28 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 20:05:24 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
 #include "parser.h"
 #include "libft.h"
-#include <unistd.h>
 
 static int	validate_prefix(t_game *game)
 {
@@ -82,7 +80,7 @@ static int	validate_config(t_game *game)
 int	extract_elements(t_game *game)
 {
 	if (!validate_config(game))
-		return (print_error("Incomplete config data\n"), 0);
+		return (print_error("Incomplete config data"), 0);
 	game->map.height = game->map.height - 6 + 1;
 	if (!extract_map(game))
 		return (0);

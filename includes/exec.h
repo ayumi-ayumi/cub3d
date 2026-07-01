@@ -13,7 +13,7 @@
 # define WALL_COLOR 0x333333
 # define FLOOR_COLOR 0xCCCCCC
 # define PLAYER_COLOR 0xFF0000
-# define FAN_COLOR 0xDDFFCC
+# define FAN_COLOR 0xF7C7C3
 
 # include "cub3d.h"
 
@@ -51,6 +51,8 @@ int					draw(t_game *game, t_data *scre);
 /*raycast*/
 int					raycast(t_game *game, t_exec *exec);
 void				calc_start_values(t_play *play, double cam_x);
+
+/*minimap*/
 void				draw_tiles(t_game *game);
 void				draw_player(t_game *game);
 void				display_vision_cone(t_map map, t_data *screen, t_play play);

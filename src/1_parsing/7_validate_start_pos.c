@@ -6,11 +6,10 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/06/29 09:57:42 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 19:28:17 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
 #include "parser.h"
 #include "libft.h"
 

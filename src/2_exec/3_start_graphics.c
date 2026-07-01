@@ -6,11 +6,10 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 15:19:26 by asato             #+#    #+#             */
-/*   Updated: 2026/06/22 18:38:55 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 19:41:54 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "cub3d.h"
 #include "exec.h"
 #include <mlx.h>
 #include <math.h>/*for M_PI_2*/

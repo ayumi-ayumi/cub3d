@@ -6,16 +6,13 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:43:33 by asato             #+#    #+#             */
-/*   Updated: 2026/06/29 10:04:44 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 19:32:12 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "parser.h"
 #include "libft.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <mlx.h>
 
 void	free_string_array(char **arr)
 {

@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 17:51:57 by asato             #+#    #+#             */
-/*   Updated: 2026/06/29 10:23:37 by asato            ###   ########.fr       */
+/*   Updated: 2026/06/30 19:48:49 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	display_vision_cone(t_map map, t_data *screen, t_play play)
 
 	angle = (M_PI / 6) * -1;
 	play.pos.x += 0.2;
+	play.pos.y += 0.2;
 	while (angle < M_PI / 6)
 	{
 		ray_dir = turn_vec(play.dir, angle);

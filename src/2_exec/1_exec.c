@@ -2,7 +2,6 @@
 #include "exec.h"
 #include "libft.h"
 #include <mlx.h>
-#include <stddef.h>
 
 /*setup of scre and start game loop*/
 int	execute_game(t_game *game)

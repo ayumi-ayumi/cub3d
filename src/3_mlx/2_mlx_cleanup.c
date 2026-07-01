@@ -2,7 +2,6 @@
 #include "exec.h"
 #include "cub3d.h"
 #include "libft.h"
-#include <stddef.h>
 
 void	free_mlx_texture(void *mlx, void **target)
 {

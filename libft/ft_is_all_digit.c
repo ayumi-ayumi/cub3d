@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1_load_map_and_config.c                            :+:      :+:    :+:   */
+/*   ft_is_all_digit.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 21:45:54 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 18:47:13 by asato            ###   ########.fr       */
+/*   Created: 2026/06/30 20:01:18 by asato             #+#    #+#             */
+/*   Updated: 2026/06/30 20:03:54 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "libft.h"
 
-int	load_map_and_config(t_game *game)
+int	ft_is_all_digit(char *str)
 {
-	t_map	*map;
+	int	i;
 
-	if (!game)
-		return (0);
-	game->map = (t_map){
-		.grid = NULL,
-		.height = 0,
-		.width = 0,
-		.start_orientation = 0,
-		.start_pos = {-1, -1}
-	};
-	map = &game->map;
-	if (!parse_file(game) || !validate_map(map))
-		return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
 	return (1);
 }
