@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 17:51:57 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 19:48:49 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/01 18:58:10 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,20 @@ void	display_vision_cone(t_map map, t_data *screen, t_play play)
 	}
 }
 
-static void	fill_space(t_game *game, int row, int col, t_tile tile)
+static int	set_tile_color(char c)
 {
-	if (col < game->map.width)
-	{
-		while (col < game->map.width)
-		{
-			tile.x = col * TILE_SIZE;
-			tile.y = row * TILE_SIZE;
-			tile.color = FLOOR_COLOR;
-			render_tile(game, tile, TILE_SIZE);
-			col++;
-		}
-	}
+	if (c == '1')
+		return (WALL_COLOR);
+	if (c == '0')
+		return (FLOOR_COLOR);
+	return (-1);
 }
 
 void	draw_tiles(t_game *game)
 {
 	int		row;
 	int		col;
+	int		color;
 	t_tile	tile;
 
 	tile = (t_tile){.x = 0, .y = 0, .color = 0};
@@ -80,17 +75,18 @@ void	draw_tiles(t_game *game)
 	while (row < game->map.height)
 	{
 		col = 0;
-		tile.y = row * TILE_SIZE;
 		while (game->map.grid[row][col] != '\0')
 		{
-			tile.x = col * TILE_SIZE;
-			if (game->map.grid[row][col++] == '1')
-				tile.color = WALL_COLOR;
-			else
-				tile.color = FLOOR_COLOR;
-			render_tile(game, tile, TILE_SIZE);
+			color = set_tile_color(game->map.grid[row][col]);
+			if (color != -1)
+			{
+				tile.y = row * TILE_SIZE;
+				tile.x = col * TILE_SIZE;
+				tile.color = color;
+				render_tile(game, tile, TILE_SIZE);
+			}
+			col++;
 		}
-		fill_space(game, row, col, tile);
 		row++;
 	}
 }
