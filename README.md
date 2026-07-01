@@ -20,6 +20,7 @@ It parses a `.cub` file, validates the map, and renders a real-time first-person
 * Movement (W/A/S/D) + rotation (←/→)
 * Floor and ceiling colors
 * Map parsing and validation
+* Minimap with vision cone
 * Clean error handling
 
 ---
@@ -28,7 +29,7 @@ It parses a `.cub` file, validates the map, and renders a real-time first-person
 
 **Architecture:** The project follows a modular, layered architecture with clear separation of concerns.
 **Unit Testing:** Core logic is decoupled from MiniLibX to enable unit testing.
-**Includes:** Each file includes only the headers it direct ely depends on to keep dependencies explicit.
+**Includes:** Each file includes only the headers it directly depends on to keep dependencies explicit.
 **Ownership:** Modules manage their own resources via dedicated init/cleanup functions, ensuring clear memory ownership. **Cleanup is handled locally:** allocating functions return errors, and callers free partial state.
 
 ### Structs
@@ -39,29 +40,33 @@ t_game
 ├── file_path: char* (input file)
 ├── file_contents: char** (raw file lines)
 ├── config: t_config
-│   ├── no, so, we, ea: char* (texture paths)
-│   ├── floor: int (RGB)
-│   └── ceiling: int (RGB)
+│   ├── texture_paths: char** (NO/SO/WE/EA texture paths)
+│   ├── floor: int[3] (RGB)
+│   └── ceiling: int[3] (RGB)
 ├── map: t_map
 │   ├── grid: char** (2D map)
 │   ├── height, width: int
 │   ├── start_pos: t_pos
 │   └── start_orientation: char
-└── copy: t_map (duplicate of map for safety)
+├── exec: t_exec
+└── minimap: t_data
 
 t_exec
-├── no, so, we, ea: void* (loaded textures)
-├── img: t_data
+├── wall_texture: t_data* (loaded NO/SO/WE/EA textures)
+├── scre: t_data
 │   ├── img: void* (image buffer)
 │   ├── addr: char* (pixel address)
-│   ├── bits_per_pixel, line_length, endian: int
-├── draw_start, draw_end: int
+│   └── bpp, line_length, endian: int
+├── draw_start, draw_end, wall_height: int
+├── ceiling, floor: unsigned int
 └── play: t_play
     ├── pos, dir, plane, ray, delta_dist, side_dist: t_vec
     ├── map: t_pos
     ├── step: t_pos
-    ├── hit, side: char
-    ├── perp_wall_dist, time, old_time: double
+    ├── wall_hit: t_bool
+    ├── side: t_direction
+    ├── perp_wall_dist: double
+    └── texture_col: int
 ```
 ---
 
@@ -69,7 +74,7 @@ t_exec
 
 ```bash
 make
-./cub3D maps/example.cub
+./cub3D maps/valid/valid1.cub
 ```
 
 ---
@@ -84,6 +89,5 @@ make
 
 ## 📚 Resources
 - Ai was used to help writing this readme file.
-- chagen: Ressource about LeakSanitizer [MaskRay][https://maskray.me/blog/2023-02-12-all-about-leak-sanitizer].
-- chagen: Ressource on Raycasting: [Gitbook][https://lodev.org/cgtutor/raycasting.html].
-
+- chagen: Resource about LeakSanitizer [MaskRay](https://maskray.me/blog/2023-02-12-all-about-leak-sanitizer).
+- chagen: Resource on Raycasting: [Gitbook](https://lodev.org/cgtutor/raycasting.html).
