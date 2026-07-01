@@ -18,9 +18,9 @@ static void	dda(char **grid, t_play *play)
 			play->side_dist.x += play->delta_dist.x;
 			play->map.col += play->step.col;
 			if (play->ray.x > 0)
-				play->side = DIR_WE;
-			else
 				play->side = DIR_EA;
+			else
+				play->side = DIR_WE;
 		}
 		else
 		{
