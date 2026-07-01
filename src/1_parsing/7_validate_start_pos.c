@@ -19,7 +19,7 @@ static void	store_start_orientation(t_map *map)
 	t_pos	start_pos;
 	int		i;
 
-	dirs = "NSEW";
+	dirs = "NSWE";
 	start_pos = map->start_pos;
 	i = 0;
 	while (i < 4)
@@ -109,7 +109,7 @@ int	validate_start_position(t_map *map)
 	int		result;
 	int		i;
 
-	dirs = "NSEW";
+	dirs = "NSWE";
 	found = 0;
 	i = 0;
 	while (i < 4)
