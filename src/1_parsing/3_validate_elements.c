@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 20:05:24 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/01 18:21:30 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ static int	trim_space_in_line(t_game *game)
 	return (1);
 }
 
+static int	validate_config_set(t_game *game)
+{
+	if (game->file_contents[6][0] != ' ' && game->file_contents[6][0] != '1')
+		return (print_error("The config lines are incorrect"), 0);
+	return (1);
+}
+
 static int	validate_config(t_game *game)
 {
 	if (!trim_space_in_line(game))
@@ -79,6 +86,8 @@ static int	validate_config(t_game *game)
 
 int	extract_elements(t_game *game)
 {
+	if (!validate_config_set(game))
+		return (0);
 	if (!validate_config(game))
 		return (print_error("Incomplete config data"), 0);
 	game->map.height = game->map.height - 6 + 1;

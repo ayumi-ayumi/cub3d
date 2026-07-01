@@ -25,7 +25,7 @@ void	free_win(t_game *game)
 	if (!game->win)
 		return ;
 	mlx_destroy_window(game->mlx, game->win);
-	ft_free((void **)&game->win);
+	game->win = NULL;
 }
 
 void	free_entire_mlx(t_game *game)
