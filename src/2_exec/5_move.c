@@ -4,7 +4,6 @@
 #include <math.h>/*for pi*/
 #include <mlx.h>
 
-
 /*moves with WDSA keys*/
 static void	move_back_forth(t_game *game, t_play *play, int dir)
 {

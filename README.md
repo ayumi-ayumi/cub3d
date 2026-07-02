@@ -27,8 +27,7 @@ It parses a `.cub` file, validates the map, and renders a real-time first-person
 
 ## 🏗️ Architecture
 
-**Architecture:** The project follows a modular, layered architecture with clear separation of concerns.
-**Unit Testing:** Core logic is decoupled from MiniLibX to enable unit testing.
+**Architecture:** The project follows a modular architecture.
 **Includes:** Each file includes only the headers it directly depends on to keep dependencies explicit.
 **Ownership:** Modules manage their own resources via dedicated init/cleanup functions, ensuring clear memory ownership. **Cleanup is handled locally:** allocating functions return errors, and callers free partial state.
 
@@ -71,15 +70,19 @@ t_exec
 ---
 
 ## 🛠️ Instructions 
-
+#### build:
 ```bash
 make
-./cub3D maps/valid/valid1.cub
 ```
 
----
+#### run:
+```bash
+./cub3D maps/valid/valid1.cub
+```
+The .cub - file must provide the paths to wall textures, floor and ceiling colors and a map with only the characters: 0, 1, W, S, E and N. The map has to be surrounded by walls (1).
+For more detailed requirements check the 42 cub3D-subject version 12.0.
 
-## 🎮 Controls
+#### play: 🎮 Controls:
 
 * **W/A/S/D** → Move
 * **←/→** → Rotate
@@ -88,6 +91,12 @@ make
 ---
 
 ## 📚 Resources
-- Ai was used to help writing this readme file.
-- chagen: Resource about LeakSanitizer [MaskRay](https://maskray.me/blog/2023-02-12-all-about-leak-sanitizer).
-- chagen: Resource on Raycasting: [Gitbook](https://lodev.org/cgtutor/raycasting.html).
+- Ai was used to 
+	- help writing this readme file.
+	- find typos.
+	- research coding best practices like for example the minimal includes approach.
+	- suggest tests for specific functions.
+- Resource about LeakSanitizer [MaskRay](https://maskray.me/blog/2023-02-12-all-about-leak-sanitizer).
+- Resource on Raycasting: [Gitbook](https://lodev.org/cgtutor/raycasting.html).
+- [32 pixel floral wall textures](https://oxymoron-nonsense.itch.io/wildflower-assets)
+- [64pixel wall textures](https://normalmap-games.itch.io/pixelated-textures-asset-pack)
