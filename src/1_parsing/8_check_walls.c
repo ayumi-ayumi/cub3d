@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:20:15 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 19:35:23 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 17:25:10 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_around_0(t_map *map)
 	int	col_idx;
 
 	row_idx = 1;
-	while (row_idx < map->height -1)
+	while (row_idx < map->height - 1)
 	{
 		col_idx = 1;
 		while (map->grid[row_idx][col_idx + 1] != '\0')
@@ -32,16 +32,16 @@ int	check_around_0(t_map *map)
 			if (map->grid[row_idx][col_idx] == '0')
 			{
 				if (!friend_with_0(map->grid[row_idx - 1][col_idx])
-				|| !friend_with_0(map->grid[row_idx][col_idx + 1])
-				|| !friend_with_0(map->grid[row_idx + 1][col_idx])
-				|| !friend_with_0(map->grid[row_idx][col_idx - 1]))
-					return (0);
+					|| !friend_with_0(map->grid[row_idx][col_idx + 1])
+					|| !friend_with_0(map->grid[row_idx + 1][col_idx])
+					|| !friend_with_0(map->grid[row_idx][col_idx - 1]))
+					return (FAIL);
 			}
 			col_idx++;
 		}
 		row_idx++;
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 int	has_left_side_wall(t_map *map)
@@ -57,10 +57,10 @@ int	has_left_side_wall(t_map *map)
 			col_idx++;
 		if (map->grid[row_idx][col_idx] != '\0'
 			&& map->grid[row_idx][col_idx] != '1')
-			return (0);
+			return (FAIL);
 		row_idx++;
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 int	has_right_side_wall(t_map *map)
@@ -75,10 +75,10 @@ int	has_right_side_wall(t_map *map)
 		while (map->grid[row_idx][col_idx + 1] != '\0')
 			col_idx++;
 		if (map->grid[row_idx][col_idx] != '1')
-			return (0);
+			return (FAIL);
 		row_idx++;
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 int	has_this_row_wall(t_map *map, int row_idx)
@@ -91,8 +91,8 @@ int	has_this_row_wall(t_map *map, int row_idx)
 		while (map->grid[row_idx][col_idx] == ' ')
 			col_idx++;
 		if (map->grid[row_idx][col_idx] != '1')
-			return (0);
+			return (FAIL);
 		col_idx++;
 	}
-	return (1);
+	return (SUCCESS);
 }

@@ -6,19 +6,20 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:28:05 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 18:47:09 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 17:19:35 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
 #include "libft.h"
+#include "parser.h"
+#include <stdio.h>
 
 static int	store_map_grid(t_game *game, char *line, int i)
 {
 	game->map.grid[i] = ft_strdup(line);
 	if (!game->map.grid[i])
-		return (0);
-	return (1);
+		return (perror("malloc"), FAIL);
+	return (SUCCESS);
 }
 
 int	extract_map(t_game *game)
@@ -33,15 +34,15 @@ int	extract_map(t_game *game)
 		game->map.grid
 			= malloc(sizeof(game->map.grid) * (game->map.height + 1));
 		if (!game->map.grid)
-			return (0);
+			return (perror("malloc"), FAIL);
 		while (game->file_contents[i] != NULL)
 		{
-			if (!store_map_grid(game, game->file_contents[i], row_idx))
-				return (0);
+			if (store_map_grid(game, game->file_contents[i], row_idx) == FAIL)
+				return (FAIL);
 			i++;
 			row_idx++;
 		}
 		game->map.grid[row_idx] = NULL;
 	}
-	return (1);
+	return (SUCCESS);
 }

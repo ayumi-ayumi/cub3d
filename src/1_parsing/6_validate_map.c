@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:28:05 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 20:05:57 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 17:27:35 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,24 @@ static int	validate_map_charset(t_map *map)
 		while (map->grid[row_idx][col_idx] != '\0')
 		{
 			if (!is_allowed_char(map->grid[row_idx][col_idx]))
-				return (0);
+				return (FAIL);
 			col_idx++;
 		}
 		row_idx++;
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 int	is_enclosed_by_walls(t_map *map)
 {
-	if (!has_this_row_wall(map, 0) || !has_this_row_wall(map, map->height - 1))
-		return (0);
-	if (!has_left_side_wall(map) || !has_right_side_wall(map))
-		return (0);
-	if (!check_around_0(map))
-		return (0);
-	return (1);
+	if (has_this_row_wall(map, 0) == FAIL
+		|| has_this_row_wall(map, map->height - 1) == FAIL)
+		return (FAIL);
+	if (has_left_side_wall(map) == FAIL || has_right_side_wall(map) == FAIL)
+		return (FAIL);
+	if (check_around_0(map) == FAIL)
+		return (FAIL);
+	return (SUCCESS);
 }
 
 static void	replace_start_pos_char_0(t_map *map)
@@ -61,19 +62,13 @@ static void	replace_start_pos_char_0(t_map *map)
 int	validate_map(t_map *map)
 {
 	if (!map || !map->grid)
-		return (print_error("No map found"), 0);
-	if (!validate_map_charset(map))
-	{
-		print_error("The map contains invalid characters");
-		return (0);
-	}
-	if (!validate_start_position(map))
-	{
-		print_error("The map must have only one start position");
-		return (0);
-	}
-	if (!is_enclosed_by_walls(map))
-		return (print_error("Map is not surrounded by walls🧱 or invalid"), 0);
+		return (print_error("No map found"), FAIL);
+	if (validate_map_charset(map) == FAIL)
+		return (print_error("The map contains invalid characters"), FAIL);
+	if (validate_start_position(map) == FAIL)
+		return (print_error("The map must have only one start position"), FAIL);
+	if (is_enclosed_by_walls(map) == FAIL)
+		return (print_error("Map is not surrounded by walls or invalid"), FAIL);
 	replace_start_pos_char_0(map);
-	return (1);
+	return (SUCCESS);
 }

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "get_next_line.h"
+#include "libft.h"
 #include <fcntl.h>
 
 char	*get_stash(int fd, char *stash)

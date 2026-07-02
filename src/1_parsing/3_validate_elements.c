@@ -6,12 +6,13 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:26:43 by asato             #+#    #+#             */
-/*   Updated: 2026/07/01 18:21:30 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 17:09:09 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
 #include "libft.h"
+#include "parser.h"
+#include <stdio.h>
 
 static int	validate_prefix(t_game *game)
 {
@@ -37,8 +38,8 @@ static int	validate_prefix(t_game *game)
 		i++;
 	}
 	if (found != 6)
-		return (0);
-	return (1);
+		return (FAIL);
+	return (SUCCESS);
 }
 
 static int	trim_space_in_line(t_game *game)
@@ -51,47 +52,47 @@ static int	trim_space_in_line(t_game *game)
 	{
 		temp = ft_strtrim(game->file_contents[i], " ");
 		if (!temp)
-			return (0);
+			return (perror("malloc"), FAIL);
 		free(game->file_contents[i]);
 		game->file_contents[i] = temp;
 		if (!game->file_contents[i])
-			return (0);
+			return (FAIL);
 		i++;
 	}
-	return (1);
+	return (SUCCESS);
 }
 
 static int	validate_config_set(t_game *game)
 {
 	if (game->file_contents[6][0] != ' ' && game->file_contents[6][0] != '1')
-		return (print_error("The config lines are incorrect"), 0);
-	return (1);
+		return (print_error("The config lines are incorrect"), FAIL);
+	return (SUCCESS);
 }
 
 static int	validate_config(t_game *game)
 {
-	if (!trim_space_in_line(game))
-		return (0);
-	if (!validate_prefix(game))
-		return (0);
+	if (trim_space_in_line(game) == FAIL)
+		return (FAIL);
+	if (validate_prefix(game) == FAIL)
+		return (FAIL);
 	game->config.texture_paths = ft_calloc(5, sizeof(char *));
 	if (!game->config.texture_paths)
-		return (0);
-	if (!extract_texture_config(game))
-		return (free_texture_paths(game->config.texture_paths), 0);
-	if (!extract_rgb_config(game))
-		return (0);
-	return (1);
+		return (perror("malloc"), FAIL);
+	if (extract_texture_config(game) == FAIL)
+		return (free_texture_paths(game->config.texture_paths), FAIL);
+	if (extract_rgb_config(game) == FAIL)
+		return (FAIL);
+	return (SUCCESS);
 }
 
 int	extract_elements(t_game *game)
 {
-	if (!validate_config_set(game))
-		return (0);
-	if (!validate_config(game))
-		return (print_error("Incomplete config data"), 0);
+	if (validate_config_set(game) == FAIL)
+		return (FAIL);
+	if (validate_config(game) == FAIL)
+		return (print_error("Incomplete config data"), FAIL);
 	game->map.height = game->map.height - 6 + 1;
-	if (!extract_map(game))
-		return (0);
-	return (1);
+	if (extract_map(game) == FAIL)
+		return (FAIL);
+	return (SUCCESS);
 }
