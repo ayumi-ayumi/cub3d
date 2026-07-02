@@ -44,7 +44,7 @@ static void	handle_key_event(int keycode, t_game *game)
 	if (keycode == XK_Escape)
 	{
 		free_entire_mlx(game);
-		cleanup_and_exit(game);
+		cleanup_and_exit(game, 0);
 	}
 	if (keycode == XK_w || keycode == XK_Up)
 		move_back_forth(game, &game->exec.play, 1);

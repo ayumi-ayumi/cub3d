@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:43:33 by asato             #+#    #+#             */
-/*   Updated: 2026/07/01 17:12:14 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 17:50:51 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	free_map(t_map *map)
 	ft_free((void **)&map->grid);
 }
 
-void	cleanup_and_exit(t_game *game)
+void	cleanup_and_exit(t_game *game, int exit_code)
 {
 	if (!game)
 		return ;
@@ -50,17 +50,7 @@ void	cleanup_and_exit(t_game *game)
 		free_map(&game->map);
 	if (game->config.texture_paths)
 		free_string_array(game->config.texture_paths);
+	if (exit_code)
+		exit (1);
 	exit(0);
 }
-// void	cleanup_and_exit(t_game *game, int exit_code)
-// {
-// 	if (!game)
-// 		return ;
-// 	if (game->map.grid)
-// 		free_map(&game->map);
-// 	if (game->config.texture_paths)
-// 		free_string_array(game->config.texture_paths);
-// 	if (exit_code)
-// 		exit (1);
-// 	exit(0);
-// }
