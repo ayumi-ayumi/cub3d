@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 15:19:26 by asato             #+#    #+#             */
-/*   Updated: 2026/07/02 15:55:18 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 17:51:29 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	close_window(void *param)
 
 	game = (t_game *)param;
 	free_entire_mlx(game);
-	cleanup_and_exit(game);
+	cleanup_and_exit(game, 0);
 	return (1);
 }
 

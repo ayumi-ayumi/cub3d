@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/07/02 16:39:59 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 17:51:07 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ void				error_and_exit(char *error);
 
 /* Clean Up */
 void				free_map(t_map *map);
-void				free_string_array(char **arr);;
-void				cleanup_and_exit(t_game *game);
+void				free_string_array(char **arr);
+void				cleanup_and_exit(t_game *game, int exit_code);
 void				print_error(char *error);
 
 /* mlx clean up*/

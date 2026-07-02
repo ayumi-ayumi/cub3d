@@ -6,13 +6,14 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 17:25:09 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 20:05:33 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 17:08:55 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-#include "libft.h"
 #include "get_next_line.h"
+#include "libft.h"
+#include "parser.h"
+#include <stdio.h>
 
 static void	count_lines(t_game *game)
 {
@@ -32,7 +33,7 @@ static int	read_file(int fd, t_game *game)
 
 	contents_str = ft_strdup("");
 	if (!contents_str)
-		return (0);
+		return (perror("malloc"), FAIL);
 	while (1)
 	{
 		next_line = get_next_line(fd);
@@ -45,10 +46,10 @@ static int	read_file(int fd, t_game *game)
 	}
 	game->file_contents = ft_split(contents_str, '\n');
 	if (!game->file_contents)
-		return (0);
+		return (perror("malloc"), FAIL);
 	count_lines(game);
 	ft_free((void **)&contents_str);
-	return (1);
+	return (SUCCESS);
 }
 
 int	parse_file(t_game *game)
@@ -60,12 +61,12 @@ int	parse_file(t_game *game)
 	{
 		print_error("Failed opening a file or a file doesn't exit");
 		close(fd);
-		return (0);
+		return (FAIL);
 	}
-	if (!read_file(fd, game))
-		return (0);
-	if (!extract_elements(game))
-		return (close(fd), free_string_array(game->file_contents), 0);
+	if (read_file(fd, game) == FAIL)
+		return (FAIL);
+	if (extract_elements(game) == FAIL)
+		return (close(fd), free_string_array(game->file_contents), FAIL);
 	free_string_array(game->file_contents);
-	return (close(fd), 1);
+	return (close(fd), SUCCESS);
 }
