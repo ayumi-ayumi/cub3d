@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 18:38:55 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 16:25:29 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # define SUCCESS 0
 # define FAIL 1
 # include <stddef.h>/*for NULL*/
-//# include "exec.h"
 
 typedef int			t_bool;
 typedef enum s_direction
