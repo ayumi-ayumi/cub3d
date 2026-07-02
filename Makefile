@@ -6,7 +6,7 @@
 #    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/07/02 15:54:39 by asato            ###   ########.fr        #
+#    Updated: 2026/07/02 16:22:56 by asato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJ_DIR		=	obj
 INC_DIR		=	includes
 LIBFT_DIR	=	libft
 LIBFT_A		=	$(LIBFT_DIR)/libft.a
-# Linker directives lmlx is the lmx library on the school compputer
+# Linker directives lmlx is the lmx library on the school computer
 LDLIBS		=	$(LIBFT_A) -lmlx -lX11 -lXext -lm
 
 INC			=	-I$(INC_DIR) -I$(LIBFT_DIR)
@@ -65,7 +65,7 @@ $(LIBFT_A):
 $(NAME): $(LIBFT_A) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
-#compile .o and create their dir if they dont exist
+#compile .o and create their dir if they don't exist
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@

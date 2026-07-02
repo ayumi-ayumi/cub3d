@@ -6,14 +6,13 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 16:40:38 by asato             #+#    #+#             */
-/*   Updated: 2026/07/01 17:24:39 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 16:22:26 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "parser.h"
 #include "libft.h"
-#include <unistd.h>
 
 static t_bool	is_extension_correct(t_game *game, char *file_name)
 {
