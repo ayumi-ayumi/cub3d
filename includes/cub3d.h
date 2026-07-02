@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+`/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 14:43:17 by asato             #+#    #+#             */
-/*   Updated: 2026/07/02 16:25:29 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 16:31:35 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,19 @@ typedef struct s_game
 	t_data			minimap;
 }					t_game;
 
-int					execute_game(t_game *game);
+/* Error Handling */
+void				error_and_exit(char *error);
 
 /* Clean Up */
 void				free_map(t_map *map);
-void				free_entire_mlx(t_game *game);
+void				free_string_array(char **arr);;
 void				cleanup_and_exit(t_game *game);
 void				print_error(char *error);
+
+/* mlx clean up*/
+void				free_mlx_texture(void *mlx, void **target);
+void				free_mlx(t_game *game);
+void				free_win(t_game *game);
+void				free_entire_mlx(t_game *game);
+
 #endif

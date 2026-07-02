@@ -33,11 +33,10 @@ typedef struct s_tile
 	unsigned int	color;
 }					t_tile;
 
+int					execute_game(t_game *game);
+
 /* mlx */
 int					init_mlx(t_game *game);
-void				free_mlx(t_game *game);
-void				free_win(t_game *game);
-void				free_mlx_texture(void *mlx, void **target);
 
 /* mlx Loop */
 int					start_graphics(t_game *game);

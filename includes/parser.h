@@ -6,7 +6,7 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 18:02:52 by asato             #+#    #+#             */
-/*   Updated: 2026/07/02 16:17:23 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 16:27:57 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,5 @@ int		check_around_0(t_map *map);
 int		has_left_side_wall(t_map *map);
 int		has_right_side_wall(t_map *map);
 int		has_this_row_wall(t_map *map, int row_idx);
-
-/* Error Handling */
-void	error_and_exit(char *error);
-
-/* Clean Up */
-void	free_string_array(char **arr);
 
 #endif
