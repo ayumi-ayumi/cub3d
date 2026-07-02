@@ -94,9 +94,9 @@ For more detailed requirements check the 42 cub3D-subject version 12.0.
 - Ai was used to 
 	- help writing this readme file.
 	- find typos.
-	- plan the split of project work.
 	- research coding best practices like for example the minimal includes approach.
 	- suggest tests for specific functions.
 - Resource about LeakSanitizer [MaskRay](https://maskray.me/blog/2023-02-12-all-about-leak-sanitizer).
 - Resource on Raycasting: [Gitbook](https://lodev.org/cgtutor/raycasting.html).
-- [wall textures](https://oxymoron-nonsense.itch.io/wildflower-assets)
+- [32 pixel floral wall textures](https://oxymoron-nonsense.itch.io/wildflower-assets)
+- [64pixel wall textures](https://normalmap-games.itch.io/pixelated-textures-asset-pack)
