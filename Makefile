@@ -6,7 +6,7 @@
 #    By: asato <asato@student.42berlin.de>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 15:06:45 by chagen            #+#    #+#              #
-#    Updated: 2026/06/20 13:17:16 by asato            ###   ########.fr        #
+#    Updated: 2026/07/02 15:54:39 by asato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,23 +31,23 @@ SRC			=	main.c \
 				1_parsing/6_validate_map.c \
 				1_parsing/7_validate_start_pos.c \
 				1_parsing/8_check_walls.c \
-				1_parsing/cleanup.c \
-				1_parsing/error.c \
 				1_parsing/get_next_line.c \
 				2_exec/1_exec.c \
-				2_exec/2_init_play.c \
-				2_exec/3_start_graphics.c \
-				2_exec/4_move.c \
+				2_exec/2_init_mlx.c \
+				2_exec/3_init_play.c \
+				2_exec/4_start_graphics.c \
+				2_exec/5_move.c \
 				2_exec/utils.c \
-				3_mlx/1_init_mlx.c \
-				3_mlx/2_mlx_cleanup.c \
-				4_raycast/1_raycast.c \
-				4_raycast/2_start_values.c \
-				4_raycast/3_draw.c \
-				4_raycast/4_put_pixel.c \
-				4_raycast/5_put_wall.c \
-				4_raycast/7_minimap.c \
-				4_raycast/8_minimap_utils.c \
+				3_raycast/1_raycast.c \
+				3_raycast/2_start_values.c \
+				3_raycast/3_draw.c \
+				3_raycast/4_put_pixel.c \
+				3_raycast/5_put_wall.c \
+				3_raycast/7_minimap.c \
+				3_raycast/8_minimap_utils.c \
+				4_cleanup/cleanup.c \
+				4_cleanup/error.c \
+				4_cleanup/mlx_cleanup.c \
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 
