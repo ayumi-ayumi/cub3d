@@ -70,15 +70,19 @@ t_exec
 ---
 
 ## 🛠️ Instructions 
-
+#### build:
 ```bash
 make
-./cub3D maps/valid/valid1.cub
 ```
 
----
+#### run:
+```bash
+./cub3D maps/valid/valid1.cub
+```
+The .cub - file must provide the paths to wall textures, floor and ceiling colors and a map with only the characters: 0, 1, W, S, E and N. The map has to be surrounded by walls (1).
+For more detailed requirements check the 42 cub3D-subject version 12.0.
 
-## 🎮 Controls
+#### play: 🎮 Controls:
 
 * **W/A/S/D** → Move
 * **←/→** → Rotate
@@ -87,7 +91,12 @@ make
 ---
 
 ## 📚 Resources
-- Ai was used to help writing this readme file.
+- Ai was used to 
+	- help writing this readme file.
+	- find typos.
+	- plan the split of project work.
+	- research coding best practices like for example the minimal includes approach.
+	- suggest tests for specific functions.
 - Resource about LeakSanitizer [MaskRay](https://maskray.me/blog/2023-02-12-all-about-leak-sanitizer).
 - Resource on Raycasting: [Gitbook](https://lodev.org/cgtutor/raycasting.html).
 - [wall textures](https://oxymoron-nonsense.itch.io/wildflower-assets)
