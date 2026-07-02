@@ -6,12 +6,12 @@
 /*   By: asato <asato@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:20:02 by asato             #+#    #+#             */
-/*   Updated: 2026/06/30 19:28:17 by asato            ###   ########.fr       */
+/*   Updated: 2026/07/02 16:48:14 by asato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
 #include "libft.h"
+#include "parser.h"
 
 static void	store_start_orientation(t_map *map)
 {
@@ -116,17 +116,17 @@ int	validate_start_position(t_map *map)
 	{
 		result = count_char_in_map(map, dirs[i]);
 		if (result > 1)
-			return (0);
+			return (FAIL);
 		if (result == 1)
 			found++;
 		i++;
 	}
 	if (found != 1)
-		return (0);
+		return (FAIL);
 	map->start_pos = find_start_pos(map);
 	if (map->start_pos.row == -1 || map->start_pos.col == -1)
-		return (0);
+		return (FAIL);
 	map->width = get_max_width(map);
 	store_start_orientation(map);
-	return (1);
+	return (SUCCESS);
 }

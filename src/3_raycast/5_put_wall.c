@@ -1,6 +1,5 @@
 #include "cub3d.h"
 #include "exec.h"
-#include <stdint.h>
 #include <math.h>
 
 /*
@@ -40,7 +39,7 @@ void	put_wall(t_exec *exec, t_paint *paint)
 **  {
 **  	int	col;
 **  	int	row;
-** 
+**
 **  	row = get_texture_row();
 **  	put_pixel()
 **  }
