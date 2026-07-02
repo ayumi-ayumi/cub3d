@@ -3,7 +3,7 @@ SO ./textures/so.xpm
 WE ./textures/we.xpm
 
 F            203,191,174
-C 169,214,255
+C 169,14,255
 
 NO            ./textures/no.xpm
 
